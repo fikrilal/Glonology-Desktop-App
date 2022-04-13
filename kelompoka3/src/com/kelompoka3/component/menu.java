@@ -2,6 +2,7 @@ package com.kelompoka3.component;
 
 import com.kelompoka3.event.menuEvent;
 import com.kelompoka3.swing.menuButton;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,6 +51,7 @@ public class menu extends javax.swing.JPanel {
         addMenu("3", "History", 2);
         addMenu("4", "Barang", 3);
         addMenu("5", "Supplier", 4);
+        space();
         addMenu("6", "Logout", 5);
     }
 
@@ -73,6 +75,27 @@ public class menu extends javax.swing.JPanel {
         });
         panelMenu.add(menu);
 
+    }
+    
+    private void space() {
+        panelMenu.add(new JLabel1(), "push");
+    }
+
+    public void setSelected(int index) {
+        for (Component com : panelMenu.getComponents()) {
+            menuButton menu = (menuButton) com;
+
+            if (menu.getIndex() == index) {
+                if (menu != selectedMenu) {
+                    unSelectedMenu = selectedMenu;
+                    unSelectedMenu = menu;
+                    animator.start();
+                    event.menuSelected(index);
+
+                }
+                break;
+            }
+        }
     }
 
     /**
@@ -131,4 +154,10 @@ public class menu extends javax.swing.JPanel {
     private javax.swing.JPanel panelMenu;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
+
+    private static class JLabel1 extends Component {
+
+        public JLabel1() {
+        }
+    }
 }

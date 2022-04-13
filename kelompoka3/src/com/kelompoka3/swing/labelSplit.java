@@ -41,6 +41,4 @@ public class labelSplit extends JLabel {
         super.paint(grphcs);
         }
     }
-    
-    
 }
