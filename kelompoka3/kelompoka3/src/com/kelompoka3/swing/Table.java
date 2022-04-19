@@ -1,6 +1,6 @@
 package com.kelompoka3.swing;
 
-import com.raven.swing.scroll.ScrollBarCustom;
+import com.kelompoka3.swing.ScrollBarCustom;
 import com.raven.table.TableCustom;
 import java.awt.Color;
 import java.awt.Component;
