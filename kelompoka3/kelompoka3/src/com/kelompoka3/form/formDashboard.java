@@ -1,12 +1,55 @@
 package com.kelompoka3.form;
 
+import com.kelompoka3.koneksi.koneksi;
+import com.kelompoka3.swing.Table;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+
 public class formDashboard extends javax.swing.JPanel {
 
+//    private Table model;
     public formDashboard() {
         initComponents();
+        tableHistory();
         setOpaque(false);
         table1.addTableStyle(jScrollPane1);
+}
+    private void tableHistory() {
+    table1 = new com.kelompoka3.swing.Table();
+
+table1.setModel(new javax.swing.table.DefaultTableModel());
+        
+        
+//  try {
+//      String sql = "SELECT idBarang, jumlahBarang FROM supplier";
+//            java.sql.Connection conn = (Connection) koneksi.koneksi();
+//            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+//            java.sql.ResultSet rs = pst.executeQuery(sql);
+//            while (rs.next()) {
+//               new Object [][] {rs.getObject(1),rs.getObject(2)},
+//    new String [] {
+//        "idBarang", "Quantity", 
+//    };
+//  }
+//  } catch (SQLException e) {
+//      
+//  }
+//
+//
+//jScrollPane1.setViewportView(table1);
+//
+//if (table1.getColumnModel().getColumnCount() > 0) {
+//    table1.getColumnModel().getColumn(0).setPreferredWidth(150);
+//    table1.getColumnModel().getColumn(0).setHeaderValue("idBarang");
+//    table1.getColumnModel().getColumn(1).setPreferredWidth(20);
+//    table1.getColumnModel().getColumn(1).setHeaderValue("Quantity");
+//}
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -165,20 +208,16 @@ public class formDashboard extends javax.swing.JPanel {
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Barang", "Quantity", "Harga"
+
             }
         ));
         jScrollPane1.setViewportView(table1);
-        if (table1.getColumnModel().getColumnCount() > 0) {
-            table1.getColumnModel().getColumn(0).setPreferredWidth(150);
-            table1.getColumnModel().getColumn(1).setPreferredWidth(20);
-        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
