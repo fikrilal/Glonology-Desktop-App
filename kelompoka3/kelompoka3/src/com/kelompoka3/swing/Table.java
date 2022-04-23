@@ -15,6 +15,7 @@ public class Table extends TableCustom {
     }
     
     public void addTableStyle(JScrollPane scroll) {
+        
         scroll.getViewport().setOpaque(false);
         scroll.setViewportBorder(null);
         setBorder(null);
@@ -23,7 +24,7 @@ public class Table extends TableCustom {
         scroll.setVerticalScrollBar(new ScrollBarCustom());
         JPanel panel = new JPanel();
         panel.setBackground(new Color(255, 255, 255));
-        setForeground(new Color(255, 255, 255));
+        setForeground(new Color(79,79,79));
         setSelectionForeground(new Color(214, 214, 214));
         setSelectionBackground(new Color(141,159,144));
         getTableHeader().setDefaultRenderer(new TableHeaderCustom());
@@ -31,8 +32,8 @@ public class Table extends TableCustom {
         setShowHorizontalLines(true);
         setGridColor(new Color(189,189,189));
         scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, panel);
-    }
-
+    } 
+    
     @Override
     public Component prepareRenderer(TableCellRenderer tcr, int i, int i1) {
         Component com= super.prepareRenderer(tcr, i, i1);
