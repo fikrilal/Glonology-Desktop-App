@@ -44,10 +44,10 @@ public class menuButton extends JButton {
     public menuButton(int index) {
         this.index = index;
         setContentAreaFilled(false);
-        setForeground(new Color(189, 189, 189));
+        setForeground(new Color(113,135,116));
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setHorizontalAlignment(SwingConstants.LEFT);
-        setBackground(new Color(120, 7, 89));
+        setBackground(new Color(113,135,116,60));
         setBorder(new EmptyBorder(12, 24, 12, 16));
     }
 

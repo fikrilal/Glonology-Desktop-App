@@ -1,25 +1,31 @@
 package com.kelompoka3.main;
 
-import com.kelompoka3.component.menu;
 import com.kelompoka3.event.menuEvent;
 import com.kelompoka3.form.form;
 import com.kelompoka3.form.formDashboard;
+import com.kelompoka3.form.formHistory;
+import com.kelompoka3.form.formTransaksi;
 import java.awt.Color;
 import java.awt.Component;
-import java.util.Locale;
 
 public class main extends javax.swing.JFrame {
 
     public main() {
         initComponents();
-        getContentPane().setBackground(new Color(63, 109, 217));
+        getContentPane().setBackground(new Color(113,135,116));
         menuEvent event = new menuEvent() {
             @Override
             public void menuSelected(int index) {
                 if (index == 0) {
 
                     showForm(new formDashboard());
-                }  else {
+                } else if (index == 1) {
+                    showForm(new formTransaksi());
+
+                } else if (index == 2) {
+                    showForm(new formHistory());
+
+                } else {
                     showForm(new form(index + ""));
                 }
             }
