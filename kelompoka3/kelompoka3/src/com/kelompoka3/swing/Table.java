@@ -26,7 +26,7 @@ public class Table extends TableCustom {
         panel.setBackground(new Color(255, 255, 255));
         setForeground(new Color(79,79,79));
         setSelectionForeground(new Color(214, 214, 214));
-        setSelectionBackground(new Color(141,159,144));
+        setSelectionBackground(new Color(113,135,116,60));
         getTableHeader().setDefaultRenderer(new TableHeaderCustom());
         setRowHeight(80);
         setShowHorizontalLines(true);

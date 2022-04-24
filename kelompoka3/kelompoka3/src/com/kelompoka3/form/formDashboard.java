@@ -5,7 +5,9 @@ import com.kelompoka3.koneksi.koneksi;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import org.apache.commons.lang3.*;
 
 public class formDashboard extends javax.swing.JPanel {
 
@@ -16,25 +18,48 @@ public class formDashboard extends javax.swing.JPanel {
         penjualanPerHari();
         penjualanPerBulan();
         tableHistory();
+        dataChart();
         setOpaque(false);
         table1.addTableStyle(jScrollPane1);
-        
-        chartDashboard.addLabel("Tahun ini", new Color(113,135,116));
-        chartDashboard.addLabel("Tahun lalu", new Color(79,94,83));
-        chartDashboard.addData(new ModelChart("Jan", new double[]{14, 19}));
-        chartDashboard.addData(new ModelChart("Feb", new double[]{21, 33}));
-        chartDashboard.addData(new ModelChart("Mar", new double[]{12, 43}));
-        chartDashboard.addData(new ModelChart("Apr", new double[]{21, 41}));
-        chartDashboard.addData(new ModelChart("Mei", new double[]{30, 20}));
-        chartDashboard.addData(new ModelChart("Jun", new double[]{11, 19}));
-        chartDashboard.addData(new ModelChart("Jul", new double[]{14, 50}));
-        chartDashboard.addData(new ModelChart("Aug", new double[]{14, 50}));
-        chartDashboard.addData(new ModelChart("Sep", new double[]{14, 50}));
-        chartDashboard.addData(new ModelChart("Okt", new double[]{14, 50}));
-        chartDashboard.addData(new ModelChart("Nov", new double[]{14, 50}));
-        chartDashboard.addData(new ModelChart("Dec", new double[]{14, 50}));
+
+        chartDashboard.addLabel("Tahun ini", new Color(113, 135, 116));
+        chartDashboard.addLabel("Tahun lalu", new Color(79, 94, 83));
+
     }
 
+    public final void dataChart() {
+
+        try {
+            String sql = "SELECT LEFT(MONTHNAME(tanggal), 3), SUM(hargaTotal) "
+                    + "FROM penjualan GROUP BY MONTH(tanggal)"; // Query LEFT digunakan untuk membatasi karakter yang ditampilkan, diambil dari yang paling kiri, 3 adalah batasan karakter
+//            String sql1 = "SELECT SUM(hargaTotal) FROM penjualan WHERE YEAR(tanggal) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR)) GROUP BY MONTH(tanggal);";
+            java.sql.Connection conn = (Connection) koneksi.koneksi();
+            java.sql.Statement stm = conn.createStatement();
+//            java.sql.Statement stm1 = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+//            java.sql.ResultSet res1 = stm1.executeQuery(sql1);
+
+            ArrayList<String> perbulan = new ArrayList<>();
+            ArrayList<Double> nominal = new ArrayList<>();
+            ArrayList<Double> nominalLastyear = new ArrayList<>();
+
+            //ArrayList<Double> harus diconvert ke double[] untuk bisa tampil di chart https://stackoverflow.com/questions/6018267/how-to-cast-from-listdouble-to-double-in-java
+            double[] array = ArrayUtils.toPrimitive(nominal.toArray(new Double[nominal.size()]));
+//            double[] array = ArrayUtils.toPrimitive(nominalLastyear.toArray(new Double[nominalLastyear.size()]));
+
+            while (res.next()) {
+                perbulan.add(res.getString(1));
+                nominal.add(res.getDouble(2));
+//                nominalLastyear.add(res1.getDouble(3));
+
+                chartDashboard.addData(new ModelChart(res.getString(1), new double[]{res.getDouble(2), 5600000}));
+            }
+
+        } catch (SQLException e) {
+
+        }
+    }
+    
     private void penjualanPerHari() {
         try {
             String sql = "SELECT SUM(hargaTotal) AS totalPenjualan FROM penjualan "
@@ -124,7 +149,8 @@ public class formDashboard extends javax.swing.JPanel {
         model.addColumn("Total harga");
         model.addColumn("Tanggal");
         try {
-            String sql = "SELECT idPenjulan, jumlahTotal, hargaTotal, tanggal FROM penjualan ORDER BY tanggal DESC";
+            String sql = "SELECT idPenjulan, jumlahTotal, hargaTotal, tanggal "
+                    + "FROM penjualan ORDER BY tanggal DESC";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);

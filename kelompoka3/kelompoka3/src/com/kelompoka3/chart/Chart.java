@@ -12,11 +12,12 @@ public class Chart extends javax.swing.JPanel {
 
     private List<ModelLabel> labels = new ArrayList<>();
     private List<ModelChart> model = new ArrayList<>();
-    private final int seriesSize=6;
-    private final int seriesSpace=6;
+    private final int seriesSize = 6;
+    private final int seriesSpace = 6;
 
     public Chart() {
         initComponents();
+        
         chart.setBlankPlotChatRender(new BlankPlotChatRender() {
             @Override
             public String getLabelText(int index) {
@@ -25,19 +26,18 @@ public class Chart extends javax.swing.JPanel {
 
             @Override
             public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index) {
-              double totalSeriesWidth=(seriesSize*labels.size()) + (seriesSpace*(labels.size()-1));      
-              
-              double x = (size.getWidth() - totalSeriesWidth) / 2;
-              for (int i = 0; i < labels.size(); i++) {
+                double totalSeriesWidth = (seriesSize * labels.size()) + (seriesSpace * (labels.size() - 1));
+
+                double x = (size.getWidth() - totalSeriesWidth) / 2;
+                for (int i = 0; i < labels.size(); i++) {
                     ModelLabel label = labels.get(i);
                     g2.setColor(label.getColor());
                     double seriesValues = chart.getSeriesValuesOf(model.get(index).getValues()[i], size.getHeight());
                     g2.fillRect((int) (size.getX() + x), (int) (size.getY() + size.getHeight() - seriesValues), seriesSize, (int) seriesValues);
                     x += seriesSpace + seriesSize;
                 }
-              
+
 //              g2.drawRect((int) size.getX(), (int) size.getY(), (int) size.getWidth(), (int) size.getHeight()); UNTUK TEST GRAFIK
-              
             }
         });
     }
@@ -49,7 +49,7 @@ public class Chart extends javax.swing.JPanel {
         panelLabel.repaint();
         panelLabel.revalidate();
     }
-    
+
     public void addData(ModelChart data) {
         model.add(data);
         chart.setLabelCount(model.size());
