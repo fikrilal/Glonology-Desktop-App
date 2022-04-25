@@ -5,6 +5,7 @@ import com.kelompoka3.koneksi.koneksi;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -29,7 +30,7 @@ public class formTransaksi extends javax.swing.JPanel {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -98,12 +99,23 @@ public class formTransaksi extends javax.swing.JPanel {
         jLabel1.setText("KODE BARANG");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 28, 123, 21));
 
+        namaBarang.setEnabled(false);
+        namaBarang.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                namaBarangInputMethodTextChanged(evt);
+            }
+        });
         namaBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaBarangActionPerformed(evt);
             }
         });
         namaBarang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                namaBarangKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 namaBarangKeyTyped(evt);
             }
@@ -122,6 +134,7 @@ public class formTransaksi extends javax.swing.JPanel {
         });
         add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 72, 123, 40));
 
+        hargaBarang.setEnabled(false);
         hargaBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hargaBarangActionPerformed(evt);
@@ -212,33 +225,36 @@ public class formTransaksi extends javax.swing.JPanel {
         });
         add(pembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 580, 172, 40));
         add(kembalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 580, 172, 40));
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeBarangActionPerformed
+  
+    }//GEN-LAST:event_kodeBarangActionPerformed
+
+    private void namaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaBarangActionPerformed
+
+    }//GEN-LAST:event_namaBarangActionPerformed
+
+    public void cari(){
+         
+    }
+    private void quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityActionPerformed
       
-    }                                          
+    }//GEN-LAST:event_quantityActionPerformed
 
-    private void namaBarangActionPerformed(java.awt.event.ActionEvent evt) {                                           
-    
-    }                                          
-
-    private void quantityActionPerformed(java.awt.event.ActionEvent evt) {                                         
-      
-    }                                        
-
-    private void hargaBarangActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void hargaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaBarangActionPerformed
  
-    }                                           
+    }//GEN-LAST:event_hargaBarangActionPerformed
 
-    private void totalActionPerformed(java.awt.event.ActionEvent evt) {                                      
+    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
 
-    }                                     
+    }//GEN-LAST:event_totalActionPerformed
 
-    private void tambahBarangActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void tambahBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahBarangActionPerformed
 cekstok();       
-    }                                            
+    }//GEN-LAST:event_tambahBarangActionPerformed
 
-    private void pembayaranActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void pembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pembayaranActionPerformed
 
        int total,bayar,uangKembali;
         
@@ -252,33 +268,52 @@ cekstok();
             uangKembali = bayar-total ;
             kembalian.setText(String.valueOf(uangKembali));
         }
-    }                                          
+    }//GEN-LAST:event_pembayaranActionPerformed
 
-    private void kodeBarangKeyTyped(java.awt.event.KeyEvent evt) {                                    
+    private void kodeBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodeBarangKeyTyped
           filterhuruf(evt);
-    }                                   
+          if(kodeBarang.getText().toString().length() == 0){
+              namaBarang.setText("");
+              hargaBarang.setText("");
+              quantity.setText("");
+          }
+          try {
+            String sql ="select * from barang where idBarang = "+evt.getKeyChar() +"";
+            java.sql.Connection conn=(Connection)koneksi.koneksi();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            java.sql.ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+        namaBarang.setText(rs.getString("namaBarang"));
+        hargaBarang.setText(rs.getString("hargaJual"));
+            }
 
-    private void namaBarangKeyTyped(java.awt.event.KeyEvent evt) {                                    
+        }catch (SQLException e){
+            
+        }  
+
+    }//GEN-LAST:event_kodeBarangKeyTyped
+
+    private void namaBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaBarangKeyTyped
            filterangka(evt);
-    }                                   
+    }//GEN-LAST:event_namaBarangKeyTyped
 
-    private void quantityKeyTyped(java.awt.event.KeyEvent evt) {                                  
+    private void quantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityKeyTyped
              filterhuruf(evt);
-    }                                 
+    }//GEN-LAST:event_quantityKeyTyped
 
-    private void hargaBarangKeyTyped(java.awt.event.KeyEvent evt) {                                     
+    private void hargaBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargaBarangKeyTyped
             filterhuruf(evt);
-    }                                    
+    }//GEN-LAST:event_hargaBarangKeyTyped
 
-    private void totalKeyTyped(java.awt.event.KeyEvent evt) {                               
+    private void totalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_totalKeyTyped
             filterhuruf(evt);
-    }                              
+    }//GEN-LAST:event_totalKeyTyped
 
-    private void pembayaranKeyTyped(java.awt.event.KeyEvent evt) {                                    
+    private void pembayaranKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pembayaranKeyTyped
          filterhuruf(evt);
-    }                                   
+    }//GEN-LAST:event_pembayaranKeyTyped
 
-    private void hapusActionPerformed(java.awt.event.ActionEvent evt) {                                      
+    private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         DefaultTableModel model = (DefaultTableModel)tabelBeli.getModel();
         
         int row = tabelBeli.getSelectedRow();
@@ -287,16 +322,24 @@ cekstok();
         clear();
         clear2();
         
-    }                                     
+    }//GEN-LAST:event_hapusActionPerformed
 
-    private void cetakActionPerformed(java.awt.event.ActionEvent evt) {                                      
+    private void cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakActionPerformed
         new formFaktur2().setVisible(true);
 
-    }                                     
+    }//GEN-LAST:event_cetakActionPerformed
 
-    private void totalPembelianActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void totalPembelianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalPembelianActionPerformed
         
-    }                                              
+    }//GEN-LAST:event_totalPembelianActionPerformed
+
+    private void namaBarangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaBarangKeyReleased
+
+    }//GEN-LAST:event_namaBarangKeyReleased
+
+    private void namaBarangInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_namaBarangInputMethodTextChanged
+
+    }//GEN-LAST:event_namaBarangInputMethodTextChanged
 
     public void clear(){
         totalPembelian.setText("0");
@@ -393,7 +436,7 @@ void filterangka(KeyEvent b){
         totalPembelian.setText(String.valueOf(totalBiaya));
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cetak;
     private javax.swing.JButton hapus;
     private javax.swing.JTextField hargaBarang;
@@ -414,7 +457,7 @@ void filterangka(KeyEvent b){
     private javax.swing.JButton tambahBarang;
     private javax.swing.JTextField total;
     private javax.swing.JTextField totalPembelian;
-    // End of variables declaration                   
+    // End of variables declaration//GEN-END:variables
 
 
 }
