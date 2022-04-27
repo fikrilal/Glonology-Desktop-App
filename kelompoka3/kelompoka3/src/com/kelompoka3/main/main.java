@@ -2,6 +2,7 @@ package com.kelompoka3.main;
 
 import com.kelompoka3.event.menuEvent;
 import com.kelompoka3.form.form;
+import com.kelompoka3.form.formBarang;
 import com.kelompoka3.form.formDashboard;
 import com.kelompoka3.form.formHistory;
 import com.kelompoka3.form.formTransaksi;
@@ -23,6 +24,12 @@ public class main extends javax.swing.JFrame {
                     showForm(new formTransaksi());
 
                 } else if (index == 2) {
+                    showForm(new formHistory());
+
+                } else if (index == 3) {
+                    showForm(new formBarang());
+
+                } else if (index == 4) {
                     showForm(new formHistory());
 
                 } else {

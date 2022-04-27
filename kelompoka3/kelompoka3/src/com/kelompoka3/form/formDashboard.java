@@ -24,20 +24,19 @@ public class formDashboard extends javax.swing.JPanel {
 
         chartDashboard.addLabel("Tahun ini", new Color(113, 135, 116));
         chartDashboard.addLabel("Tahun lalu", new Color(79, 94, 83));
-
     }
 
     public final void dataChart() {
 
         try {
-            String sql = "SELECT LEFT(MONTHNAME(tanggal), 3), SUM(hargaTotal) "
-                    + "FROM penjualan GROUP BY MONTH(tanggal)"; // Query LEFT digunakan untuk membatasi karakter yang ditampilkan, diambil dari yang paling kiri, 3 adalah batasan karakter
-//            String sql1 = "SELECT SUM(hargaTotal) FROM penjualan WHERE YEAR(tanggal) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR)) GROUP BY MONTH(tanggal);";
+            String sql = "Select left(monthname(tanggal),3) as BULAN, sum(case "
+                    + "when year(tanggal) = year(curdate()) then hargatotal else 0 end) "
+                    + "as THISYEAR, sum(case when year(tanggal)+1 = year(curdate()) "
+                    + "then hargaTotal else 0 end) as LASTYEAR From faktur GROUP "
+                    + "BY MONTH(tanggal);;"; // Query LEFT digunakan untuk membatasi karakter yang ditampilkan, diambil dari yang paling kiri, 3 adalah batasan karakter
             java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.Statement stm = conn.createStatement();
-//            java.sql.Statement stm1 = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
-//            java.sql.ResultSet res1 = stm1.executeQuery(sql1);
 
             ArrayList<String> perbulan = new ArrayList<>();
             ArrayList<Double> nominal = new ArrayList<>();
@@ -45,14 +44,14 @@ public class formDashboard extends javax.swing.JPanel {
 
             //ArrayList<Double> harus diconvert ke double[] untuk bisa tampil di chart https://stackoverflow.com/questions/6018267/how-to-cast-from-listdouble-to-double-in-java
             double[] array = ArrayUtils.toPrimitive(nominal.toArray(new Double[nominal.size()]));
-//            double[] array = ArrayUtils.toPrimitive(nominalLastyear.toArray(new Double[nominalLastyear.size()]));
+            double[] arrayLastyear = ArrayUtils.toPrimitive(nominalLastyear.toArray(new Double[nominalLastyear.size()]));
 
             while (res.next()) {
                 perbulan.add(res.getString(1));
                 nominal.add(res.getDouble(2));
-//                nominalLastyear.add(res1.getDouble(3));
+                nominalLastyear.add(res.getDouble(3));
 
-                chartDashboard.addData(new ModelChart(res.getString(1), new double[]{res.getDouble(2), 5600000}));
+                chartDashboard.addData(new ModelChart(res.getString(1), new double[]{res.getDouble(2), res.getDouble(3)}));
             }
 
         } catch (SQLException e) {
@@ -62,7 +61,7 @@ public class formDashboard extends javax.swing.JPanel {
     
     private void penjualanPerHari() {
         try {
-            String sql = "SELECT SUM(hargaTotal) AS totalPenjualan FROM penjualan "
+            String sql = "SELECT SUM(hargaTotal) AS totalPenjualan FROM faktur "
                     + "WHERE YEAR(tanggal) = YEAR(NOW()) AND MONTH(tanggal) = "
                     + "MONTH(NOW()) AND DAY(tanggal) = DAY(NOW())";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
@@ -83,7 +82,7 @@ public class formDashboard extends javax.swing.JPanel {
 
     private void penjualanPerBulan() {
         try {
-            String sql = "SELECT SUM(hargaTotal) AS totalPenjualan FROM penjualan "
+            String sql = "SELECT SUM(hargaTotal) AS totalPenjualan FROM faktur "
                     + "WHERE YEAR(tanggal) = YEAR(NOW()) AND MONTH(tanggal) = MONTH(NOW())";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.Statement stm = conn.createStatement();
@@ -103,7 +102,7 @@ public class formDashboard extends javax.swing.JPanel {
 
     private void barangPerHari() {
         try {
-            String sql = "SELECT SUM(jumlahTotal) AS totalBarang FROM penjualan "
+            String sql = "SELECT SUM(jumlahTotal) AS totalBarang FROM faktur "
                     + "WHERE YEAR(tanggal) = YEAR(NOW()) AND MONTH(tanggal) = "
                     + "MONTH(NOW()) AND DAY(tanggal) = DAY(NOW())";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
@@ -124,7 +123,7 @@ public class formDashboard extends javax.swing.JPanel {
 
     private void barangPerBulan() {
         try {
-            String sql = "SELECT SUM(jumlahTotal) AS totalBarang FROM penjualan "
+            String sql = "SELECT SUM(jumlahTotal) AS totalBarang FROM faktur "
                     + "WHERE YEAR(tanggal) = YEAR(NOW()) AND MONTH(tanggal)=MONTH(NOW())";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.Statement stm = conn.createStatement();
@@ -146,11 +145,11 @@ public class formDashboard extends javax.swing.JPanel {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Invoices");
         model.addColumn("Jumlah Barang");
-        model.addColumn("Total harga");
+        model.addColumn("Total Harga");
         model.addColumn("Tanggal");
         try {
-            String sql = "SELECT idPenjulan, jumlahTotal, hargaTotal, tanggal "
-                    + "FROM penjualan ORDER BY tanggal DESC";
+            String sql = "SELECT noFaktur, jumlahTotal, hargaTotal, tanggal "
+                    + "FROM faktur ORDER BY tanggal DESC";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
