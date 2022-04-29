@@ -4,11 +4,15 @@ package com.kelompoka3.form;
 import com.kelompoka3.koneksi.koneksi;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -18,6 +22,12 @@ public class formTransaksi extends javax.swing.JPanel {
 
     public formTransaksi() {
         initComponents();
+        autoNumber();
+        Date date = new Date();
+        SimpleDateFormat s  = new SimpleDateFormat("yyyy-MM-dd");
+        
+        isiTanggal .setText(s.format(date));
+        
         DefaultTableModel model = new DefaultTableModel();
         
         model.addColumn("Kode Barang");
@@ -48,11 +58,10 @@ public class formTransaksi extends javax.swing.JPanel {
         hapus = new javax.swing.JButton();
         cetak = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         totalPembelian = new javax.swing.JTextField();
-        pembayaran = new javax.swing.JTextField();
-        kembalian = new javax.swing.JTextField();
+        jumlahbarang = new javax.swing.JTextField();
+        isiTanggal = new javax.swing.JLabel();
+        faktur = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -181,52 +190,54 @@ public class formTransaksi extends javax.swing.JPanel {
                 hapusActionPerformed(evt);
             }
         });
-        add(hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(764, 545, -1, -1));
+        add(hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 610, 90, 40));
 
         cetak.setBackground(new java.awt.Color(0, 102, 51));
         cetak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cetak.setForeground(new java.awt.Color(255, 255, 255));
-        cetak.setText("CETAK");
+        cetak.setText("SELESAI");
         cetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cetakActionPerformed(evt);
             }
         });
-        add(cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(876, 545, -1, -1));
+        add(cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 610, 100, 40));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("TOTAL PEMBELIAN");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 545, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 540, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("PEMBAYARAN");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 545, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setText("KEMBALIAN");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 545, -1, -1));
-
+        totalPembelian.setEnabled(false);
         totalPembelian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 totalPembelianActionPerformed(evt);
             }
         });
-        add(totalPembelian, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 580, 172, 40));
-
-        pembayaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pembayaranActionPerformed(evt);
-            }
-        });
-        pembayaran.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                pembayaranKeyTyped(evt);
-            }
-        });
-        add(pembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 580, 172, 40));
-        add(kembalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 580, 172, 40));
+        add(totalPembelian, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 530, 172, 40));
+        add(jumlahbarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 610, 70, -1));
+        add(isiTanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 90, 20));
+        add(faktur, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 610, 50, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void autoNumber(){
+        try {
+            Connection c = (Connection)koneksi.koneksi();
+            Statement s = c.createStatement();
+            ResultSet r = s.executeQuery("select * from faktur order by noFaktur desc");
+            
+            if (r.next()){
+                
+                int no_t = Integer.parseInt(r.getString("noFaktur")) + 1;
+                faktur.setText(Integer.toString(no_t));}
+                else{int no_t = 1;faktur.setText(Integer.toString(no_t));}
+            
+        r.close();
+        s.close();
+        }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(this,e);
+    }   }    
+    
     private void kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeBarangActionPerformed
   
     }//GEN-LAST:event_kodeBarangActionPerformed
@@ -235,9 +246,6 @@ public class formTransaksi extends javax.swing.JPanel {
 
     }//GEN-LAST:event_namaBarangActionPerformed
 
-    public void cari(){
-         
-    }
     private void quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityActionPerformed
       
     }//GEN-LAST:event_quantityActionPerformed
@@ -253,22 +261,6 @@ public class formTransaksi extends javax.swing.JPanel {
     private void tambahBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahBarangActionPerformed
 cekstok();       
     }//GEN-LAST:event_tambahBarangActionPerformed
-
-    private void pembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pembayaranActionPerformed
-
-       int total,bayar,uangKembali;
-        
-        total = Integer.valueOf(totalPembelian.getText());
-        bayar = Integer.valueOf(pembayaran.getText());
-        
-        if (total>bayar){
-            JOptionPane.showMessageDialog(null, "Uang Tidak Cukup Untuk Melakukan Pembayaran !");
-            
-        }else {
-            uangKembali = bayar-total ;
-            kembalian.setText(String.valueOf(uangKembali));
-        }
-    }//GEN-LAST:event_pembayaranActionPerformed
 
     private void kodeBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodeBarangKeyTyped
           filterhuruf(evt);
@@ -309,22 +301,29 @@ cekstok();
             filterhuruf(evt);
     }//GEN-LAST:event_totalKeyTyped
 
-    private void pembayaranKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pembayaranKeyTyped
-         filterhuruf(evt);
-    }//GEN-LAST:event_pembayaranKeyTyped
-
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         DefaultTableModel model = (DefaultTableModel)tabelBeli.getModel();
         
         int row = tabelBeli.getSelectedRow();
         model.removeRow(row);
         totalBiaya();
+        totalBarang();
         clear();
         clear2();
         
     }//GEN-LAST:event_hapusActionPerformed
 
     private void cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakActionPerformed
+
+ 
+        
+        
+        clear();
+        clear2();
+        autoNumber();
+        kosong();
+            
+                  
         new formFaktur2().setVisible(true);
 
     }//GEN-LAST:event_cetakActionPerformed
@@ -342,9 +341,8 @@ cekstok();
     }//GEN-LAST:event_namaBarangInputMethodTextChanged
 
     public void clear(){
-        totalPembelian.setText("0");
-        pembayaran.setText("0");
-        kembalian.setText("0");
+        totalPembelian.setText("");
+        
     }
     
     public void clear2(){
@@ -364,8 +362,10 @@ cekstok();
         total.setText(String.valueOf(totalharga));
         LoadData();
         totalBiaya();
+        totalBarang();
         clear2();
         kodeBarang.requestFocus();}
+    
     public void cekstok(){
         int qty = Integer.parseInt(quantity.getText());
         try{
@@ -377,10 +377,15 @@ cekstok();
             if (stok < qty){
                 JOptionPane.showMessageDialog(this,"Maaf Stok Barang telah Habis !");
                 int respon = JOptionPane.showConfirmDialog(this,
-                        "Apakah anda Ingin menambahkan Stok ?","Messege",JOptionPane.YES_NO_OPTION);
+                        "silahkan hubungi supplier untuk menambahkan stok","Messege",JOptionPane.YES_NO_OPTION);
                 if(respon==JOptionPane.YES_OPTION){
-                    //this.setVisible(false);
-                   // new formBarang().setVisible(true);
+//                    this.setVisible(false);
+//                    new formBarang().setVisible(true);
+//                    formBarang obj = new formBarang ();
+//                        setLayout(new BorderLayout());
+//                        add(obj ,BorderLayout.EAST ,1);//3rd argument is index
+//                        repaint();
+//                        revalidate();
                 }else if(respon==JOptionPane.NO_OPTION) {}
             }else{
                 tambahTranksaksi();
@@ -428,30 +433,45 @@ void filterangka(KeyEvent b){
     public void totalBiaya(){
         int jumlahBaris = tabelBeli.getRowCount();
         int totalBiaya = 0;
+        int hargaBarang ;
         
         for (int i = 0 ; i<jumlahBaris ; i++){
-            totalBiaya = Integer.parseInt(tabelBeli.getValueAt(i, 4).toString());
+            hargaBarang = Integer.parseInt(tabelBeli.getValueAt(i, 4).toString());
+            totalBiaya = totalBiaya + hargaBarang;
             
         }
-        totalPembelian.setText(String.valueOf(totalBiaya));
+     totalPembelian.setText(String.valueOf(totalBiaya));
+      
+    }
+
+    public void totalBarang(){
+        int jumlahBaris = tabelBeli.getRowCount();
+        int totalBiaya = 0;
+        int jumlahBarang ;
+        
+        for (int i = 0 ; i<jumlahBaris ; i++){
+            jumlahBarang = Integer.parseInt(tabelBeli.getValueAt(i, 2).toString());
+            totalBiaya = totalBiaya + jumlahBarang;
+            
+        }
+        jumlahbarang.setText(String.valueOf(totalBiaya));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cetak;
+    private javax.swing.JTextField faktur;
     private javax.swing.JButton hapus;
     private javax.swing.JTextField hargaBarang;
+    private javax.swing.JLabel isiTanggal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField kembalian;
+    private javax.swing.JTextField jumlahbarang;
     private javax.swing.JTextField kodeBarang;
     private javax.swing.JTextField namaBarang;
-    private javax.swing.JTextField pembayaran;
     private javax.swing.JTextField quantity;
     private com.kelompoka3.swing.Table tabelBeli;
     private javax.swing.JButton tambahBarang;
@@ -459,5 +479,6 @@ void filterangka(KeyEvent b){
     private javax.swing.JTextField totalPembelian;
     // End of variables declaration//GEN-END:variables
 
+   
 
 }
