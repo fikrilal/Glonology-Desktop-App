@@ -186,6 +186,9 @@ public class formDashboard extends javax.swing.JPanel {
         chartDashboard = new com.kelompoka3.chart.Chart();
         jLabel2 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1080, 720));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         roundPanel1.setBackground(new java.awt.Color(113, 135, 116));
         roundPanel1.setForeground(new java.awt.Color(141, 159, 144));
         roundPanel1.setPreferredSize(new java.awt.Dimension(130, 100));
@@ -200,6 +203,8 @@ public class formDashboard extends javax.swing.JPanel {
         txt_penjualanhari.setForeground(new java.awt.Color(255, 255, 255));
         txt_penjualanhari.setText("Rp. 230.000");
         roundPanel1.add(txt_penjualanhari, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 44, -1, -1));
+
+        add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 11, 287, -1));
 
         roundPanel2.setBackground(new java.awt.Color(113, 135, 116));
         roundPanel2.setForeground(new java.awt.Color(141, 159, 144));
@@ -221,7 +226,7 @@ public class formDashboard extends javax.swing.JPanel {
                 .addGroup(roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(txt_barangHari))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         roundPanel2Layout.setVerticalGroup(
             roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,6 +237,8 @@ public class formDashboard extends javax.swing.JPanel {
                 .addComponent(txt_barangHari)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
+
+        add(roundPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 129, -1, -1));
 
         roundPanel3.setBackground(new java.awt.Color(113, 135, 116));
         roundPanel3.setForeground(new java.awt.Color(141, 159, 144));
@@ -248,6 +255,8 @@ public class formDashboard extends javax.swing.JPanel {
         jLabel4.setText("Penjualan bulan ini");
         roundPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, -1, -1));
 
+        add(roundPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 11, 288, -1));
+
         roundPanel4.setBackground(new java.awt.Color(113, 135, 116));
         roundPanel4.setForeground(new java.awt.Color(141, 159, 144));
         roundPanel4.setPreferredSize(new java.awt.Dimension(130, 100));
@@ -263,9 +272,12 @@ public class formDashboard extends javax.swing.JPanel {
         jLabel6.setText("Barang terjual bulan ini");
         roundPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, -1, -1));
 
+        add(roundPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 129, 288, -1));
+
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setText("History Transaksi");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 11, -1, -1));
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -280,59 +292,13 @@ public class formDashboard extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(table1);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 51, 440, 669));
+        add(chartDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 295, 593, 425));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Statistik Penjualan");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(chartDashboard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(roundPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(roundPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(roundPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(roundPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(roundPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(roundPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chartDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 262, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
