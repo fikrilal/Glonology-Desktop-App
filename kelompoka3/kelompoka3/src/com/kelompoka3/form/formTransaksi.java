@@ -190,7 +190,7 @@ public class formTransaksi extends javax.swing.JPanel {
                 hapusActionPerformed(evt);
             }
         });
-        add(hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 610, 90, 40));
+        add(hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 610, 90, 40));
 
         cetak.setBackground(new java.awt.Color(0, 102, 51));
         cetak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -316,7 +316,32 @@ cekstok();
     private void cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakActionPerformed
 
  
-        
+        try{
+           
+            Connection c = (Connection)koneksi.koneksi();
+            
+                 String sql = "insert into faktur (noFaktur,hargatotal, jumlahtotal, tanggal) values('"
+                         + faktur.getText()+"','" +totalPembelian.getText()+"','" +jumlahbarang.getText()+"','" +isiTanggal.getText()+"')";
+                 PreparedStatement pst = c.prepareStatement(sql);
+                 pst.execute();
+                 pst.close();
+                 
+            
+        int baris = tabelBeli.getRowCount();
+            
+            for(int i =0; i<baris;i++){
+            String sqll = "insert into detailpenjualan (noFaktur,idBarang,namaBarang,hargaBarang, jumlahBarang) values ('"
+                    +faktur.getText()+"','"+tabelBeli.getValueAt(i, 0)+"','"+tabelBeli.getValueAt(i, 1)+"',"
+                    + "'"+tabelBeli.getValueAt(i, 3)+"','"+tabelBeli.getValueAt(i, 2)+"')";
+            PreparedStatement pstl = c.prepareStatement(sqll);
+            pstl.execute();
+            pstl.close();
+            JOptionPane.showMessageDialog(null,"Penyimpanan Data Berhasil !");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+            System.out.println("Penyimpanan Error !");
+        }
         
         clear();
         clear2();
