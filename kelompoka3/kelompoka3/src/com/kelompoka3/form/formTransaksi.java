@@ -2,6 +2,7 @@
 package com.kelompoka3.form;
 
 import com.kelompoka3.koneksi.koneksi;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -481,6 +483,7 @@ void filterangka(KeyEvent b){
         }
         jumlahbarang.setText(String.valueOf(totalBiaya));
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cetak;
