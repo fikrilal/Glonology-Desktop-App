@@ -5,7 +5,6 @@ import com.kelompoka3.form.form;
 import com.kelompoka3.form.formBarang;
 import com.kelompoka3.form.formDashboard;
 import com.kelompoka3.form.formHistory;
-import com.kelompoka3.form.formLogout;
 import com.kelompoka3.form.formTransaksi;
 import java.awt.Color;
 import java.awt.Component;
@@ -33,10 +32,7 @@ public class main extends javax.swing.JFrame {
                 } else if (index == 4) {
                     showForm(new formHistory());
 
-                } else if (index == 5) {
-                    showForm(new formLogout());
-
-                } else {
+                }  else {
                     showForm(new form(index + ""));
                 }
             }

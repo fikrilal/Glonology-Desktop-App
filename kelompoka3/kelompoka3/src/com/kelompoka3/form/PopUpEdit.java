@@ -5,6 +5,7 @@
  */
 package com.kelompoka3.form;
 
+import com.kelompoka3.koneksi.koneksi;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,7 +28,7 @@ public class PopUpEdit extends javax.swing.JFrame {
                 + " warna = '"+wrnBrg.getText()+"',hargaBeli = '"+hrgBrgBeli.getText()+"', hargaJual = '"
                 +hrgJual.getText()+"',stok = '"+stokBrg.getText()+"' WHERE idBarang = '"+idBrg.getText()+"'";
         try{  
-            java.sql.Connection conn=(Connection)koneksiphp.configDB();
+            java.sql.Connection conn=(Connection)koneksi.koneksi();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Data Berhasil Diedit");
@@ -50,7 +51,7 @@ public class PopUpEdit extends javax.swing.JFrame {
         System.out.println(sql);
         
         try{
-            java.sql.Connection conn = (Connection) koneksiphp.configDB();
+            java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet rs = stm.executeQuery();
            
