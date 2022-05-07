@@ -1,6 +1,7 @@
 package com.kelompoka3.main;
 
 import com.kelompoka3.event.menuEvent;
+import com.kelompoka3.form.FormSuplier;
 import com.kelompoka3.form.form;
 import com.kelompoka3.form.formBarang;
 import com.kelompoka3.form.formDashboard;
@@ -30,7 +31,7 @@ public class main extends javax.swing.JFrame {
                     showForm(new formBarang());
 
                 } else if (index == 4) {
-                    showForm(new formHistory());
+                    showForm(new FormSuplier());
 
                 }  else {
                     showForm(new form(index + ""));
@@ -38,7 +39,7 @@ public class main extends javax.swing.JFrame {
             }
         };
         menuSidebar.initMenu(event);
-//        menuSidebar.setSelected(0);
+        menuSidebar.setSelected(0);
     }
 
     private void showForm(Component com) {

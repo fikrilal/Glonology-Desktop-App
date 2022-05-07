@@ -87,7 +87,7 @@ public class menu extends javax.swing.JPanel {
             if (menu.getIndex() == index) {
                 if (menu != selectedMenu) {
                     unSelectedMenu = selectedMenu;
-                    unSelectedMenu = menu;
+                    selectedMenu = menu;
                     animator.start();
                     event.menuSelected(index);
 
