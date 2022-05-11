@@ -127,24 +127,28 @@ public class PanelCover extends javax.swing.JPanel {
         v = Double.valueOf(df.format(v));
         login(false);
         layout.setComponentConstraints(title, "pad 0 -" + v + "% 0 0");
+        layout.setComponentConstraints(description, "pad 0 -" + v + "% 0 0");
     }
 
     public void RegisterKanan(double v) {
         v = Double.valueOf(df.format(v));
         login(false);
         layout.setComponentConstraints(title, "pad 0 -" + v + "% 0 0");
+        layout.setComponentConstraints(description, "pad 0 -" + v + "% 0 0");
     }
 
     public void LoginKiri(double v) {
         v = Double.valueOf(df.format(v));
         login(true);
-        layout.setComponentConstraints(title, "pad 0" + v + "% 0" + v + "%");
+        layout.setComponentConstraints(title, "pad 0 " + v + "% 0 " + v + "%");
+        layout.setComponentConstraints(description, "pad 0 " + v + "% 0 " + v + "%");
     }
 
     public void LoginKanan(double v) {
         v = Double.valueOf(df.format(v));
         login(true);
-        layout.setComponentConstraints(title, "pad 0" + v + "% 0" + v + "%");
+        layout.setComponentConstraints(title, "pad 0 " + v + "% 0 " + v + "%");
+        layout.setComponentConstraints(description, "pad 0 " + v + "% 0 " + v + "%");
     }
 
     private void login(boolean login) {
