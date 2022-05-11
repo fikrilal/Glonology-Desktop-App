@@ -16,7 +16,7 @@ import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class MainLoginRegister extends javax.swing.JFrame {
-    
+
     private MigLayout layout;
     private PanelCover cover;
     private PanelLoginAndRegister loginAndRegister;
@@ -25,12 +25,12 @@ public class MainLoginRegister extends javax.swing.JFrame {
     private final double coverSize = 50;
     private final double loginSize = 50;
     private final DecimalFormat df = new DecimalFormat("##0.###");
-    
+
     public MainLoginRegister() {
         initComponents();
         init();
     }
-    
+
     private void init() {
         layout = new MigLayout("fill, insets 0");
         cover = new PanelCover();
@@ -63,7 +63,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
                         cover.LoginKiri((1f - fraction) * 100);
                     }
                 }
-                
+
                 if (fraction >= 0.5f) {
                     loginAndRegister.showRegister(isLogin);
                 }
@@ -73,7 +73,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 layout.setComponentConstraints(loginAndRegister, "width " + loginSize + "%, pos " + fractionLogin + "al 0 n 100%");
                 background.revalidate();
             }
-            
+
             @Override
             public void end() {
                 isLogin = !isLogin;
@@ -95,7 +95,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
             }
         });
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
