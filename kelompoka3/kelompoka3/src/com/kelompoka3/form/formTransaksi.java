@@ -308,10 +308,11 @@ cekstok();
         
         int row = tabelBeli.getSelectedRow();
         model.removeRow(row);
-        totalBiaya();
-        totalBarang();
+        
         clear();
         clear2();
+        totalBiaya();
+        totalBarang();
         
     }//GEN-LAST:event_hapusActionPerformed
 
