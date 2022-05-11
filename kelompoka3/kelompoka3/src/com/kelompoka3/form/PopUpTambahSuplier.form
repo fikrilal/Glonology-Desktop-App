@@ -65,16 +65,16 @@
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="idSup1" max="32767" attributes="0"/>
-                      <Component id="alamat1" alignment="0" pref="425" max="32767" attributes="0"/>
+                      <Component id="idSup1" pref="437" max="32767" attributes="0"/>
+                      <Component id="alamat1" alignment="0" max="32767" attributes="0"/>
                       <Component id="noHp1" alignment="0" max="32767" attributes="0"/>
                       <Component id="nama1" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="simpan" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="Batal" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="keterangan1" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnBatal" min="-2" pref="93" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="btnSimpan" min="-2" pref="93" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -110,10 +110,10 @@
                       <Component id="keterangan1" min="-2" pref="57" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="simpan" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Batal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBatal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="91" max="32767" attributes="0"/>
               </Group>
@@ -145,22 +145,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="alamat1">
         </Component>
-        <Component class="javax.swing.JButton" name="simpan">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Simpan"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="simpanActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="Batal">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Batal"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BatalActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="TAMBAH SUPLIER"/>
@@ -179,6 +163,28 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="keterangan1">
+        </Component>
+        <Component class="com.kelompoka3.swing.ButtonCustom" name="btnSimpan">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="S I M P AN"/>
+            <Property name="style" type="com.kelompoka3.swing.ButtonCustom$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="SECONDARY"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="com.kelompoka3.swing.ButtonCustom" name="btnBatal">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="B AT A L"/>
+            <Property name="style" type="com.kelompoka3.swing.ButtonCustom$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="DESTRUCTIVE"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

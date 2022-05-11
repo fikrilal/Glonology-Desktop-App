@@ -75,12 +75,12 @@ public class PopUpHapusSuplier extends javax.swing.JFrame {
         noHp1 = new javax.swing.JTextField();
         idsup = new javax.swing.JTextField();
         alamat1 = new javax.swing.JTextField();
-        Hapus = new javax.swing.JButton();
-        Batal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtKet = new javax.swing.JTextField();
+        btnHapus = new com.kelompoka3.swing.ButtonCustom();
+        btnBatal = new com.kelompoka3.swing.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,20 +97,6 @@ public class PopUpHapusSuplier extends javax.swing.JFrame {
         namaSup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaSupActionPerformed(evt);
-            }
-        });
-
-        Hapus.setText("Hapus");
-        Hapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HapusActionPerformed(evt);
-            }
-        });
-
-        Batal.setText("Batal");
-        Batal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BatalActionPerformed(evt);
             }
         });
 
@@ -146,13 +132,35 @@ public class PopUpHapusSuplier extends javax.swing.JFrame {
             }
         });
 
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Delete-1.png"))); // NOI18N
+        btnHapus.setText("H A P U S");
+        btnHapus.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        btnBatal.setText(" B A T A L");
+        btnBatal.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,14 +175,9 @@ public class PopUpHapusSuplier extends javax.swing.JFrame {
                             .addComponent(namaSup)
                             .addComponent(noHp1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(Hapus)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Batal))
-                                    .addComponent(idsup, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtKet, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(idsup, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtKet))))
                 .addGap(57, 57, 57))
         );
         jPanel2Layout.setVerticalGroup(
@@ -198,12 +201,12 @@ public class PopUpHapusSuplier extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtKet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(73, 73, 73)
+                    .addComponent(txtKet, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Hapus)
-                    .addComponent(Batal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -230,21 +233,6 @@ public class PopUpHapusSuplier extends javax.swing.JFrame {
         brg.setVisible(true);
         dispose();
     }//GEN-LAST:event_namaSupActionPerformed
-
-    private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
-        // TODO add your handling code here:
-        HapusData();
-        idsup.setText("");
-        namaSup.setText("");
-        noHp1.setText("");
-        alamat1.setText("");
-        txtKet.setText("");
-    }//GEN-LAST:event_HapusActionPerformed
-
-    private void BatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BatalActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_BatalActionPerformed
 
     private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
         // TODO add your handling code here:
@@ -282,6 +270,21 @@ public class PopUpHapusSuplier extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKetActionPerformed
 
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        HapusData();
+        idsup.setText("");
+        namaSup.setText("");
+        noHp1.setText("");
+        alamat1.setText("");
+        txtKet.setText("");
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBatalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,10 +321,10 @@ public class PopUpHapusSuplier extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Batal;
-    private javax.swing.JButton Hapus;
     private javax.swing.JLabel IDbrg;
     private javax.swing.JTextField alamat1;
+    private com.kelompoka3.swing.ButtonCustom btnBatal;
+    private com.kelompoka3.swing.ButtonCustom btnHapus;
     private javax.swing.JTextField idsup;
     private javax.swing.JLabel jBarang;
     private javax.swing.JLabel jLabel1;

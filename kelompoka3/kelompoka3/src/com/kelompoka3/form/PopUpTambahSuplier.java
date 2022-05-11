@@ -53,13 +53,13 @@ public class PopUpTambahSuplier extends javax.swing.JFrame {
         nama1 = new javax.swing.JTextField();
         noHp1 = new javax.swing.JTextField();
         alamat1 = new javax.swing.JTextField();
-        simpan = new javax.swing.JButton();
-        Batal = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         idSup1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         keterangan1 = new javax.swing.JTextField();
+        btnSimpan = new com.kelompoka3.swing.ButtonCustom();
+        btnBatal = new com.kelompoka3.swing.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,25 +77,27 @@ public class PopUpTambahSuplier extends javax.swing.JFrame {
             }
         });
 
-        simpan.setText("Simpan");
-        simpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpanActionPerformed(evt);
-            }
-        });
-
-        Batal.setText("Batal");
-        Batal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BatalActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("TAMBAH SUPLIER");
 
         jLabel2.setText("Id Suplier");
 
         jLabel3.setText("Keterangan");
+
+        btnSimpan.setText("S I M P AN");
+        btnSimpan.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
+        btnBatal.setText("B AT A L");
+        btnBatal.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -115,15 +117,15 @@ public class PopUpTambahSuplier extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(idSup1)
-                    .addComponent(alamat1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .addComponent(idSup1, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                    .addComponent(alamat1)
                     .addComponent(noHp1)
                     .addComponent(nama1)
+                    .addComponent(keterangan1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(simpan)
-                        .addGap(18, 18, 18)
-                        .addComponent(Batal))
-                    .addComponent(keterangan1))
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -151,10 +153,10 @@ public class PopUpTambahSuplier extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(keterangan1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(98, 98, 98)
+                .addGap(94, 94, 94)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(simpan)
-                    .addComponent(Batal))
+                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(91, Short.MAX_VALUE))
         );
 
@@ -183,23 +185,15 @@ public class PopUpTambahSuplier extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_nama1ActionPerformed
 
-    private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
         TambahkanData();
+    }//GEN-LAST:event_btnSimpanActionPerformed
 
-        /**idBrg.setText("");
-        nmBrg.setText("");
-        jnsBrg.setText("");
-        wrnBrg.setText("");
-        hrgJual.setText("");
-        hrgBrgBeli.setText("");
-        stokBrg.setText("");**/
-    }//GEN-LAST:event_simpanActionPerformed
-
-    private void BatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BatalActionPerformed
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_BatalActionPerformed
+    }//GEN-LAST:event_btnBatalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,8 +231,9 @@ public class PopUpTambahSuplier extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Batal;
     private javax.swing.JTextField alamat1;
+    private com.kelompoka3.swing.ButtonCustom btnBatal;
+    private com.kelompoka3.swing.ButtonCustom btnSimpan;
     private javax.swing.JTextField idSup1;
     private javax.swing.JLabel jBarang;
     private javax.swing.JLabel jLabel1;
@@ -249,7 +244,6 @@ public class PopUpTambahSuplier extends javax.swing.JFrame {
     private javax.swing.JLabel nBarang;
     private javax.swing.JTextField nama1;
     private javax.swing.JTextField noHp1;
-    private javax.swing.JButton simpan;
     private javax.swing.JLabel wrn;
     // End of variables declaration//GEN-END:variables
 }

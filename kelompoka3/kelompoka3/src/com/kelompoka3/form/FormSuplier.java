@@ -48,8 +48,8 @@ public class FormSuplier extends javax.swing.JPanel {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID Suplier");
         model.addColumn("Nama Suplier");
-        model.addColumn("Alamat");        
-        model.addColumn("No Telfon");
+        model.addColumn("No Telfon");        
+        model.addColumn("Alamat");
         model.addColumn("Keterangan");
         
         
@@ -83,32 +83,15 @@ public class FormSuplier extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        hps1 = new javax.swing.JButton();
-        edit1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable1 = new javax.swing.JTable();
-        tbh1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         crBrg = new javax.swing.JTextField();
+        btnTambah = new com.kelompoka3.swing.ButtonCustom();
+        btnHapus = new com.kelompoka3.swing.ButtonCustom();
+        btnEdit = new com.kelompoka3.swing.ButtonCustom();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        hps1.setBackground(new java.awt.Color(255, 0, 0));
-        hps1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Delete.png"))); // NOI18N
-        hps1.setText("Hapus");
-        hps1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hps1ActionPerformed(evt);
-            }
-        });
-
-        edit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Edit.png"))); // NOI18N
-        edit1.setText("Edit");
-        edit1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edit1ActionPerformed(evt);
-            }
-        });
 
         jtable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,19 +137,37 @@ public class FormSuplier extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jtable1);
 
-        tbh1.setBackground(new java.awt.Color(0, 102, 51));
-        tbh1.setText("+Tambah");
-        tbh1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbh1ActionPerformed(evt);
-            }
-        });
-
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png"))); // NOI18N
         jLabel1.setText("Cari Barang");
 
         crBrg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 crBrgKeyReleased(evt);
+            }
+        });
+
+        btnTambah.setText("+ T A M B A H ");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
+
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Delete-1.png"))); // NOI18N
+        btnHapus.setText("H A P U S");
+        btnHapus.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Edit Square.png"))); // NOI18N
+        btnEdit.setText("E D I T");
+        btnEdit.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
             }
         });
 
@@ -182,12 +183,12 @@ public class FormSuplier extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tbh1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hps1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edit1)))
+                        .addGap(14, 14, 14)
+                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 197, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -195,13 +196,13 @@ public class FormSuplier extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(tbh1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hps1)
-                    .addComponent(edit1))
+                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -216,18 +217,6 @@ public class FormSuplier extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void hps1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hps1ActionPerformed
-        // TODO add your handling code here:
-        new PopUpHapusSuplier().setVisible(true);
-        //       HapusData();
-    }//GEN-LAST:event_hps1ActionPerformed
-
-    private void edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit1ActionPerformed
-        // TODO add your handling code here:
-        // EditData();
-        new PopUpEditSuplier().setVisible(true);
-    }//GEN-LAST:event_edit1ActionPerformed
 
     private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
         // TODO add your handling code here:
@@ -269,25 +258,6 @@ public class FormSuplier extends javax.swing.JPanel {
         } **/
     }//GEN-LAST:event_jtable1MouseClicked
 
-    private void tbh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbh1ActionPerformed
-        new PopUpTambahSuplier().setVisible(true);
-        /** if(hrgBrgBeli.getText().equals("")|| hrgJual.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Isi dahulu");
-        }else{
-            TambahkanData();
-        }
-        /**DefaultTableModel dataModel = (DefaultTableModel) jtable1.getModel();
-        List list = new ArrayList<>();
-        jtable1.setAutoCreateColumnsFromModel(true);
-        list.add(idBrg.getText());
-        list.add(nmBrg.getText());
-        list.add(jnsBrg.getText());
-        list.add(wrnBrg.getText());
-        list.add(hrgBrgBeli.getText());
-        list.add(hrgJual.getText());
-        dataModel.addRow(list.toArray());**/
-    }//GEN-LAST:event_tbh1ActionPerformed
-
     private void crBrgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crBrgKeyReleased
         String key=crBrg.getText();
 
@@ -298,15 +268,30 @@ public class FormSuplier extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_crBrgKeyReleased
 
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        // TODO add your handling code here:
+         new PopUpTambahSuplier().setVisible(true);
+    }//GEN-LAST:event_btnTambahActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        new PopUpEditSuplier().setVisible(true);
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        new PopUpHapusSuplier().setVisible(true);
+    }//GEN-LAST:event_btnHapusActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.kelompoka3.swing.ButtonCustom btnEdit;
+    private com.kelompoka3.swing.ButtonCustom btnHapus;
+    private com.kelompoka3.swing.ButtonCustom btnTambah;
     private javax.swing.JTextField crBrg;
-    private javax.swing.JButton edit1;
-    private javax.swing.JButton hps1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtable1;
-    private javax.swing.JButton tbh1;
     // End of variables declaration//GEN-END:variables
 }
