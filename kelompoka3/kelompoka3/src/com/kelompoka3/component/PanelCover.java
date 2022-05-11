@@ -3,15 +3,19 @@ package com.kelompoka3.component;
 import com.kelompoka3.swing.ButtonCustom;
 import com.kelompoka3.swing.ButtonCustomOutline;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 
@@ -29,7 +33,7 @@ public class PanelCover extends javax.swing.JPanel {
     public PanelCover() {
         initComponents();
         setOpaque(false);
-        layout = new MigLayout("wrap, fill", "[center]", "push[]25[]10[]25[]push");
+        layout = new MigLayout("wrap, fill", "[center]", "push[]12[]32[]25[]push");
         setLayout(layout);
         init();
     }
@@ -43,16 +47,17 @@ public class PanelCover extends javax.swing.JPanel {
                 + "dilengkapi dengan<center>laporan penjualan dan statistik bulanan."
                 + "</center> </html>");
         description.setFont(new Font("poppins", Font.PLAIN, 14));
-        description.setForeground(new Color(130, 130, 130));
+        description.setForeground(new Color(242, 242, 242));
         add(description);
-        
+
         ButtonCustom Outlinebtn = new ButtonCustom();
         Outlinebtn.setPreferredSize(new Dimension(384, 52));
         Outlinebtn.setStyle(ButtonCustom.ButtonStyle.OUTLINE);
-        Outlinebtn.setContentAreaFilled(false);
-        Outlinebtn.setBorder(new EmptyBorder(5, 0, 5, 0));
-        Outlinebtn.setBackground(Color.WHITE);
-        Outlinebtn.setForeground(new Color(250, 250, 250));
+        Outlinebtn.setBorder(BorderFactory.createLineBorder(new Color(245, 245, 245)));
+        Outlinebtn.setOpaque(false);
+        Outlinebtn.setBackground(new Color(113, 135, 116));
+        Outlinebtn.setBorder(new RoundedBorder(10));
+        Outlinebtn.setForeground(new Color(245, 245, 245));
         Outlinebtn.setFont(new Font("poppins", Font.BOLD, 14));
         Outlinebtn.setText("Sign In");
         Outlinebtn.addActionListener(new ActionListener() {
@@ -91,6 +96,59 @@ public class PanelCover extends javax.swing.JPanel {
 
     public void addEvent(ActionListener event) {
         this.event = event;
+    }
+
+    //kode kebawah untuk set border tombol di panel cover, tapi elek, kapan kapan dibenakno
+    private static class RoundedBorder implements Border {
+
+        private final int radius;
+
+        RoundedBorder(int radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(this.radius + 1, this.radius + 1, this.radius + 2, this.radius);
+        }
+
+        @Override
+        public boolean isBorderOpaque() {
+            return true;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            g.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
+        }
+    }
+
+    public void RegisterKiri(double v) {
+        v = Double.valueOf(df.format(v));
+        login(false);
+        layout.setComponentConstraints(title, "pad 0 -" + v + "% 0 0");
+    }
+
+    public void RegisterKanan(double v) {
+        v = Double.valueOf(df.format(v));
+        login(false);
+        layout.setComponentConstraints(title, "pad 0 -" + v + "% 0 0");
+    }
+
+    public void LoginKiri(double v) {
+        v = Double.valueOf(df.format(v));
+        login(true);
+        layout.setComponentConstraints(title, "pad 0" + v + "% 0" + v + "%");
+    }
+
+    public void LoginKanan(double v) {
+        v = Double.valueOf(df.format(v));
+        login(true);
+        layout.setComponentConstraints(title, "pad 0" + v + "% 0" + v + "%");
+    }
+
+    private void login(boolean login) {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

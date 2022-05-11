@@ -16,7 +16,7 @@ import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class MainLoginRegister extends javax.swing.JFrame {
-
+    
     private MigLayout layout;
     private PanelCover cover;
     private PanelLoginAndRegister loginAndRegister;
@@ -25,12 +25,12 @@ public class MainLoginRegister extends javax.swing.JFrame {
     private final double coverSize = 50;
     private final double loginSize = 50;
     private final DecimalFormat df = new DecimalFormat("##0.###");
-
+    
     public MainLoginRegister() {
         initComponents();
         init();
     }
-
+    
     private void init() {
         layout = new MigLayout("fill, insets 0");
         cover = new PanelCover();
@@ -49,12 +49,22 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 if (isLogin) {
                     fractionCover = 1f - fraction;
                     fractionLogin = fraction;
+                    if (fraction >= 0.5f) {
+                        cover.RegisterKanan(fractionCover * 100);
+                    } else {
+                        cover.LoginKanan(fractionLogin * 100);
+                    }
                 } else {
                     fractionCover = fraction;
                     fractionLogin = 1f - fraction;
+                    if (fraction <= 0.5f) {
+                        cover.RegisterKiri(fraction * 100);
+                    } else {
+                        cover.LoginKiri((1f - fraction) * 100);
+                    }
                 }
                 
-                if (fraction>=0.5f) {
+                if (fraction >= 0.5f) {
                     loginAndRegister.showRegister(isLogin);
                 }
                 fractionCover = Double.valueOf(df.format(fractionCover));
@@ -63,7 +73,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 layout.setComponentConstraints(loginAndRegister, "width " + loginSize + "%, pos " + fractionLogin + "al 0 n 100%");
                 background.revalidate();
             }
-
+            
             @Override
             public void end() {
                 isLogin = !isLogin;
@@ -85,7 +95,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
             }
         });
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -154,6 +164,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane background;
