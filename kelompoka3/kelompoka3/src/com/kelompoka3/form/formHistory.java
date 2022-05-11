@@ -6,6 +6,11 @@
 
 package com.kelompoka3.form;
 
+import com.kelompoka3.koneksi.koneksi;
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author LAB_MMC
@@ -15,8 +20,31 @@ public class formHistory extends javax.swing.JPanel {
     /** Creates new form formHistory */
     public formHistory() {
         initComponents();
+        tableformhistory();
     }
+    private void tableformhistory() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("No Faktur");
+        model.addColumn("Id Barang");
+        model.addColumn("jumlah Barang");
+        model.addColumn("Harga Barang");
+        model.addColumn("Nama Barang");        
+        String cari = txt_cari.getText();
+        try {
+            String sql = "SELECT * FROM detailpenjualan WHERE namaBarang LIKE'%"+cari+"%'";
+            java.sql.Connection conn = (Connection) koneksi.koneksi();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
 
+            while (res.next()) {
+                model.addRow(new Object[]{"#" + res.getString(1), res.getString(2),
+                    res.getString(3), res.getString(4), res.getString(5) });
+            }
+            table1.setModel(model);
+        } catch (SQLException e) {
+        }
+
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -26,20 +54,106 @@ public class formHistory extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table1 = new com.kelompoka3.swing.Table();
+        txt_cari = new javax.swing.JTextField();
+        buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
+
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(table1);
+
+        txt_cari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_cariMouseClicked(evt);
+            }
+        });
+        txt_cari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cariKeyReleased(evt);
+            }
+        });
+
+        buttonCustom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png"))); // NOI18N
+        buttonCustom1.setText("Search");
+        buttonCustom1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCustom1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txt_cariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cariMouseClicked
+        // TODO add your handling code here:
+//        tableformhistory();
+    }//GEN-LAST:event_txt_cariMouseClicked
+
+    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
+        // TODO add your handling code here:
+//        tableformhistory();
+    }//GEN-LAST:event_txt_cariKeyReleased
+
+    private void buttonCustom1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCustom1MouseClicked
+        // TODO add your handling code here:
+        tableformhistory();
+    }//GEN-LAST:event_buttonCustom1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.kelompoka3.swing.ButtonCustom buttonCustom1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private com.kelompoka3.swing.Table table1;
+    private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 
 }
