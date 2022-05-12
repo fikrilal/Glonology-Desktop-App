@@ -44,6 +44,8 @@ Pas sudah pake table custom tapi tampilanya masih seperti table default karena b
 
 Untuk tombol gunakan ButtonCustom.java difolder swing. Cara mengganti style klik kanan tombolnya, pilih properties, scroll kebawah dan cari menu Style. Ada 3 pilihan, primier warna hijau, sekunder warna abu2, destructive warna merah
 
+Untuk textfield difolder swing MyTextField.java
+
 
 
 **Jarak pada Design**
