@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.kelompoka3.main;
 
 import com.kelompoka3.component.PanelCover;
+import com.kelompoka3.component.PanelLoading;
+import com.kelompoka3.component.PanelVerifikasi;
 import com.kelompoka3.form.PanelLoginAndRegister;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import javax.swing.JLayeredPane;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -19,6 +17,8 @@ public class MainLoginRegister extends javax.swing.JFrame {
 
     private MigLayout layout;
     private PanelCover cover;
+    private PanelLoading loading;
+    private PanelVerifikasi verifikasi;
     private PanelLoginAndRegister loginAndRegister;
     private boolean isLogin;
     private final double addSize = 30;
@@ -34,7 +34,15 @@ public class MainLoginRegister extends javax.swing.JFrame {
     private void init() {
         layout = new MigLayout("fill, insets 0");
         cover = new PanelCover();
-        loginAndRegister = new PanelLoginAndRegister();
+        loading = new PanelLoading();
+        verifikasi = new PanelVerifikasi();
+        ActionListener eventRegister = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                register();
+            }
+        };
+        loginAndRegister = new PanelLoginAndRegister(eventRegister);
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -84,6 +92,10 @@ public class MainLoginRegister extends javax.swing.JFrame {
         animator.setDeceleration(0.5f);
         animator.setResolution(0);
         background.setLayout(layout);
+        background.setLayer(loading, JLayeredPane.POPUP_LAYER);
+        background.setLayer(verifikasi, JLayeredPane.POPUP_LAYER);
+        background.add(loading, "pos 0 0 100% 100%");
+        background.add(verifikasi, "pos 0 0 100% 100%");
         background.add(cover, "width " + coverSize + "%, pos 0al 0 n 100%");
         background.add(loginAndRegister, "width " + loginSize + "%, pos 1al 0 n 100%");
         cover.addEvent(new ActionListener() {
@@ -94,6 +106,11 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    
+    private void register() {
+//        loading.setVisible(true);
+        verifikasi.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
