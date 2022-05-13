@@ -1,13 +1,22 @@
 package com.kelompoka3.model;
 
+
 public class ModelUser {
 
-    public String getNama() {
-        return nama;
+    public String getNamaLengkap() {
+        return namaLengkap;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setNamaLengkap(String namaLengkap) {
+        this.namaLengkap = namaLengkap;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {
@@ -42,30 +51,30 @@ public class ModelUser {
         this.verifyCode = verifyCode;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public ModelUser(String nama, String username, String password, String alamat, String verifyCode, String status) {
-        this.nama = nama;
+    public ModelUser(String namaLengkap, String email, String username, String password, String alamat, String verifyCode) {
+        this.namaLengkap = namaLengkap;
+        this.email = email;
         this.username = username;
         this.password = password;
         this.alamat = alamat;
         this.verifyCode = verifyCode;
-        this.status = status;
+    }
+    
+       public ModelUser(String namaLengkap, String email, String username, String password, String alamat) {
+        this.namaLengkap = namaLengkap;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.alamat = alamat;
     }
 
     public ModelUser() {
     }
     
-    private String nama;
+    private String namaLengkap;
+    private String email;
     private String username;
     private String password;
     private String alamat;
     private String verifyCode;
-    private String status;
 }

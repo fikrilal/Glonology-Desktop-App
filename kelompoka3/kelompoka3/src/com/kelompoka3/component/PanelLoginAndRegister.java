@@ -1,5 +1,6 @@
-package com.kelompoka3.form;
+package com.kelompoka3.component;
 
+import com.kelompoka3.model.ModelUser;
 import com.kelompoka3.swing.ButtonCustom;
 import com.kelompoka3.swing.MyPasswordField;
 import com.kelompoka3.swing.MyTextField;
@@ -7,6 +8,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +17,12 @@ import net.miginfocom.swing.MigLayout;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
+    public ModelUser getUser() {
+        return user;
+    }
+
+    private ModelUser user;
+    
     public PanelLoginAndRegister(ActionListener eventRegister) {
         initComponents();
         initRegister(eventRegister);
@@ -72,6 +80,17 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmd.addActionListener(eventRegister);
         cmd.setText("Create Account");
         register.add(cmd);
+        cmd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                String namaLengkap = txtName.getText().trim();
+                String email = txtEmail.getText().trim();
+                String username = txtUsername.getText().trim();
+                String password = String.valueOf(txtPassword.getPassword());
+                String alamat = txtAlamat.getText().trim();
+                user = new ModelUser(namaLengkap, email, username, password, alamat);
+            }
+        });
     }
 
     private void initLogin() {
