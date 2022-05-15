@@ -21,6 +21,7 @@ public class formHistory extends javax.swing.JPanel {
     public formHistory() {
         initComponents();
         tableformhistory();
+        table1.addTableStyle(jScrollPane1);
     }
     private void tableformhistory() {
         DefaultTableModel model = new DefaultTableModel();
@@ -57,8 +58,10 @@ public class formHistory extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new com.kelompoka3.swing.Table();
-        txt_cari = new javax.swing.JTextField();
         buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
+        txt_cari = new javax.swing.JTextField();
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,17 +76,6 @@ public class formHistory extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(table1);
 
-        txt_cari.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_cariMouseClicked(evt);
-            }
-        });
-        txt_cari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_cariKeyReleased(evt);
-            }
-        });
-
         buttonCustom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png"))); // NOI18N
         buttonCustom1.setText("Search");
         buttonCustom1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,27 +89,24 @@ public class formHistory extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
-                        .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(448, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -131,16 +120,6 @@ public class formHistory extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_cariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cariMouseClicked
-        // TODO add your handling code here:
-//        tableformhistory();
-    }//GEN-LAST:event_txt_cariMouseClicked
-
-    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
-        // TODO add your handling code here:
-//        tableformhistory();
-    }//GEN-LAST:event_txt_cariKeyReleased
 
     private void buttonCustom1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCustom1MouseClicked
         // TODO add your handling code here:
