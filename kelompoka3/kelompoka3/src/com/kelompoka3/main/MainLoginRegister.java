@@ -1,40 +1,50 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.kelompoka3.main;
 
 import com.kelompoka3.component.PanelCover;
-import com.kelompoka3.form.PanelLoginAndRegister;
+import com.kelompoka3.component.PanelLoading;
+import com.kelompoka3.component.PanelVerifikasi;
+import com.kelompoka3.component.PanelLoginAndRegister;
+import com.kelompoka3.component.Pesan;
+import com.kelompoka3.model.ModelUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import javax.swing.JLayeredPane;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class MainLoginRegister extends javax.swing.JFrame {
-    
+
     private MigLayout layout;
     private PanelCover cover;
+    private PanelLoading loading;
+    private PanelVerifikasi verifikasi;
     private PanelLoginAndRegister loginAndRegister;
     private boolean isLogin;
     private final double addSize = 30;
     private final double coverSize = 50;
     private final double loginSize = 50;
     private final DecimalFormat df = new DecimalFormat("##0.###");
-    
+
     public MainLoginRegister() {
         initComponents();
         init();
     }
-    
+
     private void init() {
         layout = new MigLayout("fill, insets 0");
         cover = new PanelCover();
-        loginAndRegister = new PanelLoginAndRegister();
+        loading = new PanelLoading();
+        verifikasi = new PanelVerifikasi();
+        ActionListener eventRegister = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                register();
+            }
+        };
+        loginAndRegister = new PanelLoginAndRegister(eventRegister);
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -63,7 +73,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
                         cover.LoginKiri((1f - fraction) * 100);
                     }
                 }
-                
+
                 if (fraction >= 0.5f) {
                     loginAndRegister.showRegister(isLogin);
                 }
@@ -73,7 +83,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 layout.setComponentConstraints(loginAndRegister, "width " + loginSize + "%, pos " + fractionLogin + "al 0 n 100%");
                 background.revalidate();
             }
-            
+
             @Override
             public void end() {
                 isLogin = !isLogin;
@@ -84,6 +94,10 @@ public class MainLoginRegister extends javax.swing.JFrame {
         animator.setDeceleration(0.5f);
         animator.setResolution(0);
         background.setLayout(layout);
+        background.setLayer(loading, JLayeredPane.POPUP_LAYER);
+        background.setLayer(verifikasi, JLayeredPane.POPUP_LAYER);
+        background.add(loading, "pos 0 0 100% 100%");
+        background.add(verifikasi, "pos 0 0 100% 100%");
         background.add(cover, "width " + coverSize + "%, pos 0al 0 n 100%");
         background.add(loginAndRegister, "width " + loginSize + "%, pos 1al 0 n 100%");
         cover.addEvent(new ActionListener() {
@@ -95,7 +109,69 @@ public class MainLoginRegister extends javax.swing.JFrame {
             }
         });
     }
-    
+
+    private void register() {
+        ModelUser user = loginAndRegister.getUser();
+//        loading.setVisible(true);
+        showPesan(Pesan.PesanType.SUCCES, "Account successfully  created");
+    }
+
+    private void showPesan(Pesan.PesanType pesanType, String pesan) {
+        Pesan ps = new Pesan();
+        ps.showPesan(pesanType, pesan);
+        TimingTarget target = new TimingTargetAdapter() {
+            @Override
+            public void begin() {
+                if (!ps.isShow()) {
+                    background.add(ps, "pos 0.5al -30", 0);
+                    ps.setVisible(true);
+                    background.repaint();
+                }
+            }
+
+            @Override
+            public void timingEvent(float fraction) {
+                float f;
+                if (ps.isShow()) {
+                    f = 40 * (1f - fraction);
+                } else {
+                    f = 40 * fraction;
+                }
+                layout.setComponentConstraints(ps, "pos 0.5al " + (int) (f - 30));
+                background.repaint();
+                background.revalidate();
+            }
+
+            @Override
+            public void end() {
+                if (ps.isShow()) {
+                    background.remove(ps);
+                    background.repaint();
+                    background.revalidate();
+                } else {
+                    ps.setShow(true);
+                }
+            }
+
+        };
+        Animator animator = new Animator(300, target);
+        animator.setResolution(0);
+        animator.setAcceleration(0.5f);
+        animator.setDeceleration(0.5f);
+        animator.start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                    animator.start();
+                } catch (InterruptedException e) {
+                    System.out.println(e);
+                }
+            }
+        }).start();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -158,6 +234,8 @@ public class MainLoginRegister extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainLoginRegister().setVisible(true);

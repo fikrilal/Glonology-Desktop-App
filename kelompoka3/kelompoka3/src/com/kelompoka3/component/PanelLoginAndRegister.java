@@ -1,32 +1,38 @@
-package com.kelompoka3.form;
+package com.kelompoka3.component;
 
+import com.kelompoka3.model.ModelUser;
 import com.kelompoka3.swing.ButtonCustom;
-import com.kelompoka3.swing.ButtonLoginAndRegister;
 import com.kelompoka3.swing.MyPasswordField;
 import com.kelompoka3.swing.MyTextField;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.border.Border;
 import net.miginfocom.swing.MigLayout;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
-    public PanelLoginAndRegister() {
+    public ModelUser getUser() {
+        return user;
+    }
+
+    private ModelUser user;
+    
+    public PanelLoginAndRegister(ActionListener eventRegister) {
         initComponents();
-        initRegister();
+        initRegister(eventRegister);
         initLogin();
         login.setVisible(false);
         register.setVisible(true);
 
     }
 
-    private void initRegister() {
+    private void initRegister(ActionListener eventRegister) {
         register.setLayout(new MigLayout("wrap", "push[center]push", "push[]12[]32[]18[]18[]18[]18[]32[]push"));
         JLabel judul = new JLabel("Create an Account");
         JLabel deskripsi = new JLabel("<html> Lengkapi data diri dan lakukan pendaftaran untuk mengakses<br/><center>program kami</center> </html>");
@@ -71,8 +77,20 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmd.setBackground(new Color(113, 135, 116));
         cmd.setForeground(new Color(250, 250, 250));
         cmd.setFont(new Font("poppins", Font.BOLD, 14));
+        cmd.addActionListener(eventRegister);
         cmd.setText("Create Account");
         register.add(cmd);
+        cmd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                String namaLengkap = txtName.getText().trim();
+                String email = txtEmail.getText().trim();
+                String username = txtUsername.getText().trim();
+                String password = String.valueOf(txtPassword.getPassword());
+                String alamat = txtAlamat.getText().trim();
+                user = new ModelUser(namaLengkap, email, username, password, alamat);
+            }
+        });
     }
 
     private void initLogin() {
@@ -81,7 +99,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         judul.setFont(new Font("poppins", Font.BOLD, 20));
         judul.setForeground(new Color(79, 79, 79));
         login.add(judul);
-        
+
         MyTextField txtUsername = new MyTextField();
         txtUsername.setPreferredSize(new Dimension(400, 52));
         txtUsername.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Profile.png")));
@@ -93,14 +111,14 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         txtPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Lock.png")));
         txtPassword.setHint("Password");
         login.add(txtPassword, "w 60%");
-        
+
         JButton cmdForget = new JButton("                                                           Forgot your password?");
-        cmdForget.setForeground(new Color(47,128,237));
+        cmdForget.setForeground(new Color(47, 128, 237));
         cmdForget.setFont(new Font("poppins", Font.PLAIN, 14));
         cmdForget.setContentAreaFilled(false);
         cmdForget.setCursor(new Cursor(Cursor.HAND_CURSOR));
         login.add(cmdForget);
-        
+
         ButtonCustom cmd = new ButtonCustom();
         cmd.setPreferredSize(new Dimension(384, 52));
         cmd.setBackground(new Color(113, 135, 116));
@@ -109,7 +127,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmd.setText("Sign In");
         login.add(cmd);
     }
-    
+
     public void showRegister(boolean show) {
         if (show) {
             register.setVisible(true);

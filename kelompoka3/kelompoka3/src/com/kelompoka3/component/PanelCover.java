@@ -27,7 +27,7 @@ public class PanelCover extends javax.swing.JPanel {
     private JLabel title;
     private JLabel description;
     private JLabel description1;
-    private ButtonCustomOutline button;
+    private ButtonCustom Outlinebtn;
     private boolean isLogin;
 
     public PanelCover() {
@@ -50,7 +50,7 @@ public class PanelCover extends javax.swing.JPanel {
         description.setForeground(new Color(242, 242, 242));
         add(description);
 
-        ButtonCustom Outlinebtn = new ButtonCustom();
+        Outlinebtn = new ButtonCustom();
         Outlinebtn.setPreferredSize(new Dimension(384, 52));
         Outlinebtn.setStyle(ButtonCustom.ButtonStyle.OUTLINE);
         Outlinebtn.setBorder(BorderFactory.createLineBorder(new Color(245, 245, 245)));
@@ -127,28 +127,43 @@ public class PanelCover extends javax.swing.JPanel {
         v = Double.valueOf(df.format(v));
         login(false);
         layout.setComponentConstraints(title, "pad 0 -" + v + "% 0 0");
+        layout.setComponentConstraints(description, "pad 0 -" + v + "% 0 0");
     }
 
     public void RegisterKanan(double v) {
         v = Double.valueOf(df.format(v));
         login(false);
         layout.setComponentConstraints(title, "pad 0 -" + v + "% 0 0");
+        layout.setComponentConstraints(description, "pad 0 -" + v + "% 0 0");
     }
 
     public void LoginKiri(double v) {
         v = Double.valueOf(df.format(v));
         login(true);
-        layout.setComponentConstraints(title, "pad 0" + v + "% 0" + v + "%");
+        layout.setComponentConstraints(title, "pad 0 " + v + "% 0 " + v + "%");
+        layout.setComponentConstraints(description, "pad 0 " + v + "% 0 " + v + "%");
     }
 
     public void LoginKanan(double v) {
         v = Double.valueOf(df.format(v));
         login(true);
-        layout.setComponentConstraints(title, "pad 0" + v + "% 0" + v + "%");
+        layout.setComponentConstraints(title, "pad 0 " + v + "% 0 " + v + "%");
+        layout.setComponentConstraints(description, "pad 0 " + v + "% 0 " + v + "%");
     }
 
     private void login(boolean login) {
-
+        if (this.isLogin != login) {
+            if (login) {
+                title.setText("Lorem Ipsum 1");
+                description.setText("Deskripsi Lorem Ipsum 1");
+                Outlinebtn.setText("Create Account");
+            } else {
+                title.setText("Lorem Ipsum 2");
+                description.setText("Deskripsi Lorem Ipsum 2");
+                Outlinebtn.setText("Sign In");
+            }
+            this.isLogin = login;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
