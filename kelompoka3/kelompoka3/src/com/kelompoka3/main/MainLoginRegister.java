@@ -5,9 +5,14 @@ import com.kelompoka3.component.PanelLoading;
 import com.kelompoka3.component.PanelVerifikasi;
 import com.kelompoka3.component.PanelLoginAndRegister;
 import com.kelompoka3.component.Pesan;
+import com.kelompoka3.koneksi.DatabaseConnection;
+import com.kelompoka3.koneksi.ServiceMail;
+import com.kelompoka3.koneksi.ServiceUser;
+import com.kelompoka3.model.ModelMessage;
 import com.kelompoka3.model.ModelUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import javax.swing.JLayeredPane;
 import net.miginfocom.swing.MigLayout;
@@ -27,6 +32,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
     private final double coverSize = 50;
     private final double loginSize = 50;
     private final DecimalFormat df = new DecimalFormat("##0.###");
+    private ServiceUser service;
 
     public MainLoginRegister() {
         initComponents();
@@ -34,6 +40,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
     }
 
     private void init() {
+        service = new ServiceUser();
         layout = new MigLayout("fill, insets 0");
         cover = new PanelCover();
         loading = new PanelLoading();
@@ -108,12 +115,57 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 }
             }
         });
+        verifikasi.addEventButtonConfirm(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    ModelUser user = loginAndRegister.getUser();
+                    if (service.verifyCodeWithUser(user.getUserId(), verifikasi.getInputCode())) {
+                        service.succesVerify(user.getUserId());
+                        showPesan(Pesan.PesanType.SUCCES, "Registrasi berhasil");
+                        verifikasi.setVisible(false);
+                    } else {
+                        showPesan(Pesan.PesanType.ERROR, "Verifikasi gagal");
+                    }
+
+                } catch (Exception e) {
+                    showPesan(Pesan.PesanType.ERROR, "Error");
+                }
+            }
+        });
     }
 
     private void register() {
         ModelUser user = loginAndRegister.getUser();
-//        loading.setVisible(true);
-        showPesan(Pesan.PesanType.SUCCES, "Account successfully  created");
+        try {
+            if (service.checkDuplicateUser(user.getUsername())) {
+                showPesan(Pesan.PesanType.ERROR, "Username telah digunakan");
+            } else if (service.checkDuplicateEmail(user.getEmail())) {
+                showPesan(Pesan.PesanType.ERROR, "Email telah digunakan");
+            } else {
+                service.insertUser(user);
+                sendMain(user);
+            }
+        } catch (SQLException e) {
+            showPesan(Pesan.PesanType.ERROR, "Registrasi gagal");
+        }
+    }
+
+    private void sendMain(ModelUser user) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                loading.setVisible(true);
+                ModelMessage ms = new ServiceMail().sendMain(user.getEmail(), user.getVerifyCode());
+                if (ms.isSuccess()) {
+                    loading.setVisible(false);
+                    verifikasi.setVisible(true);
+                } else {
+                    loading.setVisible(false);
+                    showPesan(Pesan.PesanType.ERROR, ms.getMessage());
+                }
+            }
+        }).start();
     }
 
     private void showPesan(Pesan.PesanType pesanType, String pesan) {
@@ -234,8 +286,11 @@ public class MainLoginRegister extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
-        
+        try {
+            DatabaseConnection.getInstance().connectToDatabase();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainLoginRegister().setVisible(true);

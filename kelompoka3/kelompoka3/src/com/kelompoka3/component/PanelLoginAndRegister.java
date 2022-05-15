@@ -42,6 +42,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         deskripsi.setFont(new Font("poppins", Font.PLAIN, 14));
         deskripsi.setForeground(new Color(130, 130, 130));
         register.add(deskripsi);
+        
         MyTextField txtName = new MyTextField();
         txtName.setPreferredSize(new Dimension(400, 52));
         txtName.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Profile.png")));
@@ -88,7 +89,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
                 String username = txtUsername.getText().trim();
                 String password = String.valueOf(txtPassword.getPassword());
                 String alamat = txtAlamat.getText().trim();
-                user = new ModelUser(namaLengkap, email, username, password, alamat);
+                user = new ModelUser(0, namaLengkap, email, username, password, alamat);               
             }
         });
     }

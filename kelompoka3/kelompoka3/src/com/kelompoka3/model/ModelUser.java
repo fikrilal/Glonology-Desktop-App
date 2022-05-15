@@ -1,7 +1,14 @@
 package com.kelompoka3.model;
 
-
 public class ModelUser {
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getNamaLengkap() {
         return namaLengkap;
@@ -51,7 +58,8 @@ public class ModelUser {
         this.verifyCode = verifyCode;
     }
 
-    public ModelUser(String namaLengkap, String email, String username, String password, String alamat, String verifyCode) {
+    public ModelUser(int userId, String namaLengkap, String email, String username, String password, String alamat, String verifyCode) {
+        this.userId = userId;
         this.namaLengkap = namaLengkap;
         this.email = email;
         this.username = username;
@@ -59,8 +67,9 @@ public class ModelUser {
         this.alamat = alamat;
         this.verifyCode = verifyCode;
     }
-    
-       public ModelUser(String namaLengkap, String email, String username, String password, String alamat) {
+
+    public ModelUser(int userId, String namaLengkap, String email, String username, String password, String alamat) {
+        this.userId = userId;
         this.namaLengkap = namaLengkap;
         this.email = email;
         this.username = username;
@@ -70,7 +79,8 @@ public class ModelUser {
 
     public ModelUser() {
     }
-    
+
+    private int userId;
     private String namaLengkap;
     private String email;
     private String username;

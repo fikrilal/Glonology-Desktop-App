@@ -4,25 +4,21 @@ import com.kelompoka3.event.menuEvent;
 import com.kelompoka3.form.FormSuplier;
 import com.kelompoka3.form.form;
 import com.kelompoka3.form.formBarang;
-import com.kelompoka3.form.formDashboard;
 import com.kelompoka3.form.formHistory;
 import com.kelompoka3.form.formLogout;
 import com.kelompoka3.form.formTransaksi;
 import java.awt.Color;
 import java.awt.Component;
 
-public class main extends javax.swing.JFrame {
+public class mainKaryawan extends javax.swing.JFrame {
 
-    public main() {
+    public mainKaryawan() {
         initComponents();
         getContentPane().setBackground(new Color(113, 135, 116));
         menuEvent event = new menuEvent() {
             @Override
             public void menuSelected(int index) {
-                if (index == 0) {
-
-                    showForm(new formDashboard());
-                } else if (index == 1) {
+                if (index == 1) {
                     showForm(new formTransaksi());
 
                 } else if (index == 2) {
@@ -133,21 +129,23 @@ public class main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainKaryawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainKaryawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainKaryawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainKaryawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main().setVisible(true);
+                new mainKaryawan().setVisible(true);
             }
         });
     }
