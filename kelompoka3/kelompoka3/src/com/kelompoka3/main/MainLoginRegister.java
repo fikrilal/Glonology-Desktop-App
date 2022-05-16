@@ -128,7 +128,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
                         showPesan(Pesan.PesanType.ERROR, "Verifikasi gagal");
                     }
 
-                } catch (Exception e) {
+                } catch (SQLException e) {
                     showPesan(Pesan.PesanType.ERROR, "Error");
                 }
             }
