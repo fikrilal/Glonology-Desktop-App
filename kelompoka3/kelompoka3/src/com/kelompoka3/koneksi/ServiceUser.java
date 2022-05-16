@@ -17,9 +17,9 @@ public class ServiceUser {
     }
 
     public void insertUser(ModelUser user) throws SQLException {
-        PreparedStatement p = con.prepareStatement("INSERT INTO pegawai "
-                + "(namaLengkap, email, username, password, alamat, verifyCode) "
-                + "VALUES (?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+        PreparedStatement p = con.prepareStatement("INSERT INTO `pegawai` "
+                + "(`namaLengkap`, `email`, `username`, `password`, `alamat`, `verifyCode`) "
+                + "VALUES ('?', '?', '?', '?', '?', '?')", PreparedStatement.RETURN_GENERATED_KEYS);
         String code = generateVerifyCode();
         p.setString(1, user.getNamaLengkap());
         p.setString(2, user.getEmail());
@@ -93,6 +93,7 @@ public class ServiceUser {
         PreparedStatement p = con.prepareStatement("UPDATE pegawai SET verifyCode='',"
                 + "status='Verified' WHERE userId=? LIMIT 1");
         p.setInt(1, userId);
+        p.execute();
         p.close();
     }
 
