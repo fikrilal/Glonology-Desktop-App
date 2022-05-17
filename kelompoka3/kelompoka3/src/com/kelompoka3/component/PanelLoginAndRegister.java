@@ -95,11 +95,15 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     }
 
     private void initLogin() {
-        login.setLayout(new MigLayout("wrap", "push[center]push", "push[]32[]18[]12[]32[]push"));
-        JLabel judul = new JLabel("Sign In");
+        login.setLayout(new MigLayout("wrap", "push[center]push", "push[]12[]32[]18[]12[]32[]push"));
+        JLabel judul = new JLabel("Sign");
+        JLabel deskripsi = new JLabel("Selamat datang kembali!");
         judul.setFont(new Font("poppins", Font.BOLD, 20));
         judul.setForeground(new Color(79, 79, 79));
         login.add(judul);
+        deskripsi.setFont(new Font("poppins", Font.PLAIN, 14));
+        deskripsi.setForeground(new Color(130, 130, 130));
+        login.add(deskripsi);
 
         MyTextField txtUsername = new MyTextField();
         txtUsername.setPreferredSize(new Dimension(400, 52));
