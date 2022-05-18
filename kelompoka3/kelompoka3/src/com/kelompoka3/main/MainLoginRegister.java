@@ -36,7 +36,10 @@ public class MainLoginRegister extends javax.swing.JFrame {
     private final DecimalFormat df = new DecimalFormat("##0.###");
     private ServiceUser service;
 
-    
+        public MainLoginRegister() {
+        initComponents();
+        init();
+    }
 
     private void init() {
         service = new ServiceUser();
@@ -50,6 +53,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 register();
             }
         };
+        
         ActionListener eventLogin = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -162,13 +166,13 @@ public class MainLoginRegister extends javax.swing.JFrame {
             ModelUser user = service.login(data);
             if (user != null) {
                 this.dispose();
-                main.setVisible(true);
+                new main().setVisible(true);
             } else {
                 showPesan(Pesan.PesanType.ERROR, "Email and Password incorrect");
             }
 
         } catch (SQLException e) {
-            showPesan(Pesan.PesanType.ERROR, "Error Login");
+            showPesan(Pesan.PesanType.ERROR, "Error Login" + e.getMessage());
         } 
 
     }

@@ -18,15 +18,15 @@ public class ServiceUser {
     }
     public ModelUser login(ModelLogin login) throws SQLException {
         ModelUser data = null;
-        PreparedStatement p = con.prepareStatement(" username, password from `pegawai` where BINARY(username)=? and BINARY(`password`)=? and `Status`='Verified' limit 1");
-        p.setString(1, login.getUsername());
+        PreparedStatement p = con.prepareStatement(" SELECT userId, email, password from `pegawai` where BINARY(email)=? and BINARY(`password`)=? and `Status`='Verified' limit 1");
+        p.setString(1, login.getEmail());
         p.setString(2, login.getPassword());
         ResultSet r = p.executeQuery();
         if (r.first()) {
-            
-            String username = r.getString(1);
-            String password = r.getString(2);
-            data = new ModelUser(username, password, "");
+            int userId = r.getInt(1);
+            String email = r.getString(2);
+            String username = r.getString(3);
+            data = new ModelUser(userId, email, username, "");
         }
         r.close();
         p.close();
@@ -102,7 +102,7 @@ public class ServiceUser {
     }
 
     public void succesVerify(int userId) throws SQLException {
-        PreparedStatement p = con.prepareStatement("UPDATE `pegawai` SET `verifyCode` = 'Null', `status` = 'Verified' WHERE `userId` = ? limit 1 ");
+        PreparedStatement p = con.prepareStatement("UPDATE `pegawai` SET `verifyCode` = '', `status` = 'Verified' WHERE `userId` = ? limit 1 ");
         p.setInt(1, userId);
         p.execute();
         p.close();

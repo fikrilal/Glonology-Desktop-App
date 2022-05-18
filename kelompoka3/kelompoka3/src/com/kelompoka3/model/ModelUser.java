@@ -82,6 +82,13 @@ public class ModelUser {
         this.password = password;
         this.alamat = alamat;
     }
+    
+    public ModelUser(int userId, String email, String username, String password) {
+        this.userId = userId;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
 
     public ModelUser() {
     }
