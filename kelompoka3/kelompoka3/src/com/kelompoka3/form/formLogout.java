@@ -55,7 +55,6 @@ public class formLogout extends javax.swing.JPanel {
         buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
         buttonCustom2 = new com.kelompoka3.swing.ButtonCustom();
         buttonCustom3 = new com.kelompoka3.swing.ButtonCustom();
-        myTextField1 = new com.kelompoka3.swing.MyTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableSupplier = new com.kelompoka3.swing.Table();
 
@@ -84,13 +83,6 @@ public class formLogout extends javax.swing.JPanel {
             }
         });
 
-        myTextField1.setText("Cari Supplier");
-        myTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myTextField1ActionPerformed(evt);
-            }
-        });
-
         tableSupplier.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -113,8 +105,7 @@ public class formLogout extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(myTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(492, 492, 492)
                         .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,7 +120,6 @@ public class formLogout extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonCustom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(myTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(buttonCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42)
@@ -167,7 +157,6 @@ public class formLogout extends javax.swing.JPanel {
     private com.kelompoka3.swing.ButtonCustom buttonCustom3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private com.kelompoka3.swing.MyTextField myTextField1;
     private com.kelompoka3.swing.Table tableSupplier;
     // End of variables declaration//GEN-END:variables
 }
