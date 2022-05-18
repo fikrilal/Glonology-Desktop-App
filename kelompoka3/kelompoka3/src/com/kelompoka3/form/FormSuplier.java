@@ -2,6 +2,7 @@ package com.kelompoka3.form;
 
 import com.kelompoka3.koneksi.koneksi;
 import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,13 +17,14 @@ public class FormSuplier extends javax.swing.JPanel {
     public FormSuplier() {
         initComponents();
         TampilanData();
+        jtable1.addTableStyle(jScrollPane2);
     }
     private void CariData(String Key){
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID Suplier");
         model.addColumn("Nama Suplier");
-        model.addColumn("Alamat");        
         model.addColumn("No Telfon");
+        model.addColumn("Alamat");
         model.addColumn("Keterangan");
         
         
@@ -83,59 +85,15 @@ public class FormSuplier extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         crBrg = new javax.swing.JTextField();
         btnTambah = new com.kelompoka3.swing.ButtonCustom();
         btnHapus = new com.kelompoka3.swing.ButtonCustom();
         btnEdit = new com.kelompoka3.swing.ButtonCustom();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtable1 = new com.kelompoka3.swing.Table();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jtable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID Suplier", "Nama Suplier", "No HP", "Alamat", "Keterangan"
-            }
-        ));
-        jtable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jtable1);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png"))); // NOI18N
         jLabel1.setText("Cari Barang");
@@ -171,25 +129,39 @@ public class FormSuplier extends javax.swing.JPanel {
             }
         });
 
+        jtable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "", "", "", "", ""
+            }
+        ));
+        jScrollPane2.setViewportView(jtable1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1015, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 197, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 153, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1015, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,9 +173,9 @@ public class FormSuplier extends javax.swing.JPanel {
                     .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -217,46 +189,6 @@ public class FormSuplier extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
-        // TODO add your handling code here:
-
-        /**  int baris = jtable1.rowAtPoint(evt.getPoint());
-        if(jtable1.getValueAt(baris, 0)==null){
-            idBrg.setText("");
-        }else{
-            idBrg.setText(jtable1.getValueAt(baris, 0).toString());
-        }
-        if(jtable1.getValueAt(baris, 1)==null){
-            nmBrg.setText("");
-        }else{
-            nmBrg.setText(jtable1.getValueAt(baris, 1).toString());
-        }
-        if(jtable1.getValueAt(baris, 2)==null){
-            jnsBrg.setText("");
-        }else{
-            jnsBrg.setText(jtable1.getValueAt(baris, 2).toString());
-        }
-        if(jtable1.getValueAt(baris, 3)==null){
-            wrnBrg.setText("");
-        }else{
-            wrnBrg.setText(jtable1.getValueAt(baris, 3).toString());
-        }
-        if(jtable1.getValueAt(baris, 4)==null){
-            hrgJual.setText("");
-        }else{
-            hrgJual.setText(jtable1.getValueAt(baris, 4).toString());
-        }
-        if(jtable1.getValueAt(baris, 5)==null){
-            hrgBrgBeli.setText("");
-        }else{
-            hrgBrgBeli.setText(jtable1.getValueAt(baris, 5).toString());
-        }if(jtable1.getValueAt(baris, 6)==null){
-            stokBrg.setText("");
-        }else{
-            stokBrg.setText(jtable1.getValueAt(baris, 6).toString());
-        } **/
-    }//GEN-LAST:event_jtable1MouseClicked
 
     private void crBrgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crBrgKeyReleased
         String key=crBrg.getText();
@@ -291,7 +223,7 @@ public class FormSuplier extends javax.swing.JPanel {
     private javax.swing.JTextField crBrg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private com.kelompoka3.swing.Table jtable1;
     // End of variables declaration//GEN-END:variables
 }

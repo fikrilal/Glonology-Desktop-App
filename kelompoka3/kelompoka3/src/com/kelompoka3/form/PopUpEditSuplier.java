@@ -17,6 +17,7 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
     public PopUpEditSuplier() {
         initComponents();
         TampilanData();
+        jtable1.addTableStyle(jScrollPane2);
     }
      private void EditData(){
         String sql = "UPDATE suplier SET `idSuplier` = '"+idSup.getText()+"', `namaSuplier` = '" +nmSup.getText()+"', `noHp` = '"+NoHP.getText()+"', `alamat` = '"+Alamat.getText()+"', `keterangan` = '"+keterangan1.getText()+"' WHERE suplier.idSuplier = '"+idSup.getText()+"'" ;
@@ -77,12 +78,12 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
         NoHP = new javax.swing.JTextField();
         idSup = new javax.swing.JTextField();
         Alamat = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         keterangan1 = new javax.swing.JTextField();
         btnEdit = new com.kelompoka3.swing.ButtonCustom();
         btnBatal = new com.kelompoka3.swing.ButtonCustom();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtable1 = new com.kelompoka3.swing.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,30 +109,6 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
             }
         });
 
-        jtable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID Suplier", "Nama Suplier", "No HP", "Alamat", "Keterangan"
-            }
-        ));
-        jtable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jtable1);
-
         jLabel1.setText("Keterangan");
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Edit Square.png"))); // NOI18N
@@ -151,6 +128,24 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
             }
         });
 
+        jtable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jtable1);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -163,7 +158,6 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nBarang)
@@ -176,10 +170,11 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
                             .addComponent(Alamat)
                             .addComponent(nmSup)
                             .addComponent(NoHP)
+                            .addComponent(keterangan1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(idSup, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(keterangan1))))
+                            .addComponent(jScrollPane2))))
                 .addGap(57, 57, 57))
         );
         jPanel2Layout.setVerticalGroup(
@@ -208,9 +203,9 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,7 +218,7 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         pack();
@@ -236,9 +231,27 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_nmSupActionPerformed
 
+    private void idSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idSupActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idSupActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+         EditData();
+        idSup.setText("");
+        nmSup.setText("");
+        NoHP.setText("");
+        Alamat.setText("");
+        keterangan1.setText("");
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBatalActionPerformed
+
     private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
         // TODO add your handling code here:
-
         int baris = jtable1.rowAtPoint(evt.getPoint());
         if(jtable1.getValueAt(baris, 0)==null){
             idSup.setText("");
@@ -266,25 +279,6 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
             keterangan1.setText(jtable1.getValueAt(baris, 4).toString());
         }
     }//GEN-LAST:event_jtable1MouseClicked
-
-    private void idSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idSupActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idSupActionPerformed
-
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
-         EditData();
-        idSup.setText("");
-        nmSup.setText("");
-        NoHP.setText("");
-        Alamat.setText("");
-        keterangan1.setText("");
-    }//GEN-LAST:event_btnEditActionPerformed
-
-    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_btnBatalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,8 +325,8 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
     private javax.swing.JLabel jBarang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private com.kelompoka3.swing.Table jtable1;
     private javax.swing.JTextField keterangan1;
     private javax.swing.JLabel nBarang;
     private javax.swing.JTextField nmSup;
