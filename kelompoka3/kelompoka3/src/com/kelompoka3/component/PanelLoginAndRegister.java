@@ -29,7 +29,6 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         initLogin();
         login.setVisible(false);
         register.setVisible(true);
-
     }
 
     private void initRegister(ActionListener eventRegister) {

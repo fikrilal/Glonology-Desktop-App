@@ -5,6 +5,7 @@
  */
 package com.kelompoka3.form;
 
+import com.kelompoka3.component.pesanLogout;
 import com.kelompoka3.koneksi.koneksi;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -149,7 +150,7 @@ public class formLogout extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
-        // TODO add your handling code here:
+   
     }//GEN-LAST:event_buttonCustom1ActionPerformed
 
     private void myTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myTextField1ActionPerformed
