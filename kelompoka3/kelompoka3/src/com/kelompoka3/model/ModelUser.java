@@ -2,6 +2,12 @@ package com.kelompoka3.model;
 
 public class ModelUser {
 
+    public ModelUser(String username, String password, String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
     public int getUserId() {
         return userId;
     }
@@ -87,4 +93,6 @@ public class ModelUser {
     private String password;
     private String alamat;
     private String verifyCode;
+
+   
 }

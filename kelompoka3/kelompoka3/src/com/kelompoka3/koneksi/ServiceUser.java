@@ -1,5 +1,6 @@
 package com.kelompoka3.koneksi;
 
+import com.kelompoka3.model.ModelLogin;
 import com.kelompoka3.model.ModelUser;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,22 @@ public class ServiceUser {
 
     public ServiceUser() {
         con = DatabaseConnection.getInstance().getConnection();
+    }
+    public ModelUser login(ModelLogin login) throws SQLException {
+        ModelUser data = null;
+        PreparedStatement p = con.prepareStatement(" username, password from `pegawai` where BINARY(username)=? and BINARY(`password`)=? and `Status`='Verified' limit 1");
+        p.setString(1, login.getUsername());
+        p.setString(2, login.getPassword());
+        ResultSet r = p.executeQuery();
+        if (r.first()) {
+            
+            String username = r.getString(1);
+            String password = r.getString(2);
+            data = new ModelUser(username, password, "");
+        }
+        r.close();
+        p.close();
+        return data;
     }
 
     public void insertUser(ModelUser user) throws SQLException {
@@ -110,4 +127,6 @@ public class ServiceUser {
         p.close();
         return verify;
     }
+
+   
 }

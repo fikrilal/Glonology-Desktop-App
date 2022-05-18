@@ -8,13 +8,18 @@ import com.kelompoka3.form.formDashboard;
 import com.kelompoka3.form.formHistory;
 import com.kelompoka3.form.formLogout;
 import com.kelompoka3.form.formTransaksi;
+import com.kelompoka3.model.ModelUser;
 import java.awt.Color;
 import java.awt.Component;
 
 public class main extends javax.swing.JFrame {
-
-    public main() {
+private final ModelUser user;
+    public main(ModelUser user) {
         initComponents();
+        this.user = user;
+        
+        getContentPane().setBackground(new Color(255, 255, 255));
+        
         getContentPane().setBackground(new Color(113, 135, 116));
         menuEvent event = new menuEvent() {
             @Override
@@ -40,6 +45,7 @@ public class main extends javax.swing.JFrame {
                 } else {
                     showForm(new form(index + ""));
                 }
+                
             }
         };
         menuSidebar.initMenu(event);
@@ -119,7 +125,7 @@ public class main extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(ModelUser user) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -147,7 +153,7 @@ public class main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main().setVisible(true);
+                new main(user).setVisible(true);
             }
         });
     }

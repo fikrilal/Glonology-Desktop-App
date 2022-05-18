@@ -1,5 +1,6 @@
 package com.kelompoka3.component;
 
+import com.kelompoka3.model.ModelLogin;
 import com.kelompoka3.model.ModelUser;
 import com.kelompoka3.swing.ButtonCustom;
 import com.kelompoka3.swing.MyPasswordField;
@@ -16,6 +17,11 @@ import javax.swing.JLabel;
 import net.miginfocom.swing.MigLayout;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
+    
+    public ModelLogin getDataLogin() {
+        return dataLogin;
+    
+    }
 
     public ModelUser getUser() {
         return user;
@@ -23,15 +29,17 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
     private ModelUser user;
     
-    public PanelLoginAndRegister(ActionListener eventRegister) {
+    private ModelLogin dataLogin;
+    
+     public PanelLoginAndRegister(ActionListener eventRegister, ActionListener eventLogin) {
         initComponents();
         initRegister(eventRegister);
-        initLogin();
+        initLogin(eventLogin);
         login.setVisible(false);
         register.setVisible(true);
-
     }
-
+    
+    
     private void initRegister(ActionListener eventRegister) {
         register.setLayout(new MigLayout("wrap", "push[center]push", "push[]12[]32[]18[]18[]18[]18[]32[]push"));
         JLabel judul = new JLabel("Create an Account");
@@ -94,7 +102,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         });
     }
 
-    private void initLogin() {
+    private void initLogin(ActionListener eventLogin) {
         login.setLayout(new MigLayout("wrap", "push[center]push", "push[]32[]18[]12[]32[]push"));
         JLabel judul = new JLabel("Sign In");
         judul.setFont(new Font("poppins", Font.BOLD, 20));
@@ -113,7 +121,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         txtPassword.setHint("Password");
         login.add(txtPassword, "w 60%");
 
-        JButton cmdForget = new JButton("                                                           Forgot your password?");
+        JButton cmdForget = new JButton("Forgot your password?");
         cmdForget.setForeground(new Color(47, 128, 237));
         cmdForget.setFont(new Font("poppins", Font.PLAIN, 14));
         cmdForget.setContentAreaFilled(false);
@@ -124,9 +132,19 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmd.setPreferredSize(new Dimension(384, 52));
         cmd.setBackground(new Color(113, 135, 116));
         cmd.setForeground(new Color(250, 250, 250));
+        cmd.addActionListener(eventLogin);
+        
         cmd.setFont(new Font("poppins", Font.BOLD, 14));
         cmd.setText("Sign In");
         login.add(cmd);
+         cmd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                String username = String.valueOf(txtUsername.getText());
+                String password = String.valueOf(txtPassword.getPassword());
+                dataLogin = new ModelLogin(username, password);
+            }
+        });
     }
 
     public void showRegister(boolean show) {
@@ -184,4 +202,10 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     private javax.swing.JPanel login;
     private javax.swing.JPanel register;
     // End of variables declaration//GEN-END:variables
+
+    
+
+   
+
+    
 }
