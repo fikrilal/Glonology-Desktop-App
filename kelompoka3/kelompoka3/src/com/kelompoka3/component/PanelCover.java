@@ -1,7 +1,6 @@
 package com.kelompoka3.component;
 
 import com.kelompoka3.swing.ButtonCustom;
-import com.kelompoka3.swing.ButtonCustomOutline;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -16,7 +15,6 @@ import java.text.DecimalFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 
 public class PanelCover extends javax.swing.JPanel {
@@ -27,6 +25,7 @@ public class PanelCover extends javax.swing.JPanel {
     private JLabel title;
     private JLabel description;
     private JLabel description1;
+    private panelGambar gambar;
     private ButtonCustom Outlinebtn;
     private boolean isLogin;
 
@@ -49,6 +48,10 @@ public class PanelCover extends javax.swing.JPanel {
         description.setFont(new Font("poppins", Font.PLAIN, 14));
         description.setForeground(new Color(242, 242, 242));
         add(description);
+        
+//        gambar = new panelGambar();
+//        add(gambar);
+        
 
         Outlinebtn = new ButtonCustom();
         Outlinebtn.setPreferredSize(new Dimension(384, 52));
@@ -154,12 +157,16 @@ public class PanelCover extends javax.swing.JPanel {
     private void login(boolean login) {
         if (this.isLogin != login) {
             if (login) {
-                title.setText("Lorem Ipsum 1");
-                description.setText("Deskripsi Lorem Ipsum 1");
+                title.setText("Meet Our Dashboard");
+                description.setText("<html>Cara termudah untuk mengelola transaksi, "
+                + "dilengkapi dengan<center>laporan penjualan dan statistik bulanan."
+                + "</center> </html>");
                 Outlinebtn.setText("Create Account");
             } else {
-                title.setText("Lorem Ipsum 2");
-                description.setText("Deskripsi Lorem Ipsum 2");
+                title.setText("Meet Our Dashboard");
+                description.setText("<html>Cara termudah untuk mengelola transaksi, "
+                + "dilengkapi dengan<center>laporan penjualan dan statistik bulanan."
+                + "</center> </html>");
                 Outlinebtn.setText("Sign In");
             }
             this.isLogin = login;
