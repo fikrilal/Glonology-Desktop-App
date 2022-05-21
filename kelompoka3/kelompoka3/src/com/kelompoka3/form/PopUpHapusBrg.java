@@ -21,6 +21,7 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
     public PopUpHapusBrg() {
         initComponents();        
         TampilanData();
+         table1.addTableStyle(jScrollPane1);
     }
     private void HapusData(){
         idBarang=String.valueOf(idBrg.getText());
@@ -45,6 +46,7 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
         model.addColumn("Harga Jual");
         model.addColumn("Harga Beli");        
         model.addColumn("Stok");
+        model.addColumn("Barcode");
         
         String sql="SELECT * FROM `barang`";
         System.out.println(sql);
@@ -55,11 +57,11 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
             java.sql.ResultSet rs = stm.executeQuery();
            
             while(rs.next()){
-                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), rs.getString(7)});
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), rs.getString(7), rs.getString(8)});
                 
                 
             }
-            jtable1.setModel(model);            
+            table1.setModel(model);            
         }catch(Exception e){
             e.getMessage();
         }
@@ -89,12 +91,14 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
         wrnBrg = new javax.swing.JTextField();
         Stok = new javax.swing.JLabel();
         stokBrg = new javax.swing.JTextField();
-        Hapus = new javax.swing.JButton();
-        Batal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtable1 = new javax.swing.JTable();
+        table1 = new com.kelompoka3.swing.Table();
+        btnHapus = new com.kelompoka3.swing.ButtonCustom();
+        btnBatal = new com.kelompoka3.swing.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         nBarang.setText("Nama Barang");
 
@@ -128,53 +132,49 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
 
         Stok.setText("Stok");
 
-        Hapus.setText("Hapus");
-        Hapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HapusActionPerformed(evt);
-            }
-        });
-
-        Batal.setText("Batal");
-        Batal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BatalActionPerformed(evt);
-            }
-        });
-
-        jtable1.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID Barang", "Nama Barang", "Jenis Barang", "Warna", "Harga Jual", "Harga Beli", "Stok"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable1MouseClicked(evt);
+                table1MouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtable1);
+        jScrollPane1.setViewportView(table1);
+
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Delete-1.png"))); // NOI18N
+        btnHapus.setText("H A P U S");
+        btnHapus.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        btnBatal.setText(" B A T A L");
+        btnBatal.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nBarang)
                             .addComponent(jBarang)
@@ -195,12 +195,15 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(Hapus)
+                                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(Batal))
+                                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(idBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(57, 57, 57))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(57, 57, 57))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,13 +235,12 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stokBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Stok))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Hapus)
-                    .addComponent(Batal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -275,62 +277,55 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_hrgBrgBeliActionPerformed
 
-    private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
+    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
         // TODO add your handling code here:
-        HapusData();
-        /**idBrg.setText("");
-        nmBrg.setText("");
-        jnsBrg.setText("");
-        wrnBrg.setText("");
-        hrgJual.setText("");
-        hrgBrgBeli.setText("");
-        stokBrg.setText("");**/
-    }//GEN-LAST:event_HapusActionPerformed
-
-    private void BatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BatalActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_BatalActionPerformed
-
-    private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
-        // TODO add your handling code here:
-
-        int baris = jtable1.rowAtPoint(evt.getPoint());
-        if(jtable1.getValueAt(baris, 0)==null){
+        int baris = table1.rowAtPoint(evt.getPoint());
+        if(table1.getValueAt(baris, 0)==null){
             idBrg.setText("");
         }else{
-            idBrg.setText(jtable1.getValueAt(baris, 0).toString());
+            idBrg.setText(table1.getValueAt(baris, 0).toString());
         }
-        if(jtable1.getValueAt(baris, 1)==null){
+        if(table1.getValueAt(baris, 1)==null){
             nmBrg.setText("");
         }else{
-            nmBrg.setText(jtable1.getValueAt(baris, 1).toString());
+            nmBrg.setText(table1.getValueAt(baris, 1).toString());
         }
-        if(jtable1.getValueAt(baris, 2)==null){
+        if(table1.getValueAt(baris, 2)==null){
             jnsBrg.setText("");
         }else{
-            jnsBrg.setText(jtable1.getValueAt(baris, 2).toString());
+            jnsBrg.setText(table1.getValueAt(baris, 2).toString());
         }
-        if(jtable1.getValueAt(baris, 3)==null){
+        if(table1.getValueAt(baris, 3)==null){
             wrnBrg.setText("");
         }else{
-            wrnBrg.setText(jtable1.getValueAt(baris, 3).toString());
+            wrnBrg.setText(table1.getValueAt(baris, 3).toString());
         }
-        if(jtable1.getValueAt(baris, 4)==null){
+        if(table1.getValueAt(baris, 4)==null){
             hrgJual.setText("");
         }else{
-            hrgJual.setText(jtable1.getValueAt(baris, 4).toString());
+            hrgJual.setText(table1.getValueAt(baris, 4).toString());
         }
-        if(jtable1.getValueAt(baris, 5)==null){
+        if(table1.getValueAt(baris, 5)==null){
             hrgBrgBeli.setText("");
         }else{
-            hrgBrgBeli.setText(jtable1.getValueAt(baris, 5).toString());
-        }if(jtable1.getValueAt(baris, 6)==null){
+            hrgBrgBeli.setText(table1.getValueAt(baris, 5).toString());
+        }if(table1.getValueAt(baris, 6)==null){
             stokBrg.setText("");
         }else{
-            stokBrg.setText(jtable1.getValueAt(baris, 6).toString());
+            stokBrg.setText(table1.getValueAt(baris, 6).toString());
         }
-    }//GEN-LAST:event_jtable1MouseClicked
+       
+    }//GEN-LAST:event_table1MouseClicked
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        HapusData();
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBatalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,10 +363,10 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Batal;
-    private javax.swing.JButton Hapus;
     private javax.swing.JLabel IDbrg;
     private javax.swing.JLabel Stok;
+    private com.kelompoka3.swing.ButtonCustom btnBatal;
+    private com.kelompoka3.swing.ButtonCustom btnHapus;
     private javax.swing.JLabel hrg;
     private javax.swing.JLabel hrg1;
     private javax.swing.JTextField hrgBrgBeli;
@@ -381,10 +376,10 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jnsBrg;
-    private javax.swing.JTable jtable1;
     private javax.swing.JLabel nBarang;
     private javax.swing.JTextField nmBrg;
     private javax.swing.JTextField stokBrg;
+    private com.kelompoka3.swing.Table table1;
     private javax.swing.JLabel wrn;
     private javax.swing.JTextField wrnBrg;
     // End of variables declaration//GEN-END:variables
