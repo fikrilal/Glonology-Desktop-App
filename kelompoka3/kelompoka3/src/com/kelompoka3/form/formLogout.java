@@ -5,7 +5,6 @@
  */
 package com.kelompoka3.form;
 
-import com.kelompoka3.component.pesanLogout;
 import com.kelompoka3.koneksi.koneksi;
 import java.sql.Connection;
 import java.sql.SQLException;

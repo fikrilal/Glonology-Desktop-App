@@ -168,11 +168,11 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 this.dispose();
                 new main().setVisible(true);
             } else {
-                showPesan(Pesan.PesanType.ERROR, "Email and Password incorrect");
+                showPesan(Pesan.PesanType.ERROR, "Email atau password salah");
             }
 
         } catch (SQLException e) {
-            showPesan(Pesan.PesanType.ERROR, "Error Login" + e.getMessage());
+            showPesan(Pesan.PesanType.ERROR, "Kesalahan login" + e.getMessage());
         } 
 
     }

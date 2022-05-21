@@ -49,8 +49,8 @@ public class PanelCover extends javax.swing.JPanel {
         description.setForeground(new Color(242, 242, 242));
         add(description);
         
-//        gambar = new panelGambar();
-//        add(gambar);
+        gambar = new panelGambar();
+        add(gambar);
         
 
         Outlinebtn = new ButtonCustom();
