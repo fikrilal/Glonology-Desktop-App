@@ -3,9 +3,9 @@ package com.kelompoka3.cell;
 import com.kelompoka3.model.ModelidBarang;
 import com.raven.table.cell.Cell;
 
-public class CellidBarang extends Cell {
+public class CellidBarangRender extends Cell {
 
-    public CellidBarang(ModelidBarang data) {
+    public CellidBarangRender(ModelidBarang data) {
         initComponents();
         lb.setText(data.toString());
         image.setImage(data.getGambar());
@@ -31,10 +31,9 @@ public class CellidBarang extends Cell {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(lb)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(lb, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -42,9 +41,9 @@ public class CellidBarang extends Cell {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(32, 32, 32)
                         .addComponent(lb)))
                 .addGap(8, 8, 8))
         );
