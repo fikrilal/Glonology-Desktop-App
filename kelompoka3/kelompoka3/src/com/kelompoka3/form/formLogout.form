@@ -46,7 +46,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="buttonCustom1" min="-2" pref="140" max="-2" attributes="0"/>
+                  <Component id="buttonTambah" min="-2" pref="140" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="304" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -59,7 +59,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                  <Component id="buttonCustom1" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="buttonTambah" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" pref="631" max="32767" attributes="0"/>
               </Group>
@@ -67,15 +67,15 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="com.kelompoka3.swing.ButtonCustom" name="buttonCustom1">
+        <Component class="com.kelompoka3.swing.ButtonCustom" name="buttonTambah">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tambah Supplier"/>
+            <Property name="text" type="java.lang.String" value="Tambah Barang"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustom1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonTambahActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">

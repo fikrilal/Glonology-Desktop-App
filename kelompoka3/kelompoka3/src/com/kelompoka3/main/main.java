@@ -8,8 +8,10 @@ import com.kelompoka3.form.formDashboard;
 import com.kelompoka3.form.formHistory;
 import com.kelompoka3.form.formLogout;
 import com.kelompoka3.form.formTransaksi;
+import com.kelompoka3.koneksi.DatabaseConnection;
 import java.awt.Color;
 import java.awt.Component;
+import java.sql.SQLException;
 
 public class main extends javax.swing.JFrame {
 
@@ -147,6 +149,11 @@ public class main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    DatabaseConnection.getInstance().connectToDatabase();
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
                 new main().setVisible(true);
             }
         });

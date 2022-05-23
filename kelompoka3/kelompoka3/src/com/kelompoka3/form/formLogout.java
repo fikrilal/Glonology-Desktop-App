@@ -30,16 +30,16 @@ public class formLogout extends javax.swing.JPanel {
         table1.addTableCell(new CellHargaBeli(), 5);
         table1.addTableCell(new CellStok(), 6);
         table1.addTableCell(new CellAction(), 8);
-        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 20000000, 20000000, 12, null), false);
-        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 20000000, 20000000, 12, null), false);
-        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 20000000, 20000000, 12, null), false);
-        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
-        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
-        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
-        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
-        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
-        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
-        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
+table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",20000000, 20000000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",20000000, 20000000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",20000000, 20000000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", "",10000, 10000, 12, null), false);
 //        table1.editRowAt(0);
     }
 
@@ -48,7 +48,7 @@ public class formLogout extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
+        buttonTambah = new com.kelompoka3.swing.ButtonCustom();
         jScrollPane2 = new javax.swing.JScrollPane();
         table1 = new com.kelompoka3.swing.TableBarang();
 
@@ -56,11 +56,11 @@ public class formLogout extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        buttonCustom1.setText("Tambah Supplier");
-        buttonCustom1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        buttonCustom1.addActionListener(new java.awt.event.ActionListener() {
+        buttonTambah.setText("Tambah Barang");
+        buttonTambah.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCustom1ActionPerformed(evt);
+                buttonTambahActionPerformed(evt);
             }
         });
 
@@ -99,7 +99,7 @@ public class formLogout extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(304, 304, 304))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
@@ -109,7 +109,7 @@ public class formLogout extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE))
         );
@@ -128,9 +128,9 @@ public class formLogout extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
-
-    }//GEN-LAST:event_buttonCustom1ActionPerformed
+    private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
+        table1.insertRowWithEdit(new ModelBarang(new ModelidBarang("", null, ""), "", "", "", "", 0, 0, 0, null), 0, true);
+    }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void myTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myTextField1ActionPerformed
         // TODO add your handling code here:
@@ -138,7 +138,7 @@ public class formLogout extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.kelompoka3.swing.ButtonCustom buttonCustom1;
+    private com.kelompoka3.swing.ButtonCustom buttonTambah;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private com.kelompoka3.swing.TableBarang table1;

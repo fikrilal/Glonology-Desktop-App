@@ -42,7 +42,8 @@ public class CellStok extends TableCustomCell {
 
     @Override
     public Object getData() {
-        return txt.getText().trim();
+        String stok = txt.getText().trim();
+        return stok;
     }
 
     @Override
