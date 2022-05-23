@@ -97,4 +97,6 @@ public class Pesan extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel labelPesan;
     // End of variables declaration//GEN-END:variables
+
+   
 }

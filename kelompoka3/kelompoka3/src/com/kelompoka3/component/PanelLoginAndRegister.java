@@ -1,5 +1,6 @@
 package com.kelompoka3.component;
 
+import com.kelompoka3.model.ModelLogin;
 import com.kelompoka3.model.ModelUser;
 import com.kelompoka3.swing.ButtonCustom;
 import com.kelompoka3.swing.MyPasswordField;
@@ -17,19 +18,26 @@ import net.miginfocom.swing.MigLayout;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
+    /**
+     * @return the dataLogin
+     */
+    public ModelLogin getDataLogin() {
+        return dataLogin;
+    }
+
     public ModelUser getUser() {
         return user;
     }
 
     private ModelUser user;
-    
-    public PanelLoginAndRegister(ActionListener eventRegister) {
+    private ModelLogin dataLogin;
+
+    public PanelLoginAndRegister(ActionListener eventRegister, ActionListener eventLogin) {
         initComponents();
         initRegister(eventRegister);
-        initLogin();
+        initLogin(eventLogin);
         login.setVisible(false);
         register.setVisible(true);
-
     }
 
     private void initRegister(ActionListener eventRegister) {
@@ -42,7 +50,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         deskripsi.setFont(new Font("poppins", Font.PLAIN, 14));
         deskripsi.setForeground(new Color(130, 130, 130));
         register.add(deskripsi);
-        
+
         MyTextField txtName = new MyTextField();
         txtName.setPreferredSize(new Dimension(400, 52));
         txtName.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Profile.png")));
@@ -89,12 +97,12 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
                 String username = txtUsername.getText().trim();
                 String password = String.valueOf(txtPassword.getPassword());
                 String alamat = txtAlamat.getText().trim();
-                user = new ModelUser(0, namaLengkap, email, username, password, alamat);               
+                user = new ModelUser(0, namaLengkap, email, username, password, alamat);
             }
         });
     }
 
-    private void initLogin() {
+    private void initLogin(ActionListener eventLogin) {
         login.setLayout(new MigLayout("wrap", "push[center]push", "push[]12[]32[]18[]12[]32[]push"));
         JLabel judul = new JLabel("Sign");
         JLabel deskripsi = new JLabel("Selamat datang kembali!");
@@ -105,11 +113,11 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         deskripsi.setForeground(new Color(130, 130, 130));
         login.add(deskripsi);
 
-        MyTextField txtUsername = new MyTextField();
-        txtUsername.setPreferredSize(new Dimension(400, 52));
-        txtUsername.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Profile.png")));
-        txtUsername.setHint("Username");
-        login.add(txtUsername, "w 60%");
+        MyTextField txtEmail = new MyTextField();
+        txtEmail.setPreferredSize(new Dimension(400, 52));
+        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Profile.png")));
+        txtEmail.setHint("Email");
+        login.add(txtEmail, "w 60%");
 
         MyPasswordField txtPassword = new MyPasswordField();
         txtPassword.setPreferredSize(new Dimension(400, 52));
@@ -128,9 +136,18 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmd.setPreferredSize(new Dimension(384, 52));
         cmd.setBackground(new Color(113, 135, 116));
         cmd.setForeground(new Color(250, 250, 250));
+        cmd.addActionListener(eventLogin);
         cmd.setFont(new Font("poppins", Font.BOLD, 14));
         cmd.setText("Sign In");
         login.add(cmd);
+        cmd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                String email = txtEmail.getText().trim();
+                String password = String.valueOf(txtPassword.getPassword());
+                dataLogin = new ModelLogin(email, password);
+            }
+        });
     }
 
     public void showRegister(boolean show) {

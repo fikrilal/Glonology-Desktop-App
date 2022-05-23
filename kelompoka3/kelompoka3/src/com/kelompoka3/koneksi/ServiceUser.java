@@ -1,5 +1,6 @@
 package com.kelompoka3.koneksi;
 
+import com.kelompoka3.model.ModelLogin;
 import com.kelompoka3.model.ModelUser;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,22 @@ public class ServiceUser {
 
     public ServiceUser() {
         con = DatabaseConnection.getInstance().getConnection();
+    }
+    public ModelUser login(ModelLogin login) throws SQLException {
+        ModelUser data = null;
+        PreparedStatement p = con.prepareStatement(" SELECT userId, email, password from `pegawai` where BINARY(email)=? and BINARY(`password`)=? and `Status`='Verified' limit 1");
+        p.setString(1, login.getEmail());
+        p.setString(2, login.getPassword());
+        ResultSet r = p.executeQuery();
+        if (r.first()) {
+            int userId = r.getInt(1);
+            String email = r.getString(2);
+            String username = r.getString(3);
+            data = new ModelUser(userId, email, username, "");
+        }
+        r.close();
+        p.close();
+        return data;
     }
 
     public void insertUser(ModelUser user) throws SQLException {
@@ -85,7 +102,7 @@ public class ServiceUser {
     }
 
     public void succesVerify(int userId) throws SQLException {
-        PreparedStatement p = con.prepareStatement("UPDATE `pegawai` SET `verifyCode` = 'Null', `status` = 'Verified' WHERE `userId` = ? limit 1 ");
+        PreparedStatement p = con.prepareStatement("UPDATE `pegawai` SET `verifyCode` = '', `status` = 'Verified' WHERE `userId` = ? limit 1 ");
         p.setInt(1, userId);
         p.execute();
         p.close();
@@ -104,4 +121,6 @@ public class ServiceUser {
         p.close();
         return verify;
     }
+
+   
 }

@@ -1,50 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.kelompoka3.form;
 
-import com.kelompoka3.koneksi.koneksi;
-import java.sql.Connection;
-import java.sql.SQLException;
-import javax.swing.table.DefaultTableModel;
+import com.kelompoka3.cell.CellAction;
+import com.kelompoka3.cell.CellHargaBeli;
+import com.kelompoka3.cell.CellHargaJual;
+import com.kelompoka3.cell.CellJenis;
+import com.kelompoka3.cell.CellNamaBarang;
+import com.kelompoka3.cell.CellName;
+import com.kelompoka3.cell.CellStok;
+import com.kelompoka3.cell.CellWarna;
+import com.kelompoka3.model.ModelBarang;
+import com.kelompoka3.model.ModelidBarang;
+import javax.swing.ImageIcon;
 
-/**
- *
- * @author fikrimuzakky24
- */
 public class formLogout extends javax.swing.JPanel {
 
-    /**
-     * Creates new form formLogout
-     */
     public formLogout() {
+        setOpaque(false);
         initComponents();
-        tampilSupplier();
-        tableSupplier.addTableStyle(jScrollPane1);
+        initDataTable();
+        table1.addTableStyle(jScrollPane2);
     }
 
-    private void tampilSupplier() {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("ID Suplier");
-        model.addColumn("Nama Suplier");
-        model.addColumn("No Telfon");
-        model.addColumn("Alamat");
-        model.addColumn("Keterangan");
-        try {
-            String sql = "SELECT * FROM suplier";
-            java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet rs = stm.executeQuery(sql);
-            while (rs.next()) {
-                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)});
-            }
-            tableSupplier.setModel(model);
-
-        } catch (SQLException e) {
-
-        }
+    private void initDataTable() {
+        table1.addTableCell(new CellName(), 0);
+        table1.addTableCell(new CellNamaBarang(), 1);
+        table1.addTableCell(new CellJenis(), 2);
+        table1.addTableCell(new CellWarna(), 3);
+        table1.addTableCell(new CellHargaJual(), 4);
+        table1.addTableCell(new CellHargaBeli(), 5);
+        table1.addTableCell(new CellStok(), 6);
+        table1.addTableCell(new CellAction(), 8);
+        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 20000000, 20000000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 20000000, 20000000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 20000000, 20000000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
+        table1.addRow(new ModelBarang(new ModelidBarang("12345", new ImageIcon(getClass().getResource("/com/kelompoka3/image/cpu1.jpg")), ""), "Asus Zenbook 14X", "Laptop", "Biru", 10000, 10000, 12, null), false);
+//        table1.editRowAt(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,10 +49,8 @@ public class formLogout extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
-        buttonCustom2 = new com.kelompoka3.swing.ButtonCustom();
-        buttonCustom3 = new com.kelompoka3.swing.ButtonCustom();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableSupplier = new com.kelompoka3.swing.Table();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new com.kelompoka3.swing.TableBarang();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -70,67 +64,63 @@ public class formLogout extends javax.swing.JPanel {
             }
         });
 
-        buttonCustom2.setText("Hapus");
-        buttonCustom2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        buttonCustom2.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
-
-        buttonCustom3.setText("Edit");
-        buttonCustom3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        buttonCustom3.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
-        buttonCustom3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCustom3ActionPerformed(evt);
-            }
-        });
-
-        tableSupplier.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id Barang", "Nama", "Jenis", "Warna", "Harga Jual", "Harga Beli", "Stok", "Barcode", "Action"
             }
         ));
-        jScrollPane1.setViewportView(tableSupplier);
+        table1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jScrollPane2.setViewportView(table1);
+        if (table1.getColumnModel().getColumnCount() > 0) {
+            table1.getColumnModel().getColumn(0).setPreferredWidth(180);
+            table1.getColumnModel().getColumn(0).setMaxWidth(180);
+            table1.getColumnModel().getColumn(1).setPreferredWidth(80);
+            table1.getColumnModel().getColumn(2).setPreferredWidth(100);
+            table1.getColumnModel().getColumn(2).setMaxWidth(100);
+            table1.getColumnModel().getColumn(3).setPreferredWidth(80);
+            table1.getColumnModel().getColumn(3).setMaxWidth(80);
+            table1.getColumnModel().getColumn(4).setPreferredWidth(100);
+            table1.getColumnModel().getColumn(4).setMaxWidth(100);
+            table1.getColumnModel().getColumn(5).setPreferredWidth(100);
+            table1.getColumnModel().getColumn(5).setMaxWidth(100);
+            table1.getColumnModel().getColumn(6).setPreferredWidth(60);
+            table1.getColumnModel().getColumn(6).setMaxWidth(60);
+            table1.getColumnModel().getColumn(7).setPreferredWidth(40);
+            table1.getColumnModel().getColumn(8).setPreferredWidth(100);
+            table1.getColumnModel().getColumn(8).setMaxWidth(100);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(492, 492, 492)
-                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(buttonCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(144, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(304, 304, 304))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1097, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonCustom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttonCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE))
+                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,24 +129,18 @@ public class formLogout extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_buttonCustom1ActionPerformed
 
     private void myTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_myTextField1ActionPerformed
 
-    private void buttonCustom3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCustom3ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.kelompoka3.swing.ButtonCustom buttonCustom1;
-    private com.kelompoka3.swing.ButtonCustom buttonCustom2;
-    private com.kelompoka3.swing.ButtonCustom buttonCustom3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private com.kelompoka3.swing.Table tableSupplier;
+    private javax.swing.JScrollPane jScrollPane2;
+    private com.kelompoka3.swing.TableBarang table1;
     // End of variables declaration//GEN-END:variables
 }

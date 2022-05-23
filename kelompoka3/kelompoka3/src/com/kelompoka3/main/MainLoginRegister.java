@@ -8,12 +8,14 @@ import com.kelompoka3.component.Pesan;
 import com.kelompoka3.koneksi.DatabaseConnection;
 import com.kelompoka3.koneksi.ServiceMail;
 import com.kelompoka3.koneksi.ServiceUser;
+import com.kelompoka3.model.ModelLogin;
 import com.kelompoka3.model.ModelMessage;
 import com.kelompoka3.model.ModelUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import javax.mail.Message;
 import javax.swing.JLayeredPane;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
@@ -34,7 +36,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
     private final DecimalFormat df = new DecimalFormat("##0.###");
     private ServiceUser service;
 
-    public MainLoginRegister() {
+        public MainLoginRegister() {
         initComponents();
         init();
     }
@@ -51,7 +53,14 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 register();
             }
         };
-        loginAndRegister = new PanelLoginAndRegister(eventRegister);
+        
+        ActionListener eventLogin = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                login();
+            }
+        };
+        loginAndRegister = new PanelLoginAndRegister(eventRegister, eventLogin );
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -149,6 +158,23 @@ public class MainLoginRegister extends javax.swing.JFrame {
         } catch (SQLException e) {
             showPesan(Pesan.PesanType.ERROR, "Registrasi gagal");
         }
+    }
+    
+    private void login() {
+         ModelLogin data = loginAndRegister.getDataLogin();
+         try {
+            ModelUser user = service.login(data);
+            if (user != null) {
+                this.dispose();
+                new main().setVisible(true);
+            } else {
+                showPesan(Pesan.PesanType.ERROR, "Email atau password salah");
+            }
+
+        } catch (SQLException e) {
+            showPesan(Pesan.PesanType.ERROR, "Kesalahan login" + e.getMessage());
+        } 
+
     }
 
     private void sendMain(ModelUser user) {
@@ -302,4 +328,9 @@ public class MainLoginRegister extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane background;
     // End of variables declaration//GEN-END:variables
-}
+
+    
+
+        
+    }
+

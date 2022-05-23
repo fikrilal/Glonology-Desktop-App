@@ -241,7 +241,28 @@ public class formTransaksi extends javax.swing.JPanel {
     }   }    
     
     private void kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeBarangActionPerformed
-  
+  if(kodeBarang.getText().length() == 0){
+              namaBarang.setText("");
+              hargaBarang.setText("");
+              quantity.setText("");
+          }
+          try {
+               String kb= kodeBarang.getText();
+//              if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String sql ="select * from barang where idBarang = '"+kb+"'";
+//                    +evt.getKeyChar() +"";
+            java.sql.Connection conn=(Connection)koneksi.koneksi();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            java.sql.ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+        namaBarang.setText(rs.getString("namaBarang"));
+        hargaBarang.setText(rs.getString("hargaJual"));
+            }
+            
+
+        }catch (SQLException e){
+            
+        }  
     }//GEN-LAST:event_kodeBarangActionPerformed
 
     private void namaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaBarangActionPerformed
@@ -266,24 +287,8 @@ cekstok();
 
     private void kodeBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodeBarangKeyTyped
           filterhuruf(evt);
-          if(kodeBarang.getText().toString().length() == 0){
-              namaBarang.setText("");
-              hargaBarang.setText("");
-              quantity.setText("");
-          }
-          try {
-            String sql ="select * from barang where idBarang = "+evt.getKeyChar() +"";
-            java.sql.Connection conn=(Connection)koneksi.koneksi();
-            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            java.sql.ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-        namaBarang.setText(rs.getString("namaBarang"));
-        hargaBarang.setText(rs.getString("hargaJual"));
-            }
-
-        }catch (SQLException e){
-            
-        }  
+         
+          
 
     }//GEN-LAST:event_kodeBarangKeyTyped
 

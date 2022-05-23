@@ -27,6 +27,7 @@ public class formBarang extends javax.swing.JPanel {
     public formBarang() {
         initComponents();
         TampilanData();
+        table1.addTableStyle(jScrollPane1);
         
     }
      private void CariData(String Key){
@@ -38,6 +39,7 @@ public class formBarang extends javax.swing.JPanel {
         model.addColumn("Harga Jual");
         model.addColumn("Harga Beli");        
         model.addColumn("Stok");
+        model.addColumn("Barcode");
         
         String sql="SELECT * FROM barang WHERE namaBarang LIKE '%"+Key+"%'";
         System.out.println(sql);
@@ -47,10 +49,10 @@ public class formBarang extends javax.swing.JPanel {
             java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet rs = stm.executeQuery();
             while(rs.next()){
-                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), rs.getString(7)});
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), rs.getString(7), rs.getString(8)});
                 
             }
-            jtable1.setModel(model);            
+            table1.setModel(model);            
         }catch(Exception e){
             e.getMessage();
         }
@@ -66,6 +68,7 @@ public class formBarang extends javax.swing.JPanel {
         model.addColumn("Harga Jual");
         model.addColumn("Harga Beli");        
         model.addColumn("Stok");
+        model.addColumn("Barcode");
         
         String sql="SELECT * FROM `barang`";
         System.out.println(sql);
@@ -76,11 +79,11 @@ public class formBarang extends javax.swing.JPanel {
             java.sql.ResultSet rs = stm.executeQuery();
            
             while(rs.next()){
-                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), rs.getString(7)});
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), rs.getString(7), rs.getString(8)});
                 
                 
             }
-            jtable1.setModel(model);            
+            table1.setModel(model);            
         }catch(Exception e){
             e.getMessage();
         }
@@ -97,90 +100,66 @@ public class formBarang extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        hps1 = new javax.swing.JButton();
-        edit1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtable1 = new javax.swing.JTable();
-        tbh1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnEdit = new com.kelompoka3.swing.ButtonCustom();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table1 = new com.kelompoka3.swing.Table();
+        btnTambah = new com.kelompoka3.swing.ButtonCustom();
         crBrg = new javax.swing.JTextField();
+        btnHapus = new com.kelompoka3.swing.ButtonCustom();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        hps1.setBackground(new java.awt.Color(255, 0, 0));
-        hps1.setText("Hapus");
-        hps1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hps1ActionPerformed(evt);
-            }
-        });
-
-        edit1.setText("Edit");
-        edit1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edit1ActionPerformed(evt);
-            }
-        });
-
-        jtable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID Barang", "Nama Barang", "Jenis Barang", "Warna", "Harga Jual", "Harga Beli", "Stok"
-            }
-        ));
-        jtable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jtable1);
-
-        tbh1.setBackground(new java.awt.Color(0, 102, 102));
-        tbh1.setText("Tambah");
-        tbh1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbh1ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Cari Barang");
 
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Edit Square.png"))); // NOI18N
+        btnEdit.setText("E D I T");
+        btnEdit.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(table1);
+
+        btnTambah.setText("+ T A M B A H ");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
+
+        crBrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crBrgActionPerformed(evt);
+            }
+        });
         crBrg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 crBrgKeyReleased(evt);
+            }
+        });
+
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Delete-1.png"))); // NOI18N
+        btnHapus.setText("H A P U S");
+        btnHapus.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
             }
         });
 
@@ -191,39 +170,43 @@ public class formBarang extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
+                        .addGap(13, 13, 13)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tbh1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(hps1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(edit1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1095, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1049, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tbh1)
-                    .addComponent(hps1)
-                    .addComponent(edit1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                    .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,76 +216,15 @@ public class formBarang extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void hps1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hps1ActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        new PopUpHapusBrg().setVisible(true);
-        //       HapusData();
-    }//GEN-LAST:event_hps1ActionPerformed
-
-    private void edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit1ActionPerformed
-        // TODO add your handling code here:
-        // EditData();
         new PopUpEditBrg().setVisible(true);
-    }//GEN-LAST:event_edit1ActionPerformed
+    }//GEN-LAST:event_btnEditActionPerformed
 
-    private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
-
-        /**  int baris = jtable1.rowAtPoint(evt.getPoint());
-        if(jtable1.getValueAt(baris, 0)==null){
-            idBrg.setText("");
-        }else{
-            idBrg.setText(jtable1.getValueAt(baris, 0).toString());
-        }
-        if(jtable1.getValueAt(baris, 1)==null){
-            nmBrg.setText("");
-        }else{
-            nmBrg.setText(jtable1.getValueAt(baris, 1).toString());
-        }
-        if(jtable1.getValueAt(baris, 2)==null){
-            jnsBrg.setText("");
-        }else{
-            jnsBrg.setText(jtable1.getValueAt(baris, 2).toString());
-        }
-        if(jtable1.getValueAt(baris, 3)==null){
-            wrnBrg.setText("");
-        }else{
-            wrnBrg.setText(jtable1.getValueAt(baris, 3).toString());
-        }
-        if(jtable1.getValueAt(baris, 4)==null){
-            hrgJual.setText("");
-        }else{
-            hrgJual.setText(jtable1.getValueAt(baris, 4).toString());
-        }
-        if(jtable1.getValueAt(baris, 5)==null){
-            hrgBrgBeli.setText("");
-        }else{
-            hrgBrgBeli.setText(jtable1.getValueAt(baris, 5).toString());
-        }if(jtable1.getValueAt(baris, 6)==null){
-            stokBrg.setText("");
-        }else{
-            stokBrg.setText(jtable1.getValueAt(baris, 6).toString());
-        } **/
-    }//GEN-LAST:event_jtable1MouseClicked
-
-    private void tbh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbh1ActionPerformed
         new PopUpTambahBrg().setVisible(true);
-        /** if(hrgBrgBeli.getText().equals("")|| hrgJual.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Isi dahulu");
-        }else{
-            TambahkanData();
-        }
-        /**DefaultTableModel dataModel = (DefaultTableModel) jtable1.getModel();
-        List list = new ArrayList<>();
-        jtable1.setAutoCreateColumnsFromModel(true);
-        list.add(idBrg.getText());
-        list.add(nmBrg.getText());
-        list.add(jnsBrg.getText());
-        list.add(wrnBrg.getText());
-        list.add(hrgBrgBeli.getText());
-        list.add(hrgJual.getText());
-        dataModel.addRow(list.toArray());**/
-    }//GEN-LAST:event_tbh1ActionPerformed
+    }//GEN-LAST:event_btnTambahActionPerformed
 
     private void crBrgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crBrgKeyReleased
         String key=crBrg.getText();
@@ -314,15 +236,24 @@ public class formBarang extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_crBrgKeyReleased
 
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        new PopUpHapusBrg().setVisible(true);
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void crBrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crBrgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crBrgActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.kelompoka3.swing.ButtonCustom btnEdit;
+    private com.kelompoka3.swing.ButtonCustom btnHapus;
+    private com.kelompoka3.swing.ButtonCustom btnTambah;
     private javax.swing.JTextField crBrg;
-    private javax.swing.JButton edit1;
-    private javax.swing.JButton hps1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtable1;
-    private javax.swing.JButton tbh1;
+    private com.kelompoka3.swing.Table table1;
     // End of variables declaration//GEN-END:variables
 }

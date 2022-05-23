@@ -1,8 +1,16 @@
 package com.kelompoka3.model;
 
-import java.awt.Image;
+import com.raven.table.model.TableRowData;
 
-class ModelBarang {
+public class ModelBarang extends TableRowData {
+
+    public ModelidBarang getIdBarang() {
+        return idBarang;
+    }
+
+    public void setIdBarang(ModelidBarang idBarang) {
+        this.idBarang = idBarang;
+    }
 
     public String getNamaBarang() {
         return namaBarang;
@@ -12,20 +20,12 @@ class ModelBarang {
         this.namaBarang = namaBarang;
     }
 
-    public String getJenisBarang() {
-        return jenisBarang;
+    public String getJenis() {
+        return jenis;
     }
 
-    public void setJenisBarang(String jenisBarang) {
-        this.jenisBarang = jenisBarang;
-    }
-
-    public String getIdBarang() {
-        return idBarang;
-    }
-
-    public void setIdBarang(String idBarang) {
-        this.idBarang = idBarang;
+    public void setJenis(String jenis) {
+        this.jenis = jenis;
     }
 
     public String getWarna() {
@@ -36,51 +36,64 @@ class ModelBarang {
         this.warna = warna;
     }
 
-    public int getHarga() {
-        return harga;
+    public int getHargaJual() {
+        return hargaJual;
     }
 
-    public void setHarga(int harga) {
-        this.harga = harga;
+    public void setHargaJual(int hargaJual) {
+        this.hargaJual = hargaJual;
     }
 
-    public Image getCpu1() {
-        return cpu1;
+    public int getHargaBeli() {
+        return hargaBeli;
     }
 
-    public void setCpu1(Image cpu1) {
-        this.cpu1 = cpu1;
+    public void setHargaBeli(int hargaBeli) {
+        this.hargaBeli = hargaBeli;
     }
 
-    public String getPath() {
-        return path;
+    public int getStok() {
+        return stok;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setStok(int stok) {
+        this.stok = stok;
     }
 
-    public ModelBarang(String namaBarang, String jenisBarang, String idBarang, String warna, int harga, Image cpu1, String path) {
-        this.namaBarang = namaBarang;
-        this.jenisBarang = jenisBarang;
+    public byte[] getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(byte[] barcode) {
+        this.barcode = barcode;
+    }
+
+    public ModelBarang(ModelidBarang idBarang, String namaBarang, String jenis, String warna, int hargaJual, int hargaBeli, int stok, byte[] barcode) {
         this.idBarang = idBarang;
+        this.namaBarang = namaBarang;
+        this.jenis = jenis;
         this.warna = warna;
-        this.harga = harga;
-        this.cpu1 = cpu1;
-        this.path = path;
+        this.hargaJual = hargaJual;
+        this.hargaBeli = hargaBeli;
+        this.stok = stok;
+        this.barcode = barcode;
     }
-    
-    
 
     public ModelBarang() {
     }
-    
-    
+
+    private ModelidBarang idBarang;
     private String namaBarang;
-    private String jenisBarang;
-    private String idBarang;
+    private String jenis;
     private String warna;
-    private int harga;
-    private Image cpu1;
-    private String path;
+    private int hargaJual;
+    private int hargaBeli;
+    private int stok;
+    private byte[] barcode;
+
+    @Override
+    public Object[] toTableRow() {
+        return new Object[] {idBarang, namaBarang, jenis, warna, hargaJual, hargaBeli, stok, barcode};
+    }
+
 }

@@ -98,6 +98,11 @@ public class FormSuplier extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png"))); // NOI18N
         jLabel1.setText("Cari Barang");
 
+        crBrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crBrgActionPerformed(evt);
+            }
+        });
         crBrg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 crBrgKeyReleased(evt);
@@ -213,6 +218,10 @@ public class FormSuplier extends javax.swing.JPanel {
         // TODO add your handling code here:
         new PopUpHapusSuplier().setVisible(true);
     }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void crBrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crBrgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crBrgActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

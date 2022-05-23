@@ -19,6 +19,7 @@ public class PopUpEditBrg extends javax.swing.JFrame {
     public PopUpEditBrg() {
         initComponents();
      TampilanData();
+      table1.addTableStyle(jScrollPane1);
     }
     private void EditData(){
         String sql = "UPDATE barang SET namaBarang = '"+nmBrg.getText()+"',jenis = '"+jnsBrg.getText()+"',"
@@ -43,6 +44,7 @@ public class PopUpEditBrg extends javax.swing.JFrame {
         model.addColumn("Harga Jual");
         model.addColumn("Harga Beli");        
         model.addColumn("Stok");
+        model.addColumn("Barcode");
         
         String sql="SELECT * FROM `barang`";
         System.out.println(sql);
@@ -57,7 +59,7 @@ public class PopUpEditBrg extends javax.swing.JFrame {
                 
                 
             }
-            jtable1.setModel(model);            
+            table1.setModel(model);            
         }catch(Exception e){
             e.getMessage();
         }
@@ -88,12 +90,14 @@ public class PopUpEditBrg extends javax.swing.JFrame {
         wrnBrg = new javax.swing.JTextField();
         Stok = new javax.swing.JLabel();
         stokBrg = new javax.swing.JTextField();
-        simpan = new javax.swing.JButton();
-        Batal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtable1 = new javax.swing.JTable();
+        table1 = new com.kelompoka3.swing.Table();
+        btnEdit = new com.kelompoka3.swing.ButtonCustom();
+        btnBatal = new com.kelompoka3.swing.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         nBarang.setText("Nama Barang");
 
@@ -127,43 +131,40 @@ public class PopUpEditBrg extends javax.swing.JFrame {
 
         Stok.setText("Stok");
 
-        simpan.setText("Simpan");
-        simpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpanActionPerformed(evt);
-            }
-        });
-
-        Batal.setText("Batal");
-        Batal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BatalActionPerformed(evt);
-            }
-        });
-
-        jtable1.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID Barang", "Nama Barang", "Jenis Barang", "Warna", "Harga Jual", "Harga Beli", "Stok"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtable1MouseClicked(evt);
+                table1MouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtable1);
+        jScrollPane1.setViewportView(table1);
+
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Edit Square.png"))); // NOI18N
+        btnEdit.setText("E D I T");
+        btnEdit.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        btnBatal.setText("B A T A L");
+        btnBatal.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -172,32 +173,32 @@ public class PopUpEditBrg extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nBarang)
-                    .addComponent(jBarang)
-                    .addComponent(IDbrg)
-                    .addComponent(wrn)
-                    .addComponent(hrg1)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Stok, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(hrg, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(nmBrg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
-                    .addComponent(wrnBrg, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hrgJual, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(simpan)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nBarang)
+                            .addComponent(jBarang)
+                            .addComponent(IDbrg)
+                            .addComponent(wrn)
+                            .addComponent(hrg1)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(Stok, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(hrg, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(nmBrg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
+                            .addComponent(wrnBrg, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hrgJual, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hrgBrgBeli, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(stokBrg, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idBrg)
+                            .addComponent(jnsBrg, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Batal))
-                    .addComponent(hrgBrgBeli, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stokBrg, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idBrg)
-                    .addComponent(jnsBrg, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(461, 461, 461))
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,13 +230,17 @@ public class PopUpEditBrg extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stokBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Stok))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(simpan)
-                    .addComponent(Batal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,7 +248,7 @@ public class PopUpEditBrg extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -274,62 +279,56 @@ public class PopUpEditBrg extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_hrgBrgBeliActionPerformed
 
-    private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
+    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
         // TODO add your handling code here:
-        EditData();
-        idBrg.setText("");
-        nmBrg.setText("");
-        jnsBrg.setText("");
-        wrnBrg.setText("");
-        hrgJual.setText("");
-        hrgBrgBeli.setText("");
-        stokBrg.setText("");
-    }//GEN-LAST:event_simpanActionPerformed
-
-    private void BatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BatalActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_BatalActionPerformed
-
-    private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
-        // TODO add your handling code here:
-
-        int baris = jtable1.rowAtPoint(evt.getPoint());
-        if(jtable1.getValueAt(baris, 0)==null){
+        int baris = table1.rowAtPoint(evt.getPoint());
+        if(table1.getValueAt(baris, 0)==null){
             idBrg.setText("");
         }else{
-            idBrg.setText(jtable1.getValueAt(baris, 0).toString());
+            idBrg.setText(table1.getValueAt(baris, 0).toString());
         }
-        if(jtable1.getValueAt(baris, 1)==null){
+        if(table1.getValueAt(baris, 1)==null){
             nmBrg.setText("");
         }else{
-            nmBrg.setText(jtable1.getValueAt(baris, 1).toString());
+            nmBrg.setText(table1.getValueAt(baris, 1).toString());
         }
-        if(jtable1.getValueAt(baris, 2)==null){
+        if(table1.getValueAt(baris, 2)==null){
             jnsBrg.setText("");
         }else{
-            jnsBrg.setText(jtable1.getValueAt(baris, 2).toString());
+            jnsBrg.setText(table1.getValueAt(baris, 2).toString());
         }
-        if(jtable1.getValueAt(baris, 3)==null){
+        if(table1.getValueAt(baris, 3)==null){
             wrnBrg.setText("");
         }else{
-            wrnBrg.setText(jtable1.getValueAt(baris, 3).toString());
+            wrnBrg.setText(table1.getValueAt(baris, 3).toString());
         }
-        if(jtable1.getValueAt(baris, 4)==null){
+        if(table1.getValueAt(baris, 4)==null){
             hrgJual.setText("");
         }else{
-            hrgJual.setText(jtable1.getValueAt(baris, 4).toString());
+            hrgJual.setText(table1.getValueAt(baris, 4).toString());
         }
-        if(jtable1.getValueAt(baris, 5)==null){
+        if(table1.getValueAt(baris, 5)==null){
             hrgBrgBeli.setText("");
         }else{
-            hrgBrgBeli.setText(jtable1.getValueAt(baris, 5).toString());
-        }if(jtable1.getValueAt(baris, 6)==null){
+            hrgBrgBeli.setText(table1.getValueAt(baris, 5).toString());
+        }if(table1.getValueAt(baris, 6)==null){
             stokBrg.setText("");
         }else{
-            stokBrg.setText(jtable1.getValueAt(baris, 6).toString());
+            stokBrg.setText(table1.getValueAt(baris, 6).toString());
         }
-    }//GEN-LAST:event_jtable1MouseClicked
+
+    }//GEN-LAST:event_table1MouseClicked
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        EditData();
+        
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBatalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,9 +366,10 @@ public class PopUpEditBrg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Batal;
     private javax.swing.JLabel IDbrg;
     private javax.swing.JLabel Stok;
+    private com.kelompoka3.swing.ButtonCustom btnBatal;
+    private com.kelompoka3.swing.ButtonCustom btnEdit;
     private javax.swing.JLabel hrg;
     private javax.swing.JLabel hrg1;
     private javax.swing.JTextField hrgBrgBeli;
@@ -379,11 +379,10 @@ public class PopUpEditBrg extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jnsBrg;
-    private javax.swing.JTable jtable1;
     private javax.swing.JLabel nBarang;
     private javax.swing.JTextField nmBrg;
-    private javax.swing.JButton simpan;
     private javax.swing.JTextField stokBrg;
+    private com.kelompoka3.swing.Table table1;
     private javax.swing.JLabel wrn;
     private javax.swing.JTextField wrnBrg;
     // End of variables declaration//GEN-END:variables
