@@ -18,6 +18,7 @@ public class PopUpEditSuplier extends javax.swing.JFrame {
         initComponents();
         TampilanData();
         jtable1.addTableStyle(jScrollPane2);
+        setLocationRelativeTo(this);
     }
      private void EditData(){
         String sql = "UPDATE suplier SET `idSuplier` = '"+idSup.getText()+"', `namaSuplier` = '" +nmSup.getText()+"', `noHp` = '"+NoHP.getText()+"', `alamat` = '"+Alamat.getText()+"', `keterangan` = '"+keterangan1.getText()+"' WHERE suplier.idSuplier = '"+idSup.getText()+"'" ;

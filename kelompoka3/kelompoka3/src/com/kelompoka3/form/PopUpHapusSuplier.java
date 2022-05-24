@@ -20,6 +20,7 @@ public class PopUpHapusSuplier extends javax.swing.JFrame {
         initComponents();
         TampilanData();
         jtable1.addTableStyle(jScrollPane2);
+        setLocationRelativeTo(this);
     }
       private void HapusData(){
         idSuplier=String.valueOf(idsup.getText());

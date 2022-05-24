@@ -1,6 +1,6 @@
 
 
-package com.kelompoka3.message;
+package com.kelompoka3.swing;
 import  java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

@@ -49,6 +49,8 @@
                           <Component id="btnHapus" min="-2" pref="123" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnEdit" min="-2" pref="116" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="buttonCustom1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane2" alignment="0" min="-2" pref="1055" max="-2" attributes="0"/>
                   </Group>
@@ -66,6 +68,7 @@
                       <Component id="btnTambah" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="btnHapus" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnEdit" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="buttonCustom1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" pref="605" max="32767" attributes="0"/>
@@ -179,6 +182,14 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="com.kelompoka3.swing.ButtonCustom" name="buttonCustom1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="buttonCustom1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustom1ActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

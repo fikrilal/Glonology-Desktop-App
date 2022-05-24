@@ -15,6 +15,7 @@ public class PopUpTambahSuplier extends javax.swing.JFrame {
      */
     public PopUpTambahSuplier() {
         initComponents();
+        setLocationRelativeTo(this);
     }
      private String sql="";
     private String idSuplier, namaSuplier, noHp, alamat, keterangan;
