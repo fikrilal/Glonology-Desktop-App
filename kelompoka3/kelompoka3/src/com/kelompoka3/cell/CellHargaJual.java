@@ -42,7 +42,8 @@ public class CellHargaJual extends TableCustomCell {
 
     @Override
     public Object getData() {
-        return txt.getText().trim();
+        String hargaJual = txt.getText().trim();
+        return hargaJual;
     }
 
     @Override

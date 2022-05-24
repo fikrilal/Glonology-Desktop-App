@@ -1,11 +1,18 @@
 package com.kelompoka3.cell;
 
+import com.kelompoka3.koneksi.ServiceBarang;
+import com.kelompoka3.model.ModelBarang;
+import com.kelompoka3.model.ModelidBarang;
+import com.onbarcode.barcode.EAN13;
+import com.onbarcode.barcode.IBarcode;
 import com.raven.table.TableCustom;
 import com.raven.table.cell.TableCustomCell;
 import com.raven.table.model.TableRowData;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -106,19 +113,38 @@ public class CellAction extends TableCustomCell {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_deleteActionPerformed
 
-    private void addEventSave(TableCustom table) {
+    public void addEventSave(TableCustom table) {
         btn_simpan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 table.stopCellEditing();
-                int row = getRow(); 
-                String st="IdBarang : " + table.getValueAt(row, 0).toString() + 
-                        " NamaBarang : " + table.getValueAt(row, 1);
-                JOptionPane.showMessageDialog(null, st);
+                int row = getRow();
+                ModelidBarang id = (ModelidBarang) table.getValueAt(row, 0);
+                String namaBarang = table.getValueAt(row, 1).toString();
+                String jenis = table.getValueAt(row, 2).toString();
+                String warna = table.getValueAt(row, 3).toString();
+                int hargaJual = Integer.valueOf(table.getValueAt(row, 4).toString());
+                int hargaBeli = Integer.valueOf(table.getValueAt(row, 5).toString());
+                int stok = Integer.valueOf(table.getValueAt(row, 6).toString());
+                String barcode = "C://drivers//" + table.getValueAt(row, 1).toString() + ".png";
+                ModelBarang barang = (ModelBarang) table.getModelData(row);
+                ModelBarang data = new ModelBarang(barang.getIdBarang(), warna, namaBarang, jenis, warna, hargaJual, hargaBeli, stok, barcode);
+//                String brd = "C://drivers//" + data.getNamaBarang() + ".png";
+                try {
+                    if (barang.getIdBarang() == null) {
+                        new ServiceBarang().insertBarang(data);
+                        data.getIdBarang().setPath("Image");
+                        table.updateModelData(row, data);
+                    } else {
+
+                    }
+                } catch (IOException | SQLException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         });
     }
-    
+
     @Override
     public void setData(Object o) {
 
@@ -127,7 +153,7 @@ public class CellAction extends TableCustomCell {
     @Override
     public Object getData() {
         return null;
-    } 
+    }
 
     @Override
     public Component createComponentCellRender(TableCustom table, TableRowData data, int row, int column) {
@@ -157,4 +183,27 @@ public class CellAction extends TableCustomCell {
     private com.kelompoka3.swing.ButtonIcon btn_edit;
     private com.kelompoka3.swing.ButtonCustom btn_simpan;
     // End of variables declaration//GEN-END:variables
+public void encodeBarcode(ModelBarang data) throws Exception {
+        
+        EAN13 objEan = new EAN13();
+        objEan.setData(data.getIdBarang().getIdBarang());
+        objEan.setUom(IBarcode.UOM_PIXEL);
+        objEan.setX(3f);
+        objEan.setY(175f);
+
+        objEan.setLeftMargin(0f);
+        objEan.setRightMargin(0f);
+        objEan.setTopMargin(0f);
+        objEan.setBottomMargin(0f);
+        objEan.setResolution(72);
+        objEan.setShowText(true);
+        objEan.setTextMargin(6);
+        objEan.setRotate(IBarcode.ROTATE_0);
+        objEan.drawBarcode("C://drivers//" + data.getNamaBarang() + ".png");
+    }
+
+    public void setUkuranBarCode(EAN13 mBarcode, float panjangBarcode, float tinggiBarcode) {
+        mBarcode.setX(panjangBarcode);
+        mBarcode.setY(tinggiBarcode);
+    }
 }

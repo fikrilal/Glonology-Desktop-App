@@ -12,6 +12,14 @@ public class ModelBarang extends TableRowData {
         this.idBarang = idBarang;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String getNamaBarang() {
         return namaBarang;
     }
@@ -60,16 +68,17 @@ public class ModelBarang extends TableRowData {
         this.stok = stok;
     }
 
-    public byte[] getBarcode() {
+    public String getBarcode() {
         return barcode;
     }
 
-    public void setBarcode(byte[] barcode) {
+    public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
 
-    public ModelBarang(ModelidBarang idBarang, String namaBarang, String jenis, String warna, int hargaJual, int hargaBeli, int stok, byte[] barcode) {
+    public ModelBarang(ModelidBarang idBarang, String image, String namaBarang, String jenis, String warna, int hargaJual, int hargaBeli, int stok, String barcode) {
         this.idBarang = idBarang;
+        this.image = image;
         this.namaBarang = namaBarang;
         this.jenis = jenis;
         this.warna = warna;
@@ -83,17 +92,18 @@ public class ModelBarang extends TableRowData {
     }
 
     private ModelidBarang idBarang;
+    private String image;
     private String namaBarang;
     private String jenis;
     private String warna;
     private int hargaJual;
     private int hargaBeli;
     private int stok;
-    private byte[] barcode;
+    private String barcode;
 
     @Override
     public Object[] toTableRow() {
-        return new Object[] {idBarang, namaBarang, jenis, warna, hargaJual, hargaBeli, stok, barcode};
+        return new Object[]{idBarang, namaBarang, jenis, warna, hargaJual, hargaBeli, stok, barcode};
     }
 
 }

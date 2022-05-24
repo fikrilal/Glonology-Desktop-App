@@ -69,8 +69,8 @@ public class BingkaiGambar extends JComponent {
     private Icon image;
     private int borderSize = 0;
     private int borderSpace = 5;
-    private Color gradientColor1 = new Color(245, 245, 245);
-    private Color gradientColor2 = new Color(245, 245, 245);
+    private Color gradientColor1 = new Color(130, 130, 130);
+    private Color gradientColor2 = new Color(130, 130, 130);
 
     @Override
     protected void paintComponent(Graphics grphcs) {
