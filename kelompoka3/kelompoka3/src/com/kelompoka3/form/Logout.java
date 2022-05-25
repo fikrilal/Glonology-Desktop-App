@@ -52,6 +52,11 @@ public class Logout extends javax.swing.JFrame {
         });
 
         batal.setText("B A T A L");
+        batal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                batalActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
@@ -77,14 +82,14 @@ public class Logout extends javax.swing.JFrame {
             .addGroup(background1Layout.createSequentialGroup()
                 .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(background1Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(jLabel1))
-                    .addGroup(background1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jLabel3))
                     .addGroup(background1Layout.createSequentialGroup()
                         .addGap(113, 113, 113)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         background1Layout.setVerticalGroup(
@@ -123,6 +128,11 @@ public class Logout extends javax.swing.JFrame {
         // TODO add your handling code here
         System.exit(0);
     }//GEN-LAST:event_logoutActionPerformed
+
+    private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_batalActionPerformed
 
     /**
      * @param args the command line arguments
