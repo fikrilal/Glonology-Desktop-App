@@ -2,7 +2,6 @@
 package com.kelompoka3.form;
 
 import com.kelompoka3.koneksi.koneksi;
-import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,9 +11,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -79,6 +76,7 @@ public class formTransaksi extends javax.swing.JPanel {
                 "KODE BARANG", "NAMA BARANG", "QUANTITY", "HARGA BARANG", "TOTAL HARGA"
             }
         ));
+        tabelBeli.setGridColor(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(tabelBeli);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 152, 1031, 362));

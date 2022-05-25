@@ -7,7 +7,6 @@
 package com.kelompoka3.form;
 
 import com.kelompoka3.koneksi.koneksi;
-import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +16,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import java.util.*;
+import java.io.*;
+import java.sql.SQLException;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author AMEL
@@ -27,7 +34,7 @@ public class formFaktur2 extends javax.swing.JFrame {
 
     /**
      * Creates new form formFaktur2
-     * @param totalbiaya
+     * @param
      */
     public formFaktur2() {
         initComponents();
@@ -106,6 +113,7 @@ public class formFaktur2 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelfaktur.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(tabelfaktur);
 
         totalbarang.setEnabled(false);
@@ -130,10 +138,10 @@ public class formFaktur2 extends javax.swing.JFrame {
 
         totalharga.setEnabled(false);
         totalharga.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 totalhargaInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         totalharga.addActionListener(new java.awt.event.ActionListener() {
@@ -325,19 +333,50 @@ public class formFaktur2 extends javax.swing.JFrame {
     }   }    
     
     private void cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakActionPerformed
+
+//       ss(); 
 try{
            
             Connection c = (Connection)koneksi.koneksi();
             
-                 String sql = "UPDATE `faktur` SET `username` = '"+idPegawai.getText()+"' WHERE `faktur`.`noFaktur` ='"+noFaktur.getText()+"' ";
+                 String sql = "UPDATE `faktur` SET `userId` = '"+idPegawai.getText()+"',"
+                         + "`bayar` = '"+totaluang.getText()+"',`kembalian` = '"+kembalian.getText()+"'"
+                         + " WHERE `faktur`.`noFaktur` ='"+noFaktur.getText()+"' ";
                  PreparedStatement pst = c.prepareStatement(sql);
                  pst.execute();
-                 pst.close();
 
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-            System.out.println("berhasil Tercetak !");
-        }
+} catch (SQLException e) {
+// JOptionPane.showMessageDialog(rootPane, e);
+JOptionPane.showMessageDialog(this,e);
+} // TODO add your handling code here:
+
+        try {
+            String NamaFile = "src\\com\\kelompoka3\\form\\faktur.jasper";
+
+            HashMap parameter = new HashMap () ;
+            parameter.put ("a",this.noFaktur.getText() ) ;
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = koneksi.koneksi();
+            File file = new File (NamaFile) ;
+            
+            JasperReport jr = (JasperReport) JRLoader.loadObject(file);
+           JasperPrint jp = JasperFillManager.fillReport(jr, parameter,con);
+          
+            JasperViewer.viewReport( jp, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+            } catch (ClassNotFoundException | SQLException | JRException e) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Data Tidak Dapat Dicetak"
+            +"\n"+e.getMessage(), "Cetak Data", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+//}
+//
+//                 pst.close();
+//
+//        }catch(Exception e){
+//            JOptionPane.showMessageDialog(null,e);
+//            System.out.println("berhasil Tercetak !");
+//        }
 kosong();
 clear2();
     }//GEN-LAST:event_cetakActionPerformed
@@ -413,6 +452,7 @@ private void isian2(){
         } catch (Exception e) {
         }
 }
+
 
     private void totalbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalbarangActionPerformed
 
