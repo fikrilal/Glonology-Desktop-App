@@ -115,7 +115,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
         MyTextField txtEmail = new MyTextField();
         txtEmail.setPreferredSize(new Dimension(400, 52));
-        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Profile.png")));
+        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Message.png")));
         txtEmail.setHint("Email");
         login.add(txtEmail, "w 60%");
 
@@ -131,6 +131,12 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmdForget.setContentAreaFilled(false);
         cmdForget.setCursor(new Cursor(Cursor.HAND_CURSOR));
         login.add(cmdForget);
+        cmdForget.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                new forgotPassword().setVisible(true);
+            }
+        });
 
         ButtonCustom cmd = new ButtonCustom();
         cmd.setPreferredSize(new Dimension(384, 52));

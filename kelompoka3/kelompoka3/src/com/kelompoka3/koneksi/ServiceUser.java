@@ -51,6 +51,20 @@ public class ServiceUser {
         user.setUserId(userId);
         user.setVerifyCode(code);
     }
+    
+    public void forgotPassword(ModelUser user) throws SQLException {
+        PreparedStatement p = con.prepareStatement("UPDATE `pegawai` SET `password` = ?, `verifyCode` = ? WHERE `email` = ? limit 1", PreparedStatement.RETURN_GENERATED_KEYS);
+        String code = generateVerifyCode();
+        p.setString(1, user.getEmail());
+        p.setString(2, user.getPassword());
+        p.setString(3, code);
+        p.execute();
+        ResultSet r = p.getGeneratedKeys();
+        r.first();
+        r.close();
+        p.close();
+        user.setVerifyCode(code);
+    }
 
     private String generateVerifyCode() throws SQLException {
         DecimalFormat df = new DecimalFormat("000000");
@@ -121,6 +135,4 @@ public class ServiceUser {
         p.close();
         return verify;
     }
-
-   
 }
