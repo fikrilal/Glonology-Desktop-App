@@ -36,7 +36,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
     private final DecimalFormat df = new DecimalFormat("##0.###");
     private ServiceUser service;
 
-        public MainLoginRegister() {
+    public MainLoginRegister() {
         initComponents();
         init();
     }
@@ -53,14 +53,14 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 register();
             }
         };
-        
+
         ActionListener eventLogin = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 login();
             }
         };
-        loginAndRegister = new PanelLoginAndRegister(eventRegister, eventLogin );
+        loginAndRegister = new PanelLoginAndRegister(eventRegister, eventLogin);
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -159,21 +159,26 @@ public class MainLoginRegister extends javax.swing.JFrame {
             showPesan(Pesan.PesanType.ERROR, "Registrasi gagal");
         }
     }
-    
+
     private void login() {
-         ModelLogin data = loginAndRegister.getDataLogin();
-         try {
+        ModelLogin data = loginAndRegister.getDataLogin();
+        try {
             ModelUser user = service.login(data);
             if (user != null) {
-                this.dispose();
-                new main().setVisible(true);
+                if (service.checkKedudukanAdmin(user.getEmail())) {
+                    this.dispose();
+                    new main().setVisible(true);
+                } else if (service.checkKedudukanKaryawan(user.getEmail())) {
+                    this.dispose();
+                    new mainKaryawan().setVisible(true);
+                }
             } else {
                 showPesan(Pesan.PesanType.ERROR, "Email atau password salah");
             }
 
         } catch (SQLException e) {
             showPesan(Pesan.PesanType.ERROR, "Kesalahan login" + e.getMessage());
-        } 
+        }
 
     }
 
@@ -329,8 +334,4 @@ public class MainLoginRegister extends javax.swing.JFrame {
     private javax.swing.JLayeredPane background;
     // End of variables declaration//GEN-END:variables
 
-    
-
-        
-    }
-
+}

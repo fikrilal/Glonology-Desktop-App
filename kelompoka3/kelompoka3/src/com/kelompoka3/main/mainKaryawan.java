@@ -18,19 +18,19 @@ public class mainKaryawan extends javax.swing.JFrame {
         menuEvent event = new menuEvent() {
             @Override
             public void menuSelected(int index) {
-                if (index == 1) {
+                if (index == 0) {
                     showForm(new formTransaksi());
 
-                } else if (index == 2) {
+                } else if (index == 1) {
                     showForm(new formHistory());
 
-                } else if (index == 3) {
+                } else if (index == 2) {
                     showForm(new formBarang());
 
-                } else if (index == 4) {
+                } else if (index == 3) {
                     showForm(new FormSuplier());
 
-                } else if (index == 5) {
+                } else if (index == 4) {
                     showForm(new formLogout());
 
                 } else {
@@ -38,7 +38,7 @@ public class mainKaryawan extends javax.swing.JFrame {
                 }
             }
         };
-        menuSidebar.initMenu(event);
+        menuSidebar.initMenuKaryawan(event);
         menuSidebar.setSelected(0);
     }
 
@@ -55,9 +55,9 @@ public class mainKaryawan extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        menuSidebar = new com.kelompoka3.component.menu();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        menuSidebar = new com.kelompoka3.component.menuKaryawan();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,12 +89,12 @@ public class mainKaryawan extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(menuSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1104, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuSidebar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuSidebar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,6 +154,6 @@ public class mainKaryawan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private com.kelompoka3.component.menu menuSidebar;
+    private com.kelompoka3.component.menuKaryawan menuSidebar;
     // End of variables declaration//GEN-END:variables
 }
