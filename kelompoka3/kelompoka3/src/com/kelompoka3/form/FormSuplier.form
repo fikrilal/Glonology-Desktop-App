@@ -37,25 +37,23 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="crBrg" min="-2" pref="445" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="btnTambah" min="-2" pref="120" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnHapus" min="-2" pref="123" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnEdit" min="-2" pref="116" max="-2" attributes="0"/>
+                          <Component id="crBrg" min="-2" pref="400" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="btnTambah" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="btnHapus" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="btnEdit" min="-2" pref="140" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="buttonCustom1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="99" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -64,40 +62,28 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="crBrg" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnTambah" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="btnHapus" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnEdit" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="btnTambah" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="btnHapus" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="btnEdit" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="buttonCustom1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="crBrg" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" pref="605" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" pref="621" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/kelompoka3/icons/Search.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cari Barang"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="crBrg">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crBrgActionPerformed"/>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="crBrgKeyReleased"/>
-          </Events>
-        </Component>
         <Component class="com.kelompoka3.swing.ButtonCustom" name="btnTambah">
           <Properties>
-            <Property name="text" type="java.lang.String" value="+ T A M B A H "/>
+            <Property name="text" type="java.lang.String" value="Tambah"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTambahActionPerformed"/>
@@ -105,10 +91,10 @@
         </Component>
         <Component class="com.kelompoka3.swing.ButtonCustom" name="btnHapus">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/kelompoka3/icons/Delete-1.png"/>
+            <Property name="text" type="java.lang.String" value="Hapus"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="H A P U S"/>
             <Property name="style" type="com.kelompoka3.swing.ButtonCustom$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="DESTRUCTIVE"/>
             </Property>
@@ -119,10 +105,10 @@
         </Component>
         <Component class="com.kelompoka3.swing.ButtonCustom" name="btnEdit">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/kelompoka3/icons/Edit Square.png"/>
+            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="E D I T"/>
             <Property name="style" type="com.kelompoka3.swing.ButtonCustom$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="SECONDARY"/>
             </Property>
@@ -191,6 +177,11 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustom1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="crBrg">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="crBrgKeyReleased"/>
           </Events>
         </Component>
       </SubComponents>
