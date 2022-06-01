@@ -24,7 +24,6 @@ public class formTransaksi extends javax.swing.JPanel {
         autoNumber();
         Date date = new Date();
         SimpleDateFormat s  = new SimpleDateFormat("yyyy-MM-dd");
-        
         isiTanggal .setText(s.format(date));
         
         DefaultTableModel model = new DefaultTableModel();
@@ -394,7 +393,7 @@ cekstok();
         LoadData();
         totalBiaya();
         totalBarang();
-        clear2();
+       clear2();
         kodeBarang.requestFocus();}
     
     public void cekstok(){
@@ -410,33 +409,54 @@ cekstok();
                 int respon = JOptionPane.showConfirmDialog(this,
                         "silahkan hubungi supplier untuk menambahkan stok","Messege",JOptionPane.YES_NO_OPTION);
                 if(respon==JOptionPane.YES_OPTION){
-//                    this.setVisible(false);
-//                    new formBarang().setVisible(true);
-//                    formBarang obj = new formBarang ();
-//                        setLayout(new BorderLayout());
-//                        add(obj ,BorderLayout.EAST ,1);//3rd argument is index
-//                        repaint();
-//                        revalidate();
                 }else if(respon==JOptionPane.NO_OPTION) {}
             }else{
                 tambahTranksaksi();
             }
         }
     }catch(Exception e){
-        JOptionPane.showMessageDialog(this,e);
+        e.printStackTrace();
     }
     }
     
     public void LoadData(){
         DefaultTableModel model = (DefaultTableModel)tabelBeli.getModel();
-        model.addRow(new Object[]{
-        kodeBarang.getText(),
-        namaBarang.getText(),
-        quantity.getText(),
-        hargaBarang.getText(),
-        total.getText(),
-  
-    });
+        
+         String kd_barang = kodeBarang.getText();
+        String nm_barang = namaBarang.getText();
+        String harga_barang = hargaBarang.getText();
+        String quantity = this.quantity.getText();
+        String totalHarga = "";
+              boolean noMerge = true;
+        
+        if( model.getRowCount() >= 1 )
+        {
+        	for( int i = 0; i < model.getRowCount(); i++ ) {
+        	
+        		String name = (String)model.getValueAt(i, 1);
+        	
+        		if( name.equalsIgnoreCase(namaBarang.getText()) )
+        		{
+        			noMerge = false;
+        			// Modify the quantity of the last row
+        			int oldQuantity = Integer.parseInt((String)model.getValueAt(i, 3));
+        
+        			int newQuantity = oldQuantity + Integer.parseInt( quantity );
+                               // int hargaBaru = harga + Integer.parseInt(hargaBarang);
+        			model.setValueAt( Integer.toString(newQuantity), i, 3);
+                                String total = Integer.toString(newQuantity * Integer.parseInt(hargaBarang.getText()));
+                                model.setValueAt(total,i,4);                               
+                      }
+        	
+        	}
+        }
+        
+       if( noMerge ) {
+       	model.addRow(new Object[]{
+       	kd_barang,nm_barang,harga_barang,quantity,Integer.toString(Integer.parseInt(quantity) * Integer.parseInt(hargaBarang.getText()))});
+       }
+        this.tabelBeli.setModel(model);
+       
     }
 
 public void kosong(){
