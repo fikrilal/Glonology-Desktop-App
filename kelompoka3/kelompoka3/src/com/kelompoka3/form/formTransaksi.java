@@ -78,7 +78,7 @@ public class formTransaksi extends javax.swing.JPanel {
         tabelBeli.setGridColor(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(tabelBeli);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 152, 1031, 362));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1031, 362));
 
         tambahBarang.setBackground(new java.awt.Color(0, 102, 51));
         tambahBarang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -109,10 +109,10 @@ public class formTransaksi extends javax.swing.JPanel {
 
         namaBarang.setEnabled(false);
         namaBarang.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 namaBarangInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         namaBarang.addActionListener(new java.awt.event.ActionListener() {
@@ -439,11 +439,11 @@ cekstok();
         		{
         			noMerge = false;
         			// Modify the quantity of the last row
-        			int oldQuantity = Integer.parseInt((String)model.getValueAt(i, 3));
+        			int oldQuantity = Integer.parseInt((String)model.getValueAt(i, 2));
         
         			int newQuantity = oldQuantity + Integer.parseInt( quantity );
                                // int hargaBaru = harga + Integer.parseInt(hargaBarang);
-        			model.setValueAt( Integer.toString(newQuantity), i, 3);
+        			model.setValueAt( Integer.toString(newQuantity), i, 2);
                                 String total = Integer.toString(newQuantity * Integer.parseInt(hargaBarang.getText()));
                                 model.setValueAt(total,i,4);                               
                       }
@@ -453,7 +453,7 @@ cekstok();
         
        if( noMerge ) {
        	model.addRow(new Object[]{
-       	kd_barang,nm_barang,harga_barang,quantity,Integer.toString(Integer.parseInt(quantity) * Integer.parseInt(hargaBarang.getText()))});
+       	kd_barang,nm_barang,quantity,harga_barang,Integer.toString(Integer.parseInt(quantity) * Integer.parseInt(hargaBarang.getText()))});
        }
         this.tabelBeli.setModel(model);
        
