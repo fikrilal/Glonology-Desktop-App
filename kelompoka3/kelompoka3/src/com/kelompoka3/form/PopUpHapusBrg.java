@@ -77,19 +77,12 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        nBarang = new javax.swing.JLabel();
-        hrg1 = new javax.swing.JLabel();
         hrgJual = new javax.swing.JTextField();
-        jBarang = new javax.swing.JLabel();
-        IDbrg = new javax.swing.JLabel();
-        wrn = new javax.swing.JLabel();
-        hrg = new javax.swing.JLabel();
         nmBrg = new javax.swing.JTextField();
         jnsBrg = new javax.swing.JTextField();
         hrgBrgBeli = new javax.swing.JTextField();
         idBrg = new javax.swing.JTextField();
         wrnBrg = new javax.swing.JTextField();
-        Stok = new javax.swing.JLabel();
         stokBrg = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new com.kelompoka3.swing.Table();
@@ -100,23 +93,11 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        nBarang.setText("Nama Barang");
-
-        hrg1.setText("Harga Jual");
-
         hrgJual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hrgJualActionPerformed(evt);
             }
         });
-
-        jBarang.setText("Jenis Barang");
-
-        IDbrg.setText("ID Barang");
-
-        wrn.setText("Warna");
-
-        hrg.setText("Harga Beli");
 
         nmBrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,8 +110,6 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
                 hrgBrgBeliActionPerformed(evt);
             }
         });
-
-        Stok.setText("Stok");
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,16 +154,7 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nBarang)
-                            .addComponent(jBarang)
-                            .addComponent(IDbrg)
-                            .addComponent(wrn)
-                            .addComponent(hrg1)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Stok, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(hrg, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(29, 29, 29)
+                        .addGap(93, 93, 93)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(hrgBrgBeli)
                             .addComponent(hrgJual)
@@ -208,33 +178,19 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IDbrg)
-                    .addComponent(idBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(idBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nBarang)
-                    .addComponent(nmBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(nmBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBarang)
-                    .addComponent(jnsBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jnsBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(wrn)
-                    .addComponent(wrnBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(wrnBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hrg1)
-                    .addComponent(hrgJual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(hrgJual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hrg)
-                    .addComponent(hrgBrgBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(hrgBrgBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stokBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Stok))
+                .addComponent(stokBrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,24 +319,17 @@ public class PopUpHapusBrg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IDbrg;
-    private javax.swing.JLabel Stok;
     private com.kelompoka3.swing.ButtonCustom btnBatal;
     private com.kelompoka3.swing.ButtonCustom btnHapus;
-    private javax.swing.JLabel hrg;
-    private javax.swing.JLabel hrg1;
     private javax.swing.JTextField hrgBrgBeli;
     private javax.swing.JTextField hrgJual;
     private javax.swing.JTextField idBrg;
-    private javax.swing.JLabel jBarang;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jnsBrg;
-    private javax.swing.JLabel nBarang;
     private javax.swing.JTextField nmBrg;
     private javax.swing.JTextField stokBrg;
     private com.kelompoka3.swing.Table table1;
-    private javax.swing.JLabel wrn;
     private javax.swing.JTextField wrnBrg;
     // End of variables declaration//GEN-END:variables
 }

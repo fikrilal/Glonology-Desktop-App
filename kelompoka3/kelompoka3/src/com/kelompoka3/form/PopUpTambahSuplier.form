@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -23,7 +23,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel2" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -43,152 +46,58 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="nBarang" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jBarang" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="wrn" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="idSup1" pref="437" max="32767" attributes="0"/>
-                      <Component id="alamat1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="noHp1" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnBatal" min="-2" pref="221" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnSimpan" min="-2" pref="221" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="nama1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="keterangan1" max="32767" attributes="0"/>
+                      <Component id="noHp1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="alamat1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="keterangan1" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnBatal" min="-2" pref="133" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnSimpan" min="-2" pref="143" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace pref="196" max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="nama1" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="noHp1" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="alamat1" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="keterangan1" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="idSup1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSimpan" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="btnBatal" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="nBarang" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="nama1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jBarang" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="noHp1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="wrn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alamat1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="keterangan1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnBatal" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="btnSimpan" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="nBarang">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Nama Suplier"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jBarang">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="No Telp"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="wrn">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Alamat"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="nama1">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nama1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="noHp1">
-        </Component>
-        <Component class="javax.swing.JTextField" name="alamat1">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="TAMBAH DATA SUPLIER"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="idSup1">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Id Suplier"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Keterangan"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="keterangan1">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-        </Component>
         <Component class="com.kelompoka3.swing.ButtonCustom" name="btnSimpan">
           <Properties>
-            <Property name="text" type="java.lang.String" value="S I M P AN"/>
-            <Property name="style" type="com.kelompoka3.swing.ButtonCustom$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="SECONDARY"/>
+            <Property name="text" type="java.lang.String" value="Simpan"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
           </Properties>
           <Events>
@@ -197,14 +106,39 @@
         </Component>
         <Component class="com.kelompoka3.swing.ButtonCustom" name="btnBatal">
           <Properties>
-            <Property name="text" type="java.lang.String" value="B AT A L"/>
+            <Property name="text" type="java.lang.String" value="Kembali"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
             <Property name="style" type="com.kelompoka3.swing.ButtonCustom$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="DESTRUCTIVE"/>
+              <Value id="SECONDARY"/>
             </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="nama1">
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="noHp1">
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="alamat1">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alamat1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="keterangan1">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="4f" green="4f" red="4f" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tambah Supplier"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

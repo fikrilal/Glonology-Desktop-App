@@ -1,4 +1,3 @@
-
 package com.kelompoka3.form;
 
 import com.kelompoka3.koneksi.koneksi;
@@ -23,17 +22,17 @@ public class formTransaksi extends javax.swing.JPanel {
         initComponents();
         autoNumber();
         Date date = new Date();
-        SimpleDateFormat s  = new SimpleDateFormat("yyyy-MM-dd");
-        isiTanggal .setText(s.format(date));
-        
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        isiTanggal.setText(s.format(date));
+
         DefaultTableModel model = new DefaultTableModel();
-        
+
         model.addColumn("Kode Barang");
         model.addColumn("Nama Barang");
         model.addColumn("Quantity");
         model.addColumn("Harga Barang");
         model.addColumn("Total Harga");
-        
+
         tabelBeli.setModel(model);
     }
 
@@ -218,48 +217,50 @@ public class formTransaksi extends javax.swing.JPanel {
         add(faktur, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 610, 50, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void autoNumber(){
+    private void autoNumber() {
         try {
-            Connection c = (Connection)koneksi.koneksi();
+            Connection c = (Connection) koneksi.koneksi();
             Statement s = c.createStatement();
             ResultSet r = s.executeQuery("select * from faktur order by noFaktur desc");
-            
-            if (r.next()){
-                
+
+            if (r.next()) {
+
                 int no_t = Integer.parseInt(r.getString("noFaktur")) + 1;
-                faktur.setText(Integer.toString(no_t));}
-                else{int no_t = 1;faktur.setText(Integer.toString(no_t));}
-            
-        r.close();
-        s.close();
+                faktur.setText(Integer.toString(no_t));
+            } else {
+                int no_t = 1;
+                faktur.setText(Integer.toString(no_t));
+            }
+
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
         }
-         catch(Exception e){
-             JOptionPane.showMessageDialog(this,e);
-    }   }    
-    
+    }
+
     private void kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeBarangActionPerformed
-  if(kodeBarang.getText().length() == 0){
-              namaBarang.setText("");
-              hargaBarang.setText("");
-              quantity.setText("");
-          }
-          try {
-               String kb= kodeBarang.getText();
+        if (kodeBarang.getText().length() == 0) {
+            namaBarang.setText("");
+            hargaBarang.setText("");
+            quantity.setText("");
+        }
+        try {
+            String kb = kodeBarang.getText();
 //              if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String sql ="select * from barang where idBarang = '"+kb+"'";
+            String sql = "select * from barang where idBarang = '" + kb + "'";
 //                    +evt.getKeyChar() +"";
-            java.sql.Connection conn=(Connection)koneksi.koneksi();
+            java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             java.sql.ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-        namaBarang.setText(rs.getString("namaBarang"));
-        hargaBarang.setText(rs.getString("hargaJual"));
+            while (rs.next()) {
+                namaBarang.setText(rs.getString("namaBarang"));
+                hargaBarang.setText(rs.getString("hargaJual"));
             }
-            
 
-        }catch (SQLException e){
-            
-        }  
+        } catch (SQLException e) {
+
+        }
     }//GEN-LAST:event_kodeBarangActionPerformed
 
     private void namaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaBarangActionPerformed
@@ -267,11 +268,11 @@ public class formTransaksi extends javax.swing.JPanel {
     }//GEN-LAST:event_namaBarangActionPerformed
 
     private void quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityActionPerformed
-      
+
     }//GEN-LAST:event_quantityActionPerformed
 
     private void hargaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaBarangActionPerformed
- 
+
     }//GEN-LAST:event_hargaBarangActionPerformed
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
@@ -279,87 +280,83 @@ public class formTransaksi extends javax.swing.JPanel {
     }//GEN-LAST:event_totalActionPerformed
 
     private void tambahBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahBarangActionPerformed
-cekstok();       
+        cekstok();
     }//GEN-LAST:event_tambahBarangActionPerformed
 
     private void kodeBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodeBarangKeyTyped
-          filterhuruf(evt);
-         
-          
+        filterhuruf(evt);
+
 
     }//GEN-LAST:event_kodeBarangKeyTyped
 
     private void namaBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaBarangKeyTyped
-           filterangka(evt);
+        filterangka(evt);
     }//GEN-LAST:event_namaBarangKeyTyped
 
     private void quantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityKeyTyped
-             filterhuruf(evt);
+        filterhuruf(evt);
     }//GEN-LAST:event_quantityKeyTyped
 
     private void hargaBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargaBarangKeyTyped
-            filterhuruf(evt);
+        filterhuruf(evt);
     }//GEN-LAST:event_hargaBarangKeyTyped
 
     private void totalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_totalKeyTyped
-            filterhuruf(evt);
+        filterhuruf(evt);
     }//GEN-LAST:event_totalKeyTyped
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
-        DefaultTableModel model = (DefaultTableModel)tabelBeli.getModel();
-        
+        DefaultTableModel model = (DefaultTableModel) tabelBeli.getModel();
+
         int row = tabelBeli.getSelectedRow();
         model.removeRow(row);
-        
+
         clear();
         clear2();
         totalBiaya();
         totalBarang();
-        
+
     }//GEN-LAST:event_hapusActionPerformed
 
     private void cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakActionPerformed
 
- 
-        try{
-           
-            Connection c = (Connection)koneksi.koneksi();
-            
-                 String sql = "insert into faktur (noFaktur,hargatotal, jumlahtotal, tanggal) values('"
-                         + faktur.getText()+"','" +totalPembelian.getText()+"','" +jumlahbarang.getText()+"','" +isiTanggal.getText()+"')";
-                 PreparedStatement pst = c.prepareStatement(sql);
-                 pst.execute();
-                 pst.close();
-                 
-            
-        int baris = tabelBeli.getRowCount();
-            
-            for(int i =0; i<baris;i++){
-            String sqll = "insert into detailpenjualan (noFaktur,idBarang,namaBarang,hargaBarang, jumlahBarang) values ('"
-                    +faktur.getText()+"','"+tabelBeli.getValueAt(i, 0)+"','"+tabelBeli.getValueAt(i, 1)+"',"
-                    + "'"+tabelBeli.getValueAt(i, 3)+"','"+tabelBeli.getValueAt(i, 2)+"')";
-            PreparedStatement pstl = c.prepareStatement(sqll);
-            pstl.execute();
-            pstl.close();
-            JOptionPane.showMessageDialog(null,"Penyimpanan Data Berhasil !");
+        try {
+
+            Connection c = (Connection) koneksi.koneksi();
+
+            String sql = "insert into faktur (noFaktur,hargatotal, jumlahtotal, tanggal) values('"
+                    + faktur.getText() + "','" + totalPembelian.getText() + "','" + jumlahbarang.getText() + "','" + isiTanggal.getText() + "')";
+            PreparedStatement pst = c.prepareStatement(sql);
+            pst.execute();
+            pst.close();
+
+            int baris = tabelBeli.getRowCount();
+
+            for (int i = 0; i < baris; i++) {
+                String sqll = "insert into detailpenjualan (noFaktur,idBarang,namaBarang,hargaBarang, jumlahBarang) values ('"
+                        + faktur.getText() + "','" + tabelBeli.getValueAt(i, 0) + "','" + tabelBeli.getValueAt(i, 1) + "',"
+                        + "'" + tabelBeli.getValueAt(i, 3) + "','" + tabelBeli.getValueAt(i, 2) + "')";
+                PreparedStatement pstl = c.prepareStatement(sqll);
+                pstl.execute();
+                pstl.close();
+                JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil !");
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
             System.out.println("Penyimpanan Error !");
         }
-        
+
         clear();
         clear2();
         autoNumber();
         kosong();
-            
-                  
+
         new formFaktur2().setVisible(true);
 
     }//GEN-LAST:event_cetakActionPerformed
 
     private void totalPembelianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalPembelianActionPerformed
-        
+
     }//GEN-LAST:event_totalPembelianActionPerformed
 
     private void namaBarangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaBarangKeyReleased
@@ -370,144 +367,145 @@ cekstok();
 
     }//GEN-LAST:event_namaBarangInputMethodTextChanged
 
-    public void clear(){
+    public void clear() {
         totalPembelian.setText("");
-        
     }
-    
-    public void clear2(){
-       kodeBarang.setText("");
+
+    public void clear2() {
+        kodeBarang.setText("");
         namaBarang.setText("");
         quantity.setText("");
         hargaBarang.setText("");
         total.setText("");
     }
-    
-    public void tambahTranksaksi(){
-        int jumlah,harga,totalharga;
-        
+
+    public void tambahTranksaksi() {
+        int jumlah, harga, totalharga;
+
         jumlah = Integer.valueOf(quantity.getText());
-        harga= Integer.valueOf(hargaBarang.getText());
-        totalharga = jumlah * harga ;
+        harga = Integer.valueOf(hargaBarang.getText());
+        totalharga = jumlah * harga;
         total.setText(String.valueOf(totalharga));
         LoadData();
         totalBiaya();
         totalBarang();
-       clear2();
-        kodeBarang.requestFocus();}
-    
-    public void cekstok(){
+        clear2();
+        kodeBarang.requestFocus();
+    }
+
+    public void cekstok() {
         int qty = Integer.parseInt(quantity.getText());
-        try{
-        String sql ="Select stok from barang where idBarang ='"+kodeBarang.getText()+"'";
-        Connection c =(Connection)koneksi.koneksi();Statement stm = c.createStatement();
-        ResultSet res=stm.executeQuery(sql);
-           if(res.next()){
-            int stok = res.getInt(1);
-            if (stok < qty){
-                JOptionPane.showMessageDialog(this,"Maaf Stok Barang telah Habis !");
-                int respon = JOptionPane.showConfirmDialog(this,
-                        "silahkan hubungi supplier untuk menambahkan stok","Messege",JOptionPane.YES_NO_OPTION);
-                if(respon==JOptionPane.YES_OPTION){
-                }else if(respon==JOptionPane.NO_OPTION) {}
-            }else{
-                tambahTranksaksi();
+        try {
+            String sql = "Select stok from barang where idBarang ='" + kodeBarang.getText() + "'";
+            Connection c = (Connection) koneksi.koneksi();
+            Statement stm = c.createStatement();
+            ResultSet res = stm.executeQuery(sql);
+            if (res.next()) {
+                int stok = res.getInt(1);
+                if (stok < qty) {
+                    JOptionPane.showMessageDialog(this, "Maaf Stok Barang telah Habis !");
+                    int respon = JOptionPane.showConfirmDialog(this,
+                            "silahkan hubungi supplier untuk menambahkan stok", "Messege", JOptionPane.YES_NO_OPTION);
+                    if (respon == JOptionPane.YES_OPTION) {
+                    } else if (respon == JOptionPane.NO_OPTION) {
+                    }
+                } else {
+                    tambahTranksaksi();
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }catch(Exception e){
-        e.printStackTrace();
     }
-    }
-    
-    public void LoadData(){
-        DefaultTableModel model = (DefaultTableModel)tabelBeli.getModel();
-        
-         String kd_barang = kodeBarang.getText();
+
+    public void LoadData() {
+        DefaultTableModel model = (DefaultTableModel) tabelBeli.getModel();
+
+        String kd_barang = kodeBarang.getText();
         String nm_barang = namaBarang.getText();
         String harga_barang = hargaBarang.getText();
         String quantity = this.quantity.getText();
         String totalHarga = "";
-              boolean noMerge = true;
-        
-        if( model.getRowCount() >= 1 )
-        {
-        	for( int i = 0; i < model.getRowCount(); i++ ) {
-        	
-        		String name = (String)model.getValueAt(i, 1);
-        	
-        		if( name.equalsIgnoreCase(namaBarang.getText()) )
-        		{
-        			noMerge = false;
-        			// Modify the quantity of the last row
-        			int oldQuantity = Integer.parseInt((String)model.getValueAt(i, 2));
-        
-        			int newQuantity = oldQuantity + Integer.parseInt( quantity );
-                               // int hargaBaru = harga + Integer.parseInt(hargaBarang);
-        			model.setValueAt( Integer.toString(newQuantity), i, 2);
-                                String total = Integer.toString(newQuantity * Integer.parseInt(hargaBarang.getText()));
-                                model.setValueAt(total,i,4);                               
-                      }
-        	
-        	}
+        boolean noMerge = true;
+
+        if (model.getRowCount() >= 1) {
+            for (int i = 0; i < model.getRowCount(); i++) {
+
+                String name = (String) model.getValueAt(i, 1);
+
+                if (name.equalsIgnoreCase(namaBarang.getText())) {
+                    noMerge = false;
+                    // Modify the quantity of the last row
+                    int oldQuantity = Integer.parseInt((String) model.getValueAt(i, 2));
+
+                    int newQuantity = oldQuantity + Integer.parseInt(quantity);
+                    // int hargaBaru = harga + Integer.parseInt(hargaBarang);
+                    model.setValueAt(Integer.toString(newQuantity), i, 2);
+                    String total = Integer.toString(newQuantity * Integer.parseInt(hargaBarang.getText()));
+                    model.setValueAt(total, i, 4);
+                }
+
+            }
         }
-        
-       if( noMerge ) {
-       	model.addRow(new Object[]{
-       	kd_barang,nm_barang,quantity,harga_barang,Integer.toString(Integer.parseInt(quantity) * Integer.parseInt(hargaBarang.getText()))});
-       }
+
+        if (noMerge) {
+            model.addRow(new Object[]{
+                kd_barang, nm_barang, quantity, harga_barang, Integer.toString(Integer.parseInt(quantity) * Integer.parseInt(hargaBarang.getText()))});
+        }
         this.tabelBeli.setModel(model);
-       
+
     }
 
-public void kosong(){
-        DefaultTableModel model=(DefaultTableModel) tabelBeli.getModel();
-        
-        while (model.getRowCount()>0){
+    public void kosong() {
+        DefaultTableModel model = (DefaultTableModel) tabelBeli.getModel();
+
+        while (model.getRowCount() > 0) {
             model.removeRow(0);
-            
+
         }
     }
 
-void filterhuruf(KeyEvent a){
-        if(Character.isAlphabetic(a.getKeyChar())){
+    void filterhuruf(KeyEvent a) {
+        if (Character.isAlphabetic(a.getKeyChar())) {
             a.consume();
-            JOptionPane.showMessageDialog(null,"Pada Kolom Jumlah Hanya Bisa Memasukan Karakter Angka");
+            JOptionPane.showMessageDialog(null, "Pada Kolom Jumlah Hanya Bisa Memasukan Karakter Angka");
         }
     }
-void filterangka(KeyEvent b){
-        if(Character.isDigit(b.getKeyChar())){
+
+    void filterangka(KeyEvent b) {
+        if (Character.isDigit(b.getKeyChar())) {
             b.consume();
-            JOptionPane.showMessageDialog(null,"Pada Kolom Jumlah Hanya Bisa Memasukan Karakter Huruf");
+            JOptionPane.showMessageDialog(null, "Pada Kolom Jumlah Hanya Bisa Memasukan Karakter Huruf");
         }
     }
-    
-    public void totalBiaya(){
+
+    public void totalBiaya() {
         int jumlahBaris = tabelBeli.getRowCount();
         int totalBiaya = 0;
-        int hargaBarang ;
-        
-        for (int i = 0 ; i<jumlahBaris ; i++){
+        int hargaBarang;
+
+        for (int i = 0; i < jumlahBaris; i++) {
             hargaBarang = Integer.parseInt(tabelBeli.getValueAt(i, 4).toString());
             totalBiaya = totalBiaya + hargaBarang;
-            
+
         }
-     totalPembelian.setText(String.valueOf(totalBiaya));
-      
+        totalPembelian.setText(String.valueOf(totalBiaya));
+
     }
 
-    public void totalBarang(){
+    public void totalBarang() {
         int jumlahBaris = tabelBeli.getRowCount();
         int totalBiaya = 0;
-        int jumlahBarang ;
-        
-        for (int i = 0 ; i<jumlahBaris ; i++){
+        int jumlahBarang;
+
+        for (int i = 0; i < jumlahBaris; i++) {
             jumlahBarang = Integer.parseInt(tabelBeli.getValueAt(i, 2).toString());
             totalBiaya = totalBiaya + jumlahBarang;
-            
+
         }
         jumlahbarang.setText(String.valueOf(totalBiaya));
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cetak;
@@ -530,7 +528,5 @@ void filterangka(KeyEvent b){
     private javax.swing.JTextField total;
     private javax.swing.JTextField totalPembelian;
     // End of variables declaration//GEN-END:variables
-
-   
 
 }

@@ -2,11 +2,11 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -43,129 +43,59 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="btnHapus" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnBatal" min="-2" pref="103" max="-2" attributes="0"/>
+                          <Component id="btnBatal" min="-2" pref="221" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnHapus" min="-2" pref="221" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="nBarang" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jBarang" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="IDbrg" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="wrn" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="alamat1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="namaSup" alignment="0" max="32767" attributes="0"/>
-                              <Component id="noHp1" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="idsup" min="-2" pref="563" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="txtKet" max="32767" attributes="0"/>
-                              <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                          <Component id="namaSup" pref="460" max="32767" attributes="0"/>
+                          <Component id="idsup" pref="460" max="32767" attributes="0"/>
+                          <Component id="noHp1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="alamat1" max="32767" attributes="0"/>
+                          <Component id="txtKet" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="idsup" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="IDbrg" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="idsup" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="namaSup" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="nBarang" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="namaSup" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="noHp1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jBarang" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="noHp1" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="alamat1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="wrn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="alamat1" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtKet" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtKet" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="147" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnBatal" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="btnHapus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnHapus" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="btnBatal" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="nBarang">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nama Suplier"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jBarang">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="No HP"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="IDbrg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="ID Suplier"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="wrn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Alamat"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="namaSup">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="namaSupActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="noHp1">
-        </Component>
-        <Component class="javax.swing.JTextField" name="idsup">
-        </Component>
-        <Component class="javax.swing.JTextField" name="alamat1">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Keterangan"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtKet">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtKetActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="com.kelompoka3.swing.ButtonCustom" name="btnHapus">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/kelompoka3/icons/Delete-1.png"/>
+            <Property name="text" type="java.lang.String" value="Hapus"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="H A P U S"/>
             <Property name="style" type="com.kelompoka3.swing.ButtonCustom$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="DESTRUCTIVE"/>
             </Property>
@@ -200,7 +130,10 @@
         </Container>
         <Component class="com.kelompoka3.swing.ButtonCustom" name="btnBatal">
           <Properties>
-            <Property name="text" type="java.lang.String" value=" B A T A L"/>
+            <Property name="text" type="java.lang.String" value="Kembali"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
             <Property name="style" type="com.kelompoka3.swing.ButtonCustom$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="SECONDARY"/>
             </Property>
@@ -208,6 +141,16 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="idsup">
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="namaSup">
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="noHp1">
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="alamat1">
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="txtKet">
         </Component>
       </SubComponents>
     </Container>

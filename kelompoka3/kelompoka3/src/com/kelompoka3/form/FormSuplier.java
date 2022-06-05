@@ -15,51 +15,52 @@ public class FormSuplier extends javax.swing.JPanel {
         crBrg.setHint("Cari supplier");
         jtable1.addTableStyle(jScrollPane2);
     }
-    private void CariData(String Key){
+
+    private void CariData(String Key) {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID Suplier");
         model.addColumn("Nama Suplier");
         model.addColumn("No Telfon");
         model.addColumn("Alamat");
         model.addColumn("Keterangan");
-        String sql="SELECT * FROM suplier WHERE namaSuplier LIKE '%"+Key+"%'";
+        String sql = "SELECT * FROM suplier WHERE namaSuplier LIKE '%" + Key + "%'";
         System.out.println(sql);
-        
-        try{
+
+        try {
             java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet rs = stm.executeQuery();
-            while(rs.next()){
-                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getString(5)});
-                
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)});
+
             }
-            jtable1.setModel(model);            
-        }catch(SQLException e){
+            jtable1.setModel(model);
+        } catch (SQLException e) {
             e.getMessage();
-        }     
+        }
     }
-    
-    private void TampilanData(){
+
+    private void TampilanData() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID Suplier");
         model.addColumn("Nama Suplier");
-        model.addColumn("No Telfon");        
+        model.addColumn("No Telfon");
         model.addColumn("Alamat");
         model.addColumn("Keterangan");
 
-        String sql="SELECT * FROM `suplier` ORDER BY `idSuplier` ASC";
+        String sql = "SELECT * FROM `suplier` ORDER BY `idSuplier` ASC";
         System.out.println(sql);
-        
-        try{
+
+        try {
             java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet rs = stm.executeQuery();
-           
-            while(rs.next()){
-                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getString(5)});         
+
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)});
             }
-            jtable1.setModel(model);            
-        }catch(SQLException e){
+            jtable1.setModel(model);
+        } catch (SQLException e) {
             e.getMessage();
         }
     }
@@ -116,6 +117,11 @@ public class FormSuplier extends javax.swing.JPanel {
                 "", "", "", "", ""
             }
         ));
+        jtable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jtable1);
 
         buttonCustom1.setText("buttonCustom1");
@@ -138,9 +144,7 @@ public class FormSuplier extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addGap(0, 0, 0))
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
@@ -182,7 +186,7 @@ public class FormSuplier extends javax.swing.JPanel {
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
-         new PopUpTambahSuplier().setVisible(true);
+        new PopUpTambahSuplier().setVisible(true);
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
@@ -195,22 +199,26 @@ public class FormSuplier extends javax.swing.JPanel {
         new PopUpHapusSuplier().setVisible(true);
     }//GEN-LAST:event_btnHapusActionPerformed
 
-    
+
     private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
         // TODO add your handling code here:
         new Logout().setVisible(true);
-        
+
     }//GEN-LAST:event_buttonCustom1ActionPerformed
 
     private void crBrgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crBrgKeyReleased
-        String key=crBrg.getText();
+        String key = crBrg.getText();
 
-        if(key!=""){
+        if (key != "") {
             CariData(key);
-        }else{
+        } else {
             TampilanData();
         }
     }//GEN-LAST:event_crBrgKeyReleased
+
+    private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

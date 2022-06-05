@@ -50,18 +50,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="nBarang" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jBarang" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="IDbrg" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="wrn" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="hrg1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="Stok" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="hrg" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="hrgBrgBeli" alignment="0" max="32767" attributes="0"/>
                               <Component id="hrgJual" alignment="0" max="32767" attributes="0"/>
@@ -94,40 +83,19 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="IDbrg" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="idBrg" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="idBrg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="nBarang" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="nmBrg" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="nmBrg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jBarang" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jnsBrg" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jnsBrg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="wrn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="wrnBrg" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="wrnBrg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="hrg1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hrgJual" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="hrgJual" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="hrg" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="hrgBrgBeli" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="hrgBrgBeli" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="stokBrg" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Stok" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="stokBrg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnHapus" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -140,40 +108,10 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="nBarang">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nama Barang"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="hrg1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Harga Jual"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="hrgJual">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hrgJualActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jBarang">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Jenis Barang"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="IDbrg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="ID Barang"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="wrn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Warna"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="hrg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Harga Beli"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nmBrg">
           <Events>
@@ -190,11 +128,6 @@
         <Component class="javax.swing.JTextField" name="idBrg">
         </Component>
         <Component class="javax.swing.JTextField" name="wrnBrg">
-        </Component>
-        <Component class="javax.swing.JLabel" name="Stok">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Stok"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="stokBrg">
         </Component>
