@@ -35,7 +35,7 @@ public class formDashboard extends javax.swing.JPanel {
                     + "then hargaTotal else 0 end) as LASTYEAR From faktur GROUP "
                     + "BY MONTH(tanggal);;"; // Query LEFT digunakan untuk membatasi karakter yang ditampilkan, diambil dari yang paling kiri, 3 adalah batasan karakter
             java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.Statement stm = conn.createStatement();
+            java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet res = stm.executeQuery(sql);
 
             ArrayList<String> perbulan = new ArrayList<>();
@@ -65,7 +65,7 @@ public class formDashboard extends javax.swing.JPanel {
                     + "WHERE YEAR(tanggal) = YEAR(NOW()) AND MONTH(tanggal) = "
                     + "MONTH(NOW()) AND DAY(tanggal) = DAY(NOW())";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.Statement stm = conn.createStatement();
+            java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet res = stm.executeQuery(sql);
             while (res.next()) {
                 String data = res.getString("totalPenjualan");
@@ -85,7 +85,7 @@ public class formDashboard extends javax.swing.JPanel {
             String sql = "SELECT SUM(hargaTotal) AS totalPenjualan FROM faktur "
                     + "WHERE YEAR(tanggal) = YEAR(NOW()) AND MONTH(tanggal) = MONTH(NOW())";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.Statement stm = conn.createStatement();
+            java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet res = stm.executeQuery(sql);
             while (res.next()) {
                 String data = res.getString("totalPenjualan");
@@ -106,7 +106,7 @@ public class formDashboard extends javax.swing.JPanel {
                     + "WHERE YEAR(tanggal) = YEAR(NOW()) AND MONTH(tanggal) = "
                     + "MONTH(NOW()) AND DAY(tanggal) = DAY(NOW())";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.Statement stm = conn.createStatement();
+            java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet res = stm.executeQuery(sql);
             while (res.next()) {
                 String data = res.getString("totalBarang");
@@ -126,7 +126,7 @@ public class formDashboard extends javax.swing.JPanel {
             String sql = "SELECT SUM(jumlahTotal) AS totalBarang FROM faktur "
                     + "WHERE YEAR(tanggal) = YEAR(NOW()) AND MONTH(tanggal)=MONTH(NOW())";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.Statement stm = conn.createStatement();
+            java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet res = stm.executeQuery(sql);
             while (res.next()) {
                 String data = res.getString("totalBarang");
@@ -151,7 +151,7 @@ public class formDashboard extends javax.swing.JPanel {
             String sql = "SELECT noFaktur, jumlahTotal, hargaTotal, tanggal "
                     + "FROM faktur ORDER BY tanggal DESC";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.Statement stm = conn.createStatement();
+            java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet res = stm.executeQuery(sql);
             while (res.next()) {
                 model.addRow(new Object[]{"# " + res.getString(1),

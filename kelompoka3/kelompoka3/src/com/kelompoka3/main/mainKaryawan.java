@@ -5,7 +5,6 @@ import com.kelompoka3.form.FormSuplier;
 import com.kelompoka3.form.form;
 import com.kelompoka3.form.formBarang;
 import com.kelompoka3.form.formHistory;
-import com.kelompoka3.form.formLogout;
 import com.kelompoka3.form.formTransaksi;
 import java.awt.Color;
 import java.awt.Component;
@@ -30,10 +29,7 @@ public class mainKaryawan extends javax.swing.JFrame {
                 } else if (index == 3) {
                     showForm(new FormSuplier());
 
-                } else if (index == 4) {
-                    showForm(new formLogout());
-
-                } else {
+                }  else {
                     showForm(new form(index + ""));
                 }
             }

@@ -59,7 +59,9 @@
                           <Component id="btnHapus" min="-2" pref="140" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="btnEdit" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace pref="145" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="Id" min="-2" pref="1" max="-2" attributes="0"/>
+                          <EmptySpace pref="134" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -74,6 +76,7 @@
                       <Component id="btnTambah" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="btnEdit" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="btnHapus" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="Id" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" pref="621" max="32767" attributes="0"/>
@@ -166,6 +169,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="table1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -198,6 +204,16 @@
           <Events>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="crBrgKeyReleased"/>
           </Events>
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="Id">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -20,13 +20,8 @@ public class formBarang extends javax.swing.JPanel {
         table1.addTableStyle(jScrollPane1);
         crBrg.setHint("Cari Barang");
         crBrg.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png")));
-        table1.getColumnModel().getColumn(0).setMaxWidth(240);
-        table1.getColumnModel().getColumn(1).setMaxWidth(110);
-        table1.getColumnModel().getColumn(2).setMaxWidth(110);
-        table1.getColumnModel().getColumn(3).setMaxWidth(160);
-        table1.getColumnModel().getColumn(4).setMaxWidth(160);
-        table1.getColumnModel().getColumn(5).setMaxWidth(100);
-        table1.getColumnModel().getColumn(6).setMaxWidth(200);
+        Id.setVisible(false);
+        
     }
 
     private void CariData(String Key) {
@@ -58,8 +53,10 @@ public class formBarang extends javax.swing.JPanel {
         }
     }
 
-    private void TampilanData() {
+    public void TampilanData() {
+        
         DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Id");
         model.addColumn("Nama Barang");
         model.addColumn("Jenis");
         model.addColumn("Warna");
@@ -68,7 +65,7 @@ public class formBarang extends javax.swing.JPanel {
         model.addColumn("Stok");
         model.addColumn("Barcode");
 
-        String sql = "SELECT namaBarang, jenis, warna, hargaJual, hargaBeli, stok, "
+        String sql = "SELECT idBarang, namaBarang, jenis, warna, hargaJual, hargaBeli, stok, "
                 + "Barcode FROM barang ORDER BY namaBarang ASC";
         System.out.println(sql);
 
@@ -80,11 +77,37 @@ public class formBarang extends javax.swing.JPanel {
             while (rs.next()) {
                 model.addRow(new Object[]{rs.getString(1), rs.getString(2),
                     rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-                    rs.getString(7)});
+                    rs.getString(7), rs.getString(8)});
             }
             table1.setModel(model);
         } catch (Exception e) {
             e.getMessage();
+        }
+        table1.getColumnModel().getColumn(0).setMinWidth(0);
+        table1.getColumnModel().getColumn(0).setMaxWidth(0);
+        table1.getColumnModel().getColumn(0).setWidth(0);
+        table1.getColumnModel().getColumn(0).setResizable(false);
+        table1.getColumnModel().getColumn(1).setMaxWidth(260);
+        table1.getColumnModel().getColumn(2).setMaxWidth(110);
+        table1.getColumnModel().getColumn(3).setMaxWidth(110);
+        table1.getColumnModel().getColumn(4).setMaxWidth(160);
+        table1.getColumnModel().getColumn(5).setMaxWidth(160);
+        table1.getColumnModel().getColumn(6).setMaxWidth(80);
+        table1.getColumnModel().getColumn(7).setMaxWidth(200);
+    }
+
+    private void HapusData() {
+        idBarang = String.valueOf(Id.getText());
+        sql = "DELETE FROM barang WHERE idBarang = '" + idBarang + "'";
+        try {
+            java.sql.Connection conn = (Connection) koneksi.koneksi();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+            TampilanData();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR \n" + e.getMessage());
         }
     }
 
@@ -99,6 +122,7 @@ public class formBarang extends javax.swing.JPanel {
         btnTambah = new com.kelompoka3.swing.ButtonCustom();
         btnHapus = new com.kelompoka3.swing.ButtonCustom();
         crBrg = new com.kelompoka3.swing.MyTextField();
+        Id = new com.kelompoka3.swing.MyTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -125,6 +149,11 @@ public class formBarang extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "null", "Title 8"
             }
         ));
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table1);
         if (table1.getColumnModel().getColumnCount() > 0) {
             table1.getColumnModel().getColumn(6).setMinWidth(80);
@@ -154,6 +183,9 @@ public class formBarang extends javax.swing.JPanel {
             }
         });
 
+        Id.setForeground(new java.awt.Color(255, 255, 255));
+        Id.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -170,7 +202,9 @@ public class formBarang extends javax.swing.JPanel {
                         .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(145, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(134, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +214,8 @@ public class formBarang extends javax.swing.JPanel {
                     .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE))
         );
@@ -212,8 +247,7 @@ public class formBarang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-        // TODO add your handling code here:
-        new PopUpHapusBrg().setVisible(true);
+        HapusData();
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void crBrgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crBrgKeyReleased
@@ -226,8 +260,18 @@ public class formBarang extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_crBrgKeyReleased
 
+    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
+        int baris = table1.rowAtPoint(evt.getPoint());
+        if (table1.getValueAt(baris, 0) == null) {
+            Id.setText("");
+        } else {
+            Id.setText(table1.getValueAt(baris, 0).toString());
+        }
+    }//GEN-LAST:event_table1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.kelompoka3.swing.MyTextField Id;
     private com.kelompoka3.swing.ButtonCustom btnEdit;
     private com.kelompoka3.swing.ButtonCustom btnHapus;
     private com.kelompoka3.swing.ButtonCustom btnTambah;

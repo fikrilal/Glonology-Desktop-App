@@ -8,13 +8,24 @@ import com.onbarcode.barcode.EAN13;
 import com.onbarcode.barcode.IBarcode;
 import java.awt.Image;
 import java.io.File;
+import java.math.BigInteger;
+import java.text.DecimalFormat;
+import java.util.Random;
 import javax.imageio.ImageIO;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class PopUpTambahBrg extends javax.swing.JFrame {
 
     public PopUpTambahBrg() {
         initComponents();
         idBrg.setHint("ID Barang");
+        String rndmNmr = getrandomString(13);
+        idBrg.setText(rndmNmr);
+        idBrg.setEditable(false);
         nmBrg.setHint("Nama barang");
         jnsBrg.setHint("Jenis");
         wrnBrg.setHint("Warna");
@@ -47,6 +58,18 @@ public class PopUpTambahBrg extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR \n" + e.getMessage());
         }
+    }
+
+    static String getrandomString(int panjangKarakter) {
+        List<Character> charTemp = new ArrayList<>();
+        for (int i = 0; i < panjangKarakter; i++) {
+            charTemp.add((char) ThreadLocalRandom.current().nextInt(48, 57));
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i < charTemp.size(); i++) {
+            sb.append(charTemp.get(i));
+        }
+        return sb.toString();
     }
 
     @SuppressWarnings("unchecked")

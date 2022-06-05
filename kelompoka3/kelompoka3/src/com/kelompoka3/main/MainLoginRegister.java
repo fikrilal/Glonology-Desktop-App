@@ -156,7 +156,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
                 sendMain(user);
             }
         } catch (SQLException e) {
-            showPesan(Pesan.PesanType.ERROR, "Registrasi gagal");
+            showPesan(Pesan.PesanType.ERROR, "Registrasi gagal" + e.getMessage());
         }
     }
 
