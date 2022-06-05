@@ -47,6 +47,7 @@ table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getCl
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dateChooser1 = new com.raven.datechooser.DateChooser();
         jPanel1 = new javax.swing.JPanel();
         buttonTambah = new com.kelompoka3.swing.ButtonCustom();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -139,6 +140,7 @@ table1.addRow(new ModelBarang(new ModelidBarang("123456789", new ImageIcon(getCl
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.kelompoka3.swing.ButtonCustom buttonTambah;
+    private com.raven.datechooser.DateChooser dateChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private com.kelompoka3.swing.TableBarang table1;

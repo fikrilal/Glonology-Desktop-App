@@ -12,14 +12,14 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class menu extends javax.swing.JPanel {
+public class menuKaryawan extends javax.swing.JPanel {
 
     private menuButton selectedMenu;
     private menuButton unSelectedMenu;
     private Animator animator;
     private menuEvent event;
 
-    public menu() {
+    public menuKaryawan() {
         initComponents();
         setOpaque(false);
         scroll.setViewportBorder(null);
@@ -43,16 +43,14 @@ public class menu extends javax.swing.JPanel {
 
     }
 
-    public void initMenu(menuEvent event) {
+    public void initMenuKaryawan(menuEvent event) {
         this.event = event;
-        addMenu("1", "Dashboard", 0);
-        addMenu("2", "Transaksi", 1);
-        addMenu("3", "History", 2);
-        addMenu("4", "Barang", 3);
-        addMenu("5", "Supplier", 4);
-        addMenu("7", "Pegawai", 5);
+        addMenu("2", "Transaksi", 0);
+        addMenu("3", "History", 1);
+        addMenu("4", "Barang", 2);
+        addMenu("5", "Supplier", 3);
         space();
-        addMenu("6", "Logout", 6);
+        addMenu("6", "Logout", 4);
     }
 
     private void addMenu(String icon, String text, int index) {

@@ -49,20 +49,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="menuSidebar" min="-2" pref="176" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="jPanel2" max="32767" attributes="0"/>
+                  <Component id="jPanel2" pref="1104" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="menuSidebar" max="32767" attributes="0"/>
-              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+              <Component id="jPanel2" max="32767" attributes="0"/>
+              <Component id="menuSidebar" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="com.kelompoka3.component.menu" name="menuSidebar">
-        </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
@@ -97,6 +95,8 @@
             </Container>
           </SubComponents>
         </Container>
+        <Component class="com.kelompoka3.component.menuKaryawan" name="menuSidebar">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

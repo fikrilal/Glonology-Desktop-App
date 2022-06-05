@@ -379,6 +379,7 @@ JOptionPane.showMessageDialog(this,e);
 //        }
 kosong();
 clear2();
+this.setVisible(false);
     }//GEN-LAST:event_cetakActionPerformed
 
 public void clear2(){

@@ -16,9 +16,10 @@ public class ServiceUser {
     public ServiceUser() {
         con = DatabaseConnection.getInstance().getConnection();
     }
+
     public ModelUser login(ModelLogin login) throws SQLException {
         ModelUser data = null;
-        PreparedStatement p = con.prepareStatement(" SELECT userId, email, password from `pegawai` where BINARY(email)=? and BINARY(`password`)=? and `Status`='Verified' limit 1");
+        PreparedStatement p = con.prepareStatement("SELECT userId, email, password from `pegawai` where BINARY(email)=? and BINARY(`password`)=? and `Status`='Verified' limit 1");
         p.setString(1, login.getEmail());
         p.setString(2, login.getPassword());
         ResultSet r = p.executeQuery();
@@ -34,7 +35,7 @@ public class ServiceUser {
     }
 
     public void insertUser(ModelUser user) throws SQLException {
-        PreparedStatement p = con.prepareStatement("INSERT INTO pegawai (namaLengkap, email, username, password, alamat, verifyCode) VALUES (?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+        PreparedStatement p = con.prepareStatement("INSERT INTO pegawai (namaLengkap, email, username, password, alamat, verifyCode, idKedudukan) VALUES (?,?,?,?,?,?, 1)", PreparedStatement.RETURN_GENERATED_KEYS);
         String code = generateVerifyCode();
         p.setString(1, user.getNamaLengkap());
         p.setString(2, user.getEmail());
@@ -49,6 +50,46 @@ public class ServiceUser {
         r.close();
         p.close();
         user.setUserId(userId);
+        user.setVerifyCode(code);
+    }
+
+    public boolean checkKedudukanAdmin(String user) throws SQLException {
+        boolean duplicate = false;
+        PreparedStatement p = con.prepareStatement("SELECT `userId` FROM `pegawai` WHERE `email` = ? and `idKedudukan` = '1' limit 1 ");
+        p.setString(1, user);
+        ResultSet r = p.executeQuery();
+        if (r.first()) {
+            duplicate = true;
+        }
+        r.close();
+        p.close();
+        return duplicate;
+    }
+    
+    public boolean checkKedudukanKaryawan(String user) throws SQLException {
+        boolean duplicate = false;
+        PreparedStatement p = con.prepareStatement("SELECT `userId` FROM `pegawai` WHERE `email` = ? and `idKedudukan` = '2' limit 1 ");
+        p.setString(1, user);
+        ResultSet r = p.executeQuery();
+        if (r.first()) {
+            duplicate = true;
+        }
+        r.close();
+        p.close();
+        return duplicate;
+    }
+
+    public void forgotPassword(ModelUser user) throws SQLException {
+        PreparedStatement p = con.prepareStatement("UPDATE `pegawai` SET `password` = ?, `verifyCode` = ? WHERE `email` = ? limit 1", PreparedStatement.RETURN_GENERATED_KEYS);
+        String code = generateVerifyCode();
+        p.setString(1, user.getEmail());
+        p.setString(2, user.getPassword());
+        p.setString(3, code);
+        p.execute();
+        ResultSet r = p.getGeneratedKeys();
+        r.first();
+        r.close();
+        p.close();
         user.setVerifyCode(code);
     }
 
@@ -121,6 +162,4 @@ public class ServiceUser {
         p.close();
         return verify;
     }
-
-   
 }
