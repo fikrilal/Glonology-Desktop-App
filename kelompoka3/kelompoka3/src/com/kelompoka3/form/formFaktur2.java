@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.kelompoka3.form;
 
 import com.kelompoka3.koneksi.koneksi;
@@ -25,17 +19,11 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-/**
- *
- * @author AMEL
- */
+
 public class formFaktur2 extends javax.swing.JFrame {
+
     private String setTotal;
 
-    /**
-     * Creates new form formFaktur2
-     * @param
-     */
     public formFaktur2() {
         initComponents();
         autoNumber();
@@ -43,12 +31,10 @@ public class formFaktur2 extends javax.swing.JFrame {
         isian();
         isian2();
         Date date = new Date();
-        SimpleDateFormat s  = new SimpleDateFormat("dd-MM-yyyy");
-        
-        isiTanggal .setText(s.format(date));
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        isiTanggal.setText(s.format(date));
     }
 
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -290,169 +276,156 @@ public class formFaktur2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void load_table(){
-                 
+    private void load_table() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nama Barang");
         model.addColumn("Kode Barang");
         model.addColumn("Harga Barang");
         model.addColumn("Jumlah Barang");
-        
+
         try {
-            String sql = "select namaBarang, idBarang, hargaBarang, jumlahBarang from detailpenjualan where noFaktur = '"+noFaktur.getText()+"'";
-            java.sql.Connection conn = (Connection)koneksi.koneksi();
+            String sql = "select namaBarang, idBarang, hargaBarang, jumlahBarang from detailpenjualan where noFaktur = '" + noFaktur.getText() + "'";
+            java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
-            while (res.next()){
-                model.addRow(new Object[] {res.getString(1),
-                res.getString(2),res.getString(3),res.getString(4)});      
+            while (res.next()) {
+                model.addRow(new Object[]{res.getString(1),
+                    res.getString(2), res.getString(3), res.getString(4)});
             }
-           tabelfaktur.setModel(model);
-            
-        }catch (Exception e){
-            
+            tabelfaktur.setModel(model);
+
+        } catch (Exception e) {
         }
     }
-    private void autoNumber(){
+
+    private void autoNumber() {
         try {
-            Connection c = (Connection)koneksi.koneksi();
+            Connection c = (Connection) koneksi.koneksi();
             Statement s = c.createStatement();
             ResultSet r = s.executeQuery("select * from faktur order by noFaktur desc");
-            
-            if (r.next()){
-                
+            if (r.next()) {
+
                 int no_t = Integer.parseInt(r.getString("noFaktur"));
-                noFaktur.setText(Integer.toString(no_t ));}
-                else{int no_t = 1;noFaktur.setText(Integer.toString(no_t));}
-            
-        r.close();
-        s.close();
+                noFaktur.setText(Integer.toString(no_t));
+            } else {
+                int no_t = 1;
+                noFaktur.setText(Integer.toString(no_t));
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
         }
-         catch(Exception e){
-             JOptionPane.showMessageDialog(this,e);
-    }   }    
-    
+    }
+
     private void cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakActionPerformed
 
-//       ss(); 
-try{
-           
-            Connection c = (Connection)koneksi.koneksi();
-            
-                 String sql = "UPDATE `faktur` SET `userId` = '"+idPegawai.getText()+"',"
-                         + "`bayar` = '"+totaluang.getText()+"',`kembalian` = '"+kembalian.getText()+"'"
-                         + " WHERE `faktur`.`noFaktur` ='"+noFaktur.getText()+"' ";
-                 PreparedStatement pst = c.prepareStatement(sql);
-                 pst.execute();
-
-} catch (SQLException e) {
-// JOptionPane.showMessageDialog(rootPane, e);
-JOptionPane.showMessageDialog(this,e);
-} // TODO add your handling code here:
+        try {
+            Connection c = (Connection) koneksi.koneksi();
+            String sql = "UPDATE `faktur` SET `userId` = '" + idPegawai.getText() + "',"
+                    + "`bayar` = '" + totaluang.getText() + "',`kembalian` = '" + kembalian.getText() + "'"
+                    + " WHERE `faktur`.`noFaktur` ='" + noFaktur.getText() + "' ";
+            PreparedStatement pst = c.prepareStatement(sql);
+            pst.execute();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
 
         try {
-            String NamaFile = "src\\com\\kelompoka3\\form\\faktur.jasper";
+            String NamaFile = "src\\com\\kelompoka3\\form\\faktur2.jasper";
 
-            HashMap parameter = new HashMap () ;
-            parameter.put ("a",this.noFaktur.getText() ) ;
-            
+            HashMap parameter = new HashMap();
+            parameter.put("noFaktur", this.noFaktur.getText());
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = koneksi.koneksi();
-            File file = new File (NamaFile) ;
-            
+            File file = new File(NamaFile);
+
             JasperReport jr = (JasperReport) JRLoader.loadObject(file);
-           JasperPrint jp = JasperFillManager.fillReport(jr, parameter,con);
-          
-            JasperViewer.viewReport( jp, false);
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameter, con);
+
+            JasperViewer.viewReport(jp, false);
             JasperViewer.setDefaultLookAndFeelDecorated(true);
-            } catch (ClassNotFoundException | SQLException | JRException e) {
-                javax.swing.JOptionPane.showMessageDialog(null, "Data Tidak Dapat Dicetak"
-            +"\n"+e.getMessage(), "Cetak Data", javax.swing.JOptionPane.ERROR_MESSAGE);
-            }
-//}
-//
-//                 pst.close();
-//
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null,e);
-//            System.out.println("berhasil Tercetak !");
-//        }
-kosong();
-clear2();
-this.setVisible(false);
+        } catch (ClassNotFoundException | SQLException | JRException e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Data Tidak Dapat Dicetak"
+                    + "\n" + e.getMessage(), "Cetak Data", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+
+        kosong();
+        clear2();
+        this.setVisible(false);
     }//GEN-LAST:event_cetakActionPerformed
 
-public void clear2(){
-       idPegawai.setText("");
+    public void clear2() {
+        idPegawai.setText("");
         totaluang.setText("");
         totalbarang.setText("");
         kembalian.setText("");
         totalharga.setText("");
     }
-    
-public void kosong(){
-        DefaultTableModel model=(DefaultTableModel) tabelfaktur.getModel();
-        
-        while (model.getRowCount()>0){
+
+    public void kosong() {
+        DefaultTableModel model = (DefaultTableModel) tabelfaktur.getModel();
+
+        while (model.getRowCount() > 0) {
             model.removeRow(0);
-            
         }
     }
 
-void filterhuruf(KeyEvent a){
-        if(Character.isAlphabetic(a.getKeyChar())){
+    void filterhuruf(KeyEvent a) {
+        if (Character.isAlphabetic(a.getKeyChar())) {
             a.consume();
-            JOptionPane.showMessageDialog(null,"Pada Kolom Jumlah Hanya Bisa Memasukan Karakter Angka");
+            JOptionPane.showMessageDialog(null, "Pada Kolom Jumlah Hanya Bisa Memasukan Karakter Angka");
         }
     }
 
     private void totaluangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totaluangActionPerformed
-       
-       int total,bayar,uangKembali;
-        
+
+        int total, bayar, uangKembali;
+
         total = Integer.valueOf(totalharga.getText());
         bayar = Integer.valueOf(totaluang.getText());
-        
-        if (total>bayar){
+
+        if (total > bayar) {
             JOptionPane.showMessageDialog(null, "Uang Tidak Cukup Untuk Melakukan Pembayaran !");
-            
-        }else {
-            uangKembali = bayar-total ;
+        } else {
+            uangKembali = bayar - total;
             kembalian.setText(String.valueOf(uangKembali));
         }
     }//GEN-LAST:event_totaluangActionPerformed
 
     private void totalhargaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_totalhargaInputMethodTextChanged
-        
+
     }//GEN-LAST:event_totalhargaInputMethodTextChanged
 
     private void totalhargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalhargaActionPerformed
-        
+
     }//GEN-LAST:event_totalhargaActionPerformed
-private void isian(){
-    try {
-            String sql ="select * from faktur where noFaktur ='"+noFaktur.getText()+"'";
-            java.sql.Connection conn=(Connection)koneksi.koneksi();
+    private void isian() {
+        try {
+            String sql = "select * from faktur where noFaktur ='" + noFaktur.getText() + "'";
+            java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             java.sql.ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-        totalharga.setText(rs.getString("hargatotal"));
+            while (rs.next()) {
+                totalharga.setText(rs.getString("hargatotal"));
             }
         } catch (Exception e) {
         }
-}
-private void isian2(){
-    try {
-            String sql ="select * from faktur where noFaktur ='"+noFaktur.getText()+"'";
-            java.sql.Connection conn=(Connection)koneksi.koneksi();
+    }
+
+    private void isian2() {
+        try {
+            String sql = "select * from faktur where noFaktur ='" + noFaktur.getText() + "'";
+            java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             java.sql.ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-        totalbarang.setText(rs.getString("jumlahtotal"));
+            while (rs.next()) {
+                totalbarang.setText(rs.getString("jumlahtotal"));
             }
         } catch (Exception e) {
         }
-}
+    }
 
 
     private void totalbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalbarangActionPerformed
@@ -461,20 +434,17 @@ private void isian2(){
     }//GEN-LAST:event_totalbarangActionPerformed
 
     private void idPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idPegawaiActionPerformed
- 
+
     }//GEN-LAST:event_idPegawaiActionPerformed
 
     private void idPegawaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idPegawaiKeyTyped
-       filterhuruf(evt);
+        filterhuruf(evt);
     }//GEN-LAST:event_idPegawaiKeyTyped
 
     private void totaluangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_totaluangKeyTyped
         filterhuruf(evt);
     }//GEN-LAST:event_totaluangKeyTyped
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -501,7 +471,7 @@ private void isian2(){
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-           
+
             public void run() {
                 new formFaktur2().setVisible(true);
             }
@@ -533,5 +503,4 @@ private void isian2(){
     public static javax.swing.JTextField totaluang;
     // End of variables declaration//GEN-END:variables
 
-    
 }

@@ -161,9 +161,10 @@ public class MainLoginRegister extends javax.swing.JFrame {
     }
 
     private void login() {
-        ModelLogin data = loginAndRegister.getDataLogin();
+        ModelLogin data = loginAndRegister.getDataLogin();        
         try {
             ModelUser user = service.login(data);
+            service.checkNamaPengguna(user.getEmail());
             if (user != null) {
                 if (service.checkKedudukanAdmin(user.getEmail())) {
                     this.dispose();
@@ -179,7 +180,6 @@ public class MainLoginRegister extends javax.swing.JFrame {
         } catch (SQLException e) {
             showPesan(Pesan.PesanType.ERROR, "Kesalahan login" + e.getMessage());
         }
-
     }
 
     private void sendMain(ModelUser user) {

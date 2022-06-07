@@ -4,16 +4,21 @@ import com.kelompoka3.koneksi.koneksi;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class FormSuplier extends javax.swing.JPanel {
+    
+    private String idSupplier;
+    private String sql = "";
 
     public FormSuplier() {
         initComponents();
         TampilanData();
         crBrg.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png")));
-        crBrg.setHint("Cari supplier");
+        crBrg.setHint("Cari supplier..");
         jtable1.addTableStyle(jScrollPane2);
+//        Id.setVisible(false);
     }
 
     private void CariData(String Key) {
@@ -64,6 +69,24 @@ public class FormSuplier extends javax.swing.JPanel {
             e.getMessage();
         }
     }
+    
+    private void HapusData() {
+        idSupplier = String.valueOf(Id.getText());   
+        try {
+            if (Id.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Pilih data untuk dihapus!");
+            } else  {
+                sql = "DELETE FROM suplier WHERE idSuplier = '" + idSupplier + "'";
+                java.sql.Connection conn = (Connection) koneksi.koneksi();
+                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+                TampilanData();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR \n" + e.getMessage());
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,6 +100,7 @@ public class FormSuplier extends javax.swing.JPanel {
         jtable1 = new com.kelompoka3.swing.Table();
         buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
         crBrg = new com.kelompoka3.swing.MyTextField();
+        Id = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -146,8 +170,10 @@ public class FormSuplier extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
                         .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,7 +181,7 @@ public class FormSuplier extends javax.swing.JPanel {
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 99, Short.MAX_VALUE))))
+                        .addGap(0, 39, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +192,8 @@ public class FormSuplier extends javax.swing.JPanel {
                     .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
@@ -190,13 +217,16 @@ public class FormSuplier extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+        if (Id.getText().equals("")) {
+           JOptionPane.showMessageDialog(null, "Pilih data untuk diedit!");
+           new PopUpEditSuplier().setVisible(false);
+       } else {
         new PopUpEditSuplier().setVisible(true);
+       }
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-        // TODO add your handling code here:
-        new PopUpHapusSuplier().setVisible(true);
+        HapusData();
     }//GEN-LAST:event_btnHapusActionPerformed
 
 
@@ -217,11 +247,17 @@ public class FormSuplier extends javax.swing.JPanel {
     }//GEN-LAST:event_crBrgKeyReleased
 
     private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
-        // TODO add your handling code here:
+        int baris = jtable1.rowAtPoint(evt.getPoint());
+        if (jtable1.getValueAt(baris, 0) == null) {
+            Id.setText("");
+        } else {
+            Id.setText(jtable1.getValueAt(baris, 0).toString());
+        }
     }//GEN-LAST:event_jtable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JTextField Id;
     private com.kelompoka3.swing.ButtonCustom btnEdit;
     private com.kelompoka3.swing.ButtonCustom btnHapus;
     private com.kelompoka3.swing.ButtonCustom btnTambah;

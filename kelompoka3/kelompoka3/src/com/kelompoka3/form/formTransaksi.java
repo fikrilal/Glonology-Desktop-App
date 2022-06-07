@@ -12,10 +12,6 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author AMEL
- */
 public class formTransaksi extends javax.swing.JPanel {
 
     public formTransaksi() {
@@ -24,71 +20,71 @@ public class formTransaksi extends javax.swing.JPanel {
         Date date = new Date();
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         isiTanggal.setText(s.format(date));
-
+        tabelBeli.addTableStyle(jScrollPane2);
+        kodeBarang.setHint("Kode barang");
+        namaBarang.setHint("Nama barang");
+        quantity.setHint("QTY");
+        hargaBarang.setHint("Harga barang");
+        total.setHint("Total");
+        totalPembelian.setHint("Total pembelian");
         DefaultTableModel model = new DefaultTableModel();
-
         model.addColumn("Kode Barang");
         model.addColumn("Nama Barang");
         model.addColumn("Quantity");
         model.addColumn("Harga Barang");
         model.addColumn("Total Harga");
-
         tabelBeli.setModel(model);
+        jumlahbarang.setVisible(false);
+        faktur.setVisible(false);
+        tabelBeli.getColumnModel().getColumn(0).setMaxWidth(204);
+        tabelBeli.getColumnModel().getColumn(1).setMaxWidth(262);
+        tabelBeli.getColumnModel().getColumn(2).setMaxWidth(98);
+        tabelBeli.getColumnModel().getColumn(3).setMaxWidth(198);
+        tabelBeli.getColumnModel().getColumn(4).setMaxWidth(313);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelBeli = new com.kelompoka3.swing.Table();
-        tambahBarang = new javax.swing.JButton();
-        kodeBarang = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        namaBarang = new javax.swing.JTextField();
-        quantity = new javax.swing.JTextField();
-        hargaBarang = new javax.swing.JTextField();
-        total = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        hapus = new javax.swing.JButton();
-        cetak = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        totalPembelian = new javax.swing.JTextField();
         jumlahbarang = new javax.swing.JTextField();
         isiTanggal = new javax.swing.JLabel();
         faktur = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelBeli = new com.kelompoka3.swing.Table();
+        kodeBarang = new com.kelompoka3.swing.MyTextField();
+        namaBarang = new com.kelompoka3.swing.MyTextField();
+        quantity = new com.kelompoka3.swing.MyTextField();
+        hargaBarang = new com.kelompoka3.swing.MyTextField();
+        total = new com.kelompoka3.swing.MyTextField();
+        tambahBarang = new com.kelompoka3.swing.ButtonCustom();
+        hapus = new com.kelompoka3.swing.ButtonCustom();
+        cetak = new com.kelompoka3.swing.ButtonCustom();
+        totalPembelian = new com.kelompoka3.swing.MyTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jumlahbarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlahbarangActionPerformed(evt);
+            }
+        });
+
+        isiTanggal.setFont(new java.awt.Font("Tahoma", 0, 5)); // NOI18N
+        isiTanggal.setForeground(new java.awt.Color(255, 255, 255));
 
         tabelBeli.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "KODE BARANG", "NAMA BARANG", "QUANTITY", "HARGA BARANG", "TOTAL HARGA"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tabelBeli.setGridColor(new java.awt.Color(204, 204, 204));
-        jScrollPane1.setViewportView(tabelBeli);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1031, 362));
-
-        tambahBarang.setBackground(new java.awt.Color(0, 102, 51));
-        tambahBarang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        tambahBarang.setForeground(new java.awt.Color(255, 255, 255));
-        tambahBarang.setText("TAMBAH");
-        tambahBarang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tambahBarangActionPerformed(evt);
-            }
-        });
-        add(tambahBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 70, 130, 40));
+        jScrollPane2.setViewportView(tabelBeli);
 
         kodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,121 +96,121 @@ public class formTransaksi extends javax.swing.JPanel {
                 kodeBarangKeyTyped(evt);
             }
         });
-        add(kodeBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 72, 123, 40));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Slab", 1, 14)); // NOI18N
-        jLabel1.setText("KODE BARANG");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 28, 123, 21));
-
-        namaBarang.setEnabled(false);
-        namaBarang.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                namaBarangInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
-        namaBarang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namaBarangActionPerformed(evt);
-            }
-        });
         namaBarang.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                namaBarangKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 namaBarangKeyTyped(evt);
             }
         });
-        add(namaBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 72, 204, 40));
 
-        quantity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quantityActionPerformed(evt);
-            }
-        });
         quantity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 quantityKeyTyped(evt);
             }
         });
-        add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 72, 123, 40));
 
-        hargaBarang.setEnabled(false);
-        hargaBarang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hargaBarangActionPerformed(evt);
-            }
-        });
         hargaBarang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 hargaBarangKeyTyped(evt);
             }
         });
-        add(hargaBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(542, 72, 204, 40));
 
-        total.setEnabled(false);
-        total.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalActionPerformed(evt);
-            }
-        });
         total.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 totalKeyTyped(evt);
             }
         });
-        add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 70, 123, 40));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Slab", 1, 14)); // NOI18N
-        jLabel2.setText("NAMA BARANG");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 28, 123, 21));
+        tambahBarang.setText("Tambah Barang");
+        tambahBarang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tambahBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahBarangActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Roboto Slab", 1, 14)); // NOI18N
-        jLabel3.setText("QUANTITY");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 28, 123, 21));
-
-        jLabel4.setFont(new java.awt.Font("Roboto Slab", 1, 14)); // NOI18N
-        jLabel4.setText("HARGA BARANG");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(542, 28, 123, 21));
-
-        hapus.setBackground(new java.awt.Color(0, 102, 51));
+        hapus.setText("Hapus");
         hapus.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        hapus.setForeground(new java.awt.Color(255, 255, 255));
-        hapus.setText("HAPUS");
+        hapus.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
         hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hapusActionPerformed(evt);
             }
         });
-        add(hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 610, 90, 40));
 
-        cetak.setBackground(new java.awt.Color(0, 102, 51));
+        cetak.setText("Simpan");
         cetak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        cetak.setForeground(new java.awt.Color(255, 255, 255));
-        cetak.setText("SELESAI");
         cetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cetakActionPerformed(evt);
             }
         });
-        add(cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 610, 100, 40));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("TOTAL PEMBELIAN");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 540, -1, -1));
-
-        totalPembelian.setEnabled(false);
-        totalPembelian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalPembelianActionPerformed(evt);
-            }
-        });
-        add(totalPembelian, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 530, 172, 40));
-        add(jumlahbarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 610, 70, -1));
-        add(isiTanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 90, 20));
-        add(faktur, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 610, 50, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(kodeBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(hargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tambahBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(isiTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane2))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(faktur, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jumlahbarang, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cetak, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(totalPembelian, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(kodeBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tambahBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(isiTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(totalPembelian, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cetak, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jumlahbarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(faktur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void autoNumber() {
@@ -257,41 +253,9 @@ public class formTransaksi extends javax.swing.JPanel {
                 namaBarang.setText(rs.getString("namaBarang"));
                 hargaBarang.setText(rs.getString("hargaJual"));
             }
-
         } catch (SQLException e) {
-
         }
     }//GEN-LAST:event_kodeBarangActionPerformed
-
-    private void namaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaBarangActionPerformed
-
-    }//GEN-LAST:event_namaBarangActionPerformed
-
-    private void quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityActionPerformed
-
-    }//GEN-LAST:event_quantityActionPerformed
-
-    private void hargaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaBarangActionPerformed
-
-    }//GEN-LAST:event_hargaBarangActionPerformed
-
-    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
-
-    }//GEN-LAST:event_totalActionPerformed
-
-    private void tambahBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahBarangActionPerformed
-        cekstok();
-    }//GEN-LAST:event_tambahBarangActionPerformed
-
-    private void kodeBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodeBarangKeyTyped
-        filterhuruf(evt);
-
-
-    }//GEN-LAST:event_kodeBarangKeyTyped
-
-    private void namaBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaBarangKeyTyped
-        filterangka(evt);
-    }//GEN-LAST:event_namaBarangKeyTyped
 
     private void quantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityKeyTyped
         filterhuruf(evt);
@@ -301,37 +265,33 @@ public class formTransaksi extends javax.swing.JPanel {
         filterhuruf(evt);
     }//GEN-LAST:event_hargaBarangKeyTyped
 
-    private void totalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_totalKeyTyped
-        filterhuruf(evt);
-    }//GEN-LAST:event_totalKeyTyped
-
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         DefaultTableModel model = (DefaultTableModel) tabelBeli.getModel();
-
         int row = tabelBeli.getSelectedRow();
         model.removeRow(row);
-
         clear();
         clear2();
         totalBiaya();
         totalBarang();
-
     }//GEN-LAST:event_hapusActionPerformed
 
+    private void jumlahbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlahbarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jumlahbarangActionPerformed
+
+    private void tambahBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahBarangActionPerformed
+        cekstok();
+    }//GEN-LAST:event_tambahBarangActionPerformed
+
     private void cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakActionPerformed
-
         try {
-
             Connection c = (Connection) koneksi.koneksi();
-
             String sql = "insert into faktur (noFaktur,hargatotal, jumlahtotal, tanggal) values('"
                     + faktur.getText() + "','" + totalPembelian.getText() + "','" + jumlahbarang.getText() + "','" + isiTanggal.getText() + "')";
             PreparedStatement pst = c.prepareStatement(sql);
             pst.execute();
             pst.close();
-
             int baris = tabelBeli.getRowCount();
-
             for (int i = 0; i < baris; i++) {
                 String sqll = "insert into detailpenjualan (noFaktur,idBarang,namaBarang,hargaBarang, jumlahBarang) values ('"
                         + faktur.getText() + "','" + tabelBeli.getValueAt(i, 0) + "','" + tabelBeli.getValueAt(i, 1) + "',"
@@ -345,27 +305,25 @@ public class formTransaksi extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e);
             System.out.println("Penyimpanan Error !");
         }
-
         clear();
         clear2();
         autoNumber();
         kosong();
 
         new formFaktur2().setVisible(true);
-
     }//GEN-LAST:event_cetakActionPerformed
 
-    private void totalPembelianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalPembelianActionPerformed
+    private void kodeBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodeBarangKeyTyped
+        filterhuruf(evt);
+    }//GEN-LAST:event_kodeBarangKeyTyped
 
-    }//GEN-LAST:event_totalPembelianActionPerformed
+    private void namaBarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaBarangKeyTyped
+        filterangka(evt);
+    }//GEN-LAST:event_namaBarangKeyTyped
 
-    private void namaBarangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaBarangKeyReleased
-
-    }//GEN-LAST:event_namaBarangKeyReleased
-
-    private void namaBarangInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_namaBarangInputMethodTextChanged
-
-    }//GEN-LAST:event_namaBarangInputMethodTextChanged
+    private void totalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_totalKeyTyped
+        filterhuruf(evt);
+    }//GEN-LAST:event_totalKeyTyped
 
     public void clear() {
         totalPembelian.setText("");
@@ -508,25 +466,20 @@ public class formTransaksi extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cetak;
+    private com.kelompoka3.swing.ButtonCustom cetak;
     private javax.swing.JTextField faktur;
-    private javax.swing.JButton hapus;
-    private javax.swing.JTextField hargaBarang;
+    private com.kelompoka3.swing.ButtonCustom hapus;
+    private com.kelompoka3.swing.MyTextField hargaBarang;
     private javax.swing.JLabel isiTanggal;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jumlahbarang;
-    private javax.swing.JTextField kodeBarang;
-    private javax.swing.JTextField namaBarang;
-    private javax.swing.JTextField quantity;
+    private com.kelompoka3.swing.MyTextField kodeBarang;
+    private com.kelompoka3.swing.MyTextField namaBarang;
+    private com.kelompoka3.swing.MyTextField quantity;
     private com.kelompoka3.swing.Table tabelBeli;
-    private javax.swing.JButton tambahBarang;
-    private javax.swing.JTextField total;
-    private javax.swing.JTextField totalPembelian;
+    private com.kelompoka3.swing.ButtonCustom tambahBarang;
+    private com.kelompoka3.swing.MyTextField total;
+    private com.kelompoka3.swing.MyTextField totalPembelian;
     // End of variables declaration//GEN-END:variables
 
 }

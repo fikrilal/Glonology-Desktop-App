@@ -9,67 +9,83 @@ import javax.swing.table.DefaultTableModel;
 
 public class formPegawai extends javax.swing.JPanel {
 
+    private String idPegawai;
+    private String sql = "";
+
     public formPegawai() {
-
         initComponents();
-        tablePegawai();
-        setOpaque(false);
-        table1.addTableStyle(jScrollPane1);
-
-        txtNamaLengkap.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Profile.png")));
-        txtNamaLengkap.setHint("Nama Lengkap");
-
-        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Message.png")));
-        txtEmail.setHint("Email");
-
-        txtUsername.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Profile.png")));
-        txtUsername.setHint("Username");
-
-        txtPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Lock.png")));
-        txtPassword.setHint("Password");
-
-        txtAlamat.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Location.png")));
-        txtAlamat.setHint("Alamat");
-
+        TampilanData();
+        crBrg.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png")));
+        crBrg.setHint("Cari pegawai..");
+        jtable1.addTableStyle(jScrollPane2);
+//        Id.setVisible(false);
     }
 
-    private void tablePegawai() {
+    private void CariData(String Key) {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Nama");
+        model.addColumn("Nama lengkap");
         model.addColumn("Email");
         model.addColumn("Username");
-        model.addColumn("Password");
         model.addColumn("Alamat");
+        String sql = "SELECT namaLengkap, email, username, alamat FROM pegawai WHERE namaLengkap LIKE '%" + Key + "%'";
+        System.out.println(sql);
+
         try {
-            String sql = "SELECT namaLengkap, email, username, password, alamat FROM pegawai ORDER BY userId DESC";
             java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet res = stm.executeQuery(sql);
-            while (res.next()) {
-                model.addRow(new Object[]{res.getString(1),
-                    res.getString(2), res.getString(3), res.getString(4), res.getString(5)});
+            java.sql.PreparedStatement stm = conn.prepareStatement(sql);
+            java.sql.ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)});
+
             }
-            table1.setModel(model);
+            jtable1.setModel(model);
         } catch (SQLException e) {
+            e.getMessage();
         }
     }
 
-    private String sql = "";
-    private String namaLengkap, email, username, password, alamat;
-
-    private void TambahkanData() {
-        namaLengkap = String.valueOf(txtNamaLengkap.getText());
-        email = String.valueOf(txtEmail.getText());
-        username = String.valueOf(txtUsername.getText());
-        password = String.valueOf(txtPassword.getText());
-        alamat = String.valueOf(txtAlamat.getText());
-        sql = "INSERT INTO pegawai VALUES (NULL, '" + namaLengkap + "','" + email + "','" + username + "','" + password + "','" + alamat + "', NULL, 'Verified', '2')";
+    private void TampilanData() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Nama lengkap");
+        model.addColumn("Email");
+        model.addColumn("Username");
+        model.addColumn("Alamat");
+        String sql = "SELECT userId, namaLengkap, email, username, alamat FROM "
+                + "pegawai WHERE idKedudukan = 2 ORDER BY `namaLengkap` ASC";
         System.out.println(sql);
+
         try {
             java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+            java.sql.PreparedStatement stm = conn.prepareStatement(sql);
+            java.sql.ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)});
+            }
+            jtable1.setModel(model);
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+        jtable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jtable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        jtable1.getColumnModel().getColumn(0).setWidth(0);
+        jtable1.getColumnModel().getColumn(0).setResizable(false);
+    }
+
+    private void HapusData() {
+        idPegawai = String.valueOf(Id.getText());
+        try {
+            if (Id.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Pilih data untuk dihapus!");
+            } else {
+                sql = "DELETE FROM pegawai WHERE userId = '" + idPegawai + "'";
+                java.sql.Connection conn = (Connection) koneksi.koneksi();
+                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+                TampilanData();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR \n" + e.getMessage());
         }
@@ -79,101 +95,159 @@ public class formPegawai extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtNamaLengkap = new com.kelompoka3.swing.MyTextField();
-        txtEmail = new com.kelompoka3.swing.MyTextField();
-        txtUsername = new com.kelompoka3.swing.MyTextField();
-        txtPassword = new com.kelompoka3.swing.MyTextField();
-        txtAlamat = new com.kelompoka3.swing.MyTextField();
-        buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table1 = new com.kelompoka3.swing.Table();
+        jPanel1 = new javax.swing.JPanel();
+        btnTambah = new com.kelompoka3.swing.ButtonCustom();
+        btnHapus = new com.kelompoka3.swing.ButtonCustom();
+        btnEdit = new com.kelompoka3.swing.ButtonCustom();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtable1 = new com.kelompoka3.swing.Table();
+        crBrg = new com.kelompoka3.swing.MyTextField();
+        Id = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(79, 79, 79));
-        jLabel1.setText("Buat akun pegawai");
-
-        buttonCustom1.setText("Confirm");
-        buttonCustom1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        buttonCustom1.addActionListener(new java.awt.event.ActionListener() {
+        btnTambah.setText("Tambah");
+        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCustom1ActionPerformed(evt);
+                btnTambahActionPerformed(evt);
             }
         });
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        btnHapus.setText("Hapus");
+        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnHapus.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        btnEdit.setText("Edit");
+        btnEdit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEdit.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        jtable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "", "", "", "", ""
             }
         ));
-        table1.setFont(new java.awt.Font("Tomaha", 0, 14)); // NOI18N
-        jScrollPane1.setViewportView(table1);
+        jtable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jtable1);
+
+        crBrg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                crBrgKeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 148, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNamaLengkap, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAlamat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(249, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNamaLengkap, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
-        TambahkanData();
-    }//GEN-LAST:event_buttonCustom1ActionPerformed
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        new PopUpTambahPegawai().setVisible(true);
+    }//GEN-LAST:event_btnTambahActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+       if (Id.getText().equals("")) {
+           JOptionPane.showMessageDialog(null, "Pilih data untuk diedit!");
+           new PopUpEditPegawai().setVisible(false);
+       } else {
+        new PopUpEditPegawai().setVisible(true);
+       }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        HapusData();
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void crBrgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crBrgKeyReleased
+        String key = crBrg.getText();
+
+        if (key != "") {
+            CariData(key);
+        } else {
+            TampilanData();
+        }
+    }//GEN-LAST:event_crBrgKeyReleased
+
+    private void jtable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable1MouseClicked
+        int baris = jtable1.rowAtPoint(evt.getPoint());
+        if (jtable1.getValueAt(baris, 0) == null) {
+            Id.setText("");
+        } else {
+            Id.setText(jtable1.getValueAt(baris, 0).toString());
+        }
+    }//GEN-LAST:event_jtable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.kelompoka3.swing.ButtonCustom buttonCustom1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private com.kelompoka3.swing.Table table1;
-    private com.kelompoka3.swing.MyTextField txtAlamat;
-    private com.kelompoka3.swing.MyTextField txtEmail;
-    private com.kelompoka3.swing.MyTextField txtNamaLengkap;
-    private com.kelompoka3.swing.MyTextField txtPassword;
-    private com.kelompoka3.swing.MyTextField txtUsername;
+    public static javax.swing.JTextField Id;
+    private com.kelompoka3.swing.ButtonCustom btnEdit;
+    private com.kelompoka3.swing.ButtonCustom btnHapus;
+    private com.kelompoka3.swing.ButtonCustom btnTambah;
+    private com.kelompoka3.swing.MyTextField crBrg;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private com.kelompoka3.swing.Table jtable1;
     // End of variables declaration//GEN-END:variables
 }

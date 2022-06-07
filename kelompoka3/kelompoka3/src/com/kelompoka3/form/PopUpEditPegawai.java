@@ -2,30 +2,25 @@ package com.kelompoka3.form;
 
 import java.sql.*;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import com.kelompoka3.koneksi.koneksi;
-import com.kelompoka3.form.formBarang;
-import static com.kelompoka3.form.formBarang.Id;
 
-public class PopUpEditBrg extends javax.swing.JFrame {
+public class PopUpEditPegawai extends javax.swing.JFrame {
 
-    public PopUpEditBrg() {
+    public PopUpEditPegawai() {
         initComponents();
         TampilanData();
-        idBrg.setHint("Id Barang");
-        idBrg.setEditable(false);
-        nmBrg.setHint("Nama Barang");
-        jnsBrg.setHint("Jenis");
-        wrnBrg.setHint("Warna");
-        hrgJual.setHint("Harga Jual");
-        hrgBrgBeli.setHint("Harga Beli");
-        stokBrg.setHint("Stok");
+        nama.setHint("Nama lengkap");
+        email.setHint("Email");
+        username.setHint("Username");
+        password.setHint("Password");
+        alamat.setHint("Alamat");
     }
 
     private void EditData() {
-        String sql = "UPDATE barang SET namaBarang = '" + nmBrg.getText() + "',jenis = '" + jnsBrg.getText() + "',"
-                + " warna = '" + wrnBrg.getText() + "',hargaBeli = '" + hrgBrgBeli.getText() + "', hargaJual = '"
-                + hrgJual.getText() + "',stok = '" + stokBrg.getText() + "' WHERE idBarang = '" + idBrg.getText() + "'";
+        String sql = "UPDATE pegawai SET namaLengkap = '" + nama.getText() + "', "
+                + "email = '" + email.getText() + "', username = '" + username.getText() + "',"
+                + " password = '" + password.getText() + "', alamat = '"
+                + alamat.getText() + "' WHERE userId = '" + formPegawai.Id.getText() + "'";
         try {
             java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
@@ -38,20 +33,19 @@ public class PopUpEditBrg extends javax.swing.JFrame {
     }
 
     private void TampilanData() {
-        String sql = "SELECT idBarang, namaBarang, jenis, warna, hargaJual, hargaBeli, stok FROM barang WHERE idBarang = '" + formBarang.Id.getText() + "'";
+        String sql = "SELECT namaLengkap, email, username, password, alamat FROM "
+                + "pegawai WHERE userId = '" + formPegawai.Id.getText() + "'";
         System.out.println(sql);
         try {
             java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.PreparedStatement stm = conn.prepareStatement(sql);
             java.sql.ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                idBrg.setText(rs.getString("idBarang"));
-                nmBrg.setText(rs.getString("namaBarang"));
-                jnsBrg.setText(rs.getString("jenis"));
-                wrnBrg.setText(rs.getString("warna"));
-                hrgJual.setText(rs.getString("hargaJual"));
-                hrgBrgBeli.setText(rs.getString("hargaBeli"));
-                stokBrg.setText(rs.getString("stok"));
+                nama.setText(rs.getString("namaLengkap"));
+                email.setText(rs.getString("email"));
+                username.setText(rs.getString("username"));
+                password.setText(rs.getString("password"));
+                alamat.setText(rs.getString("alamat"));
             }
 
         } catch (Exception e) {
@@ -66,13 +60,11 @@ public class PopUpEditBrg extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnEdit = new com.kelompoka3.swing.ButtonCustom();
         btnBatal = new com.kelompoka3.swing.ButtonCustom();
-        idBrg = new com.kelompoka3.swing.MyTextField();
-        nmBrg = new com.kelompoka3.swing.MyTextField();
-        jnsBrg = new com.kelompoka3.swing.MyTextField();
-        wrnBrg = new com.kelompoka3.swing.MyTextField();
-        hrgJual = new com.kelompoka3.swing.MyTextField();
-        hrgBrgBeli = new com.kelompoka3.swing.MyTextField();
-        stokBrg = new com.kelompoka3.swing.MyTextField();
+        nama = new com.kelompoka3.swing.MyTextField();
+        email = new com.kelompoka3.swing.MyTextField();
+        username = new com.kelompoka3.swing.MyTextField();
+        password = new com.kelompoka3.swing.MyTextField();
+        alamat = new com.kelompoka3.swing.MyTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -96,9 +88,9 @@ public class PopUpEditBrg extends javax.swing.JFrame {
             }
         });
 
-        jnsBrg.addActionListener(new java.awt.event.ActionListener() {
+        username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jnsBrgActionPerformed(evt);
+                usernameActionPerformed(evt);
             }
         });
 
@@ -121,13 +113,11 @@ public class PopUpEditBrg extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(idBrg, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                                .addComponent(nmBrg, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                                .addComponent(jnsBrg, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                                .addComponent(wrnBrg, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                                .addComponent(hrgJual, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                                .addComponent(hrgBrgBeli, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                                .addComponent(stokBrg, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))))
+                                .addComponent(nama, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                                .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                                .addComponent(username, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                                .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                                .addComponent(alamat, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(jLabel1)))
@@ -139,19 +129,15 @@ public class PopUpEditBrg extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(idBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(nmBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jnsBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(wrnBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(hrgJual, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(hrgBrgBeli, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(stokBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,23 +167,20 @@ public class PopUpEditBrg extends javax.swing.JFrame {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
 
         EditData();
-        idBrg.setText("");
-        nmBrg.setText("");
-        jnsBrg.setText("");
-        wrnBrg.setText("");
-        hrgJual.setText("");
-        hrgBrgBeli.setText("");
-        stokBrg.setText("");
+        nama.setText("");
+        email.setText("");
+        username.setText("");
+        password.setText("");
+        alamat.setText("");
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_btnBatalActionPerformed
 
-    private void jnsBrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jnsBrgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jnsBrgActionPerformed
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+
+    }//GEN-LAST:event_usernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,36 +199,35 @@ public class PopUpEditBrg extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PopUpEditBrg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpEditPegawai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PopUpEditBrg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpEditPegawai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PopUpEditBrg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpEditPegawai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PopUpEditBrg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PopUpEditPegawai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PopUpEditBrg().setVisible(true);
+                new PopUpEditPegawai().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.kelompoka3.swing.MyTextField alamat;
     private com.kelompoka3.swing.ButtonCustom btnBatal;
     private com.kelompoka3.swing.ButtonCustom btnEdit;
-    private com.kelompoka3.swing.MyTextField hrgBrgBeli;
-    private com.kelompoka3.swing.MyTextField hrgJual;
-    private com.kelompoka3.swing.MyTextField idBrg;
+    private com.kelompoka3.swing.MyTextField email;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
-    private com.kelompoka3.swing.MyTextField jnsBrg;
-    private com.kelompoka3.swing.MyTextField nmBrg;
-    private com.kelompoka3.swing.MyTextField stokBrg;
-    private com.kelompoka3.swing.MyTextField wrnBrg;
+    private com.kelompoka3.swing.MyTextField nama;
+    private com.kelompoka3.swing.MyTextField password;
+    private com.kelompoka3.swing.MyTextField username;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -66,6 +66,19 @@ public class ServiceUser {
         return duplicate;
     }
     
+    public boolean checkNamaPengguna(String user) throws SQLException {
+        boolean duplicate = false;
+        PreparedStatement p = con.prepareStatement("SELECT `userId` FROM `pegawai` WHERE `email` = ? limit 1 ");
+        p.setString(1, user);
+        ResultSet r = p.executeQuery();
+        if (r.first()) {
+            duplicate = true;
+        }
+        r.close();
+        p.close();
+        return duplicate;
+    }
+    
     public boolean checkKedudukanKaryawan(String user) throws SQLException {
         boolean duplicate = false;
         PreparedStatement p = con.prepareStatement("SELECT `userId` FROM `pegawai` WHERE `email` = ? and `idKedudukan` = '2' limit 1 ");

@@ -12,16 +12,20 @@ public class formBarang extends javax.swing.JPanel {
     private ResultSet RSBarang;
     private String sql = "";
 
-    private String idBarang, namaBarang, jenis, warna, hargaJual, hargaBeli, stok;
+    public String idBarang, namaBarang, jenis, warna, hargaJual, hargaBeli, stok;
 
     public formBarang() {
         initComponents();
         TampilanData();
         table1.addTableStyle(jScrollPane1);
-        crBrg.setHint("Cari Barang");
+        crBrg.setHint("Cari barang..");
         crBrg.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png")));
         Id.setVisible(false);
-        
+    }
+    
+    public void setId(String idUniversal) {
+        idBarang = String.valueOf(Id.getText()); 
+        this.idBarang = idUniversal;
     }
 
     private void CariData(String Key) {
@@ -54,7 +58,7 @@ public class formBarang extends javax.swing.JPanel {
     }
 
     public void TampilanData() {
-        
+
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Id");
         model.addColumn("Nama Barang");
@@ -90,22 +94,25 @@ public class formBarang extends javax.swing.JPanel {
         table1.getColumnModel().getColumn(1).setMaxWidth(260);
         table1.getColumnModel().getColumn(2).setMaxWidth(110);
         table1.getColumnModel().getColumn(3).setMaxWidth(110);
-        table1.getColumnModel().getColumn(4).setMaxWidth(160);
-        table1.getColumnModel().getColumn(5).setMaxWidth(160);
+        table1.getColumnModel().getColumn(4).setMaxWidth(140);
+        table1.getColumnModel().getColumn(5).setMaxWidth(140);
         table1.getColumnModel().getColumn(6).setMaxWidth(80);
-        table1.getColumnModel().getColumn(7).setMaxWidth(200);
+        table1.getColumnModel().getColumn(7).setMaxWidth(248);
     }
 
     private void HapusData() {
-        idBarang = String.valueOf(Id.getText());
-        sql = "DELETE FROM barang WHERE idBarang = '" + idBarang + "'";
+        idBarang = String.valueOf(Id.getText());   
         try {
-            java.sql.Connection conn = (Connection) koneksi.koneksi();
-            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
-            TampilanData();
-
+            if (Id.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Pilih data untuk dihapus!");
+            } else  {
+                sql = "DELETE FROM barang WHERE idBarang = '" + idBarang + "'";
+                java.sql.Connection conn = (Connection) koneksi.koneksi();
+                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+                TampilanData();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR \n" + e.getMessage());
         }
@@ -183,7 +190,7 @@ public class formBarang extends javax.swing.JPanel {
             }
         });
 
-        Id.setForeground(new java.awt.Color(255, 255, 255));
+        Id.setForeground(new java.awt.Color(0, 0, 0));
         Id.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -203,8 +210,8 @@ public class formBarang extends javax.swing.JPanel {
                         .addGap(12, 12, 12)
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(134, Short.MAX_VALUE))))
+                        .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(135, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,8 +244,12 @@ public class formBarang extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+       if (Id.getText().equals("")) {
+           JOptionPane.showMessageDialog(null, "Pilih data untuk diedit!");
+           new PopUpEditBrg().setVisible(false);
+       } else {
         new PopUpEditBrg().setVisible(true);
+       }
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
@@ -271,7 +282,7 @@ public class formBarang extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.kelompoka3.swing.MyTextField Id;
+    public static com.kelompoka3.swing.MyTextField Id;
     private com.kelompoka3.swing.ButtonCustom btnEdit;
     private com.kelompoka3.swing.ButtonCustom btnHapus;
     private com.kelompoka3.swing.ButtonCustom btnTambah;

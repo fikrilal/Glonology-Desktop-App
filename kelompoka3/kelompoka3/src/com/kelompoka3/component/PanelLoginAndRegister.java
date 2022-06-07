@@ -102,7 +102,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         });
     }
 
-    private void initLogin(ActionListener eventLogin) {
+    public void initLogin(ActionListener eventLogin) {
         login.setLayout(new MigLayout("wrap", "push[center]push", "push[]12[]32[]18[]12[]32[]push"));
         JLabel judul = new JLabel("Sign");
         JLabel deskripsi = new JLabel("Selamat datang kembali!");
@@ -123,7 +123,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         txtPassword.setPreferredSize(new Dimension(400, 52));
         txtPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Lock.png")));
         txtPassword.setHint("Password");
-        login.add(txtPassword, "w 60%");
+        login.add(txtPassword, "w 60%");    
 
         JButton cmdForget = new JButton("                                                           Forgot your password?");
         cmdForget.setForeground(new Color(47, 128, 237));
