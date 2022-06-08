@@ -98,7 +98,6 @@ public class FormSuplier extends javax.swing.JPanel {
         btnEdit = new com.kelompoka3.swing.ButtonCustom();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtable1 = new com.kelompoka3.swing.Table();
-        buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
         crBrg = new com.kelompoka3.swing.MyTextField();
         Id = new javax.swing.JTextField();
 
@@ -150,13 +149,6 @@ public class FormSuplier extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jtable1);
 
-        buttonCustom1.setText("buttonCustom1");
-        buttonCustom1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCustom1ActionPerformed(evt);
-            }
-        });
-
         crBrg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 crBrgKeyReleased(evt);
@@ -181,9 +173,7 @@ public class FormSuplier extends javax.swing.JPanel {
                         .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 39, Short.MAX_VALUE))))
+                        .addGap(0, 148, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +183,6 @@ public class FormSuplier extends javax.swing.JPanel {
                     .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
@@ -232,12 +221,6 @@ public class FormSuplier extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHapusActionPerformed
 
 
-    private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
-        // TODO add your handling code here:
-        new Logout().setVisible(true);
-
-    }//GEN-LAST:event_buttonCustom1ActionPerformed
-
     private void crBrgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crBrgKeyReleased
         String key = crBrg.getText();
 
@@ -263,7 +246,6 @@ public class FormSuplier extends javax.swing.JPanel {
     private com.kelompoka3.swing.ButtonCustom btnEdit;
     private com.kelompoka3.swing.ButtonCustom btnHapus;
     private com.kelompoka3.swing.ButtonCustom btnTambah;
-    private com.kelompoka3.swing.ButtonCustom buttonCustom1;
     private com.kelompoka3.swing.MyTextField crBrg;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

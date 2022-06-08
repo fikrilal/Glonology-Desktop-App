@@ -50,9 +50,7 @@
                           <Component id="btnHapus" min="-2" pref="140" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="btnEdit" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="buttonCustom1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="39" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="148" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -66,7 +64,6 @@
                       <Component id="btnTambah" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="btnHapus" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="btnEdit" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="buttonCustom1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="crBrg" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="Id" alignment="3" min="-2" pref="0" max="-2" attributes="0"/>
                   </Group>
@@ -180,14 +177,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="com.kelompoka3.swing.ButtonCustom" name="buttonCustom1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="buttonCustom1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustom1ActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="com.kelompoka3.swing.MyTextField" name="crBrg">
           <Events>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="crBrgKeyReleased"/>

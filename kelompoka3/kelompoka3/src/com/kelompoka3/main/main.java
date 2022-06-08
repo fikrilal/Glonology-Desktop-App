@@ -2,6 +2,7 @@ package com.kelompoka3.main;
 
 import com.kelompoka3.event.menuEvent;
 import com.kelompoka3.form.FormSuplier;
+import com.kelompoka3.form.Logout;
 import com.kelompoka3.form.form;
 import com.kelompoka3.form.formBarang;
 import com.kelompoka3.form.formDashboard;
@@ -38,6 +39,9 @@ public class main extends javax.swing.JFrame {
 
                 } else if (index == 5) {
                     showForm(new formPegawai());
+                    
+                } else if (index == 6) {
+                    new Logout().setVisible(true);
 
                 }else {
                     showForm(new form(index + ""));
