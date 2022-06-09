@@ -29,8 +29,8 @@ public class PopUpTambahBrg extends javax.swing.JFrame {
         nmBrg.setHint("Nama barang");
         jnsBrg.setHint("Jenis");
         wrnBrg.setHint("Warna");
-        hrgBrgBeli.setHint("Harga Beli");
         hrgJual.setHint("Harga Jual");
+        hrgBrgBeli.setHint("Harga Beli");
         stokBrg.setHint("Stok");
     }
     private String sql = "";
@@ -41,8 +41,8 @@ public class PopUpTambahBrg extends javax.swing.JFrame {
         namaBarang = String.valueOf(nmBrg.getText());
         jenis = String.valueOf(jnsBrg.getText());
         warna = String.valueOf(wrnBrg.getText());
-        hargaJual = String.valueOf(hrgBrgBeli.getText());
-        hargaBeli = String.valueOf(hrgJual.getText());
+        hargaJual = String.valueOf(hrgJual.getText());
+        hargaBeli = String.valueOf(hrgBrgBeli.getText());
         stok = String.valueOf(stokBrg.getText());
         String brcode = "C://drivers//" + this.nmBrg.getText().toString() + ".png";
 
@@ -85,8 +85,8 @@ public class PopUpTambahBrg extends javax.swing.JFrame {
         nmBrg = new com.kelompoka3.swing.MyTextField();
         jnsBrg = new com.kelompoka3.swing.MyTextField();
         wrnBrg = new com.kelompoka3.swing.MyTextField();
-        hrgBrgBeli = new com.kelompoka3.swing.MyTextField();
         hrgJual = new com.kelompoka3.swing.MyTextField();
+        hrgBrgBeli = new com.kelompoka3.swing.MyTextField();
         stokBrg = new com.kelompoka3.swing.MyTextField();
 
         btnBatal.setText("B AT A L");
@@ -134,8 +134,8 @@ public class PopUpTambahBrg extends javax.swing.JFrame {
                             .addComponent(nmBrg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jnsBrg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(wrnBrg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(hrgBrgBeli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(hrgJual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(hrgBrgBeli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(stokBrg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnBatal1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,9 +161,9 @@ public class PopUpTambahBrg extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(wrnBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(hrgBrgBeli, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(hrgJual, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(hrgBrgBeli, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(stokBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
