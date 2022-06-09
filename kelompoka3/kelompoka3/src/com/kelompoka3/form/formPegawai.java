@@ -106,7 +106,7 @@ public class formPegawai extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnTambah.setText("Tambah");
+        btnTambah.setText("+ T A M B A H");
         btnTambah.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +114,8 @@ public class formPegawai extends javax.swing.JPanel {
             }
         });
 
-        btnHapus.setText("Hapus");
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Delete-1.png"))); // NOI18N
+        btnHapus.setText("H A P U S");
         btnHapus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHapus.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +124,8 @@ public class formPegawai extends javax.swing.JPanel {
             }
         });
 
-        btnEdit.setText("Edit");
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Edit Square.png"))); // NOI18N
+        btnEdit.setText("E D I T");
         btnEdit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnEdit.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
