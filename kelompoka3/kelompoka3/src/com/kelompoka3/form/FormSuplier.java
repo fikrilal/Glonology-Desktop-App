@@ -18,6 +18,7 @@ public class FormSuplier extends javax.swing.JPanel {
         crBrg.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png")));
         crBrg.setHint("Cari supplier..");
         jtable1.addTableStyle(jScrollPane2);
+        jtable1.setDefaultEditor(Object.class, null);
 //        Id.setVisible(false);
     }
 

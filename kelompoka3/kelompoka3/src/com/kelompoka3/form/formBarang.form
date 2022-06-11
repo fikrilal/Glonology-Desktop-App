@@ -72,13 +72,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="crBrg" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="btnTambah" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="btnEdit" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="btnHapus" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="Id" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="barcode" alignment="1" min="-2" pref="49" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="crBrg" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="btnTambah" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="btnEdit" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="btnHapus" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="Id" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" pref="621" max="32767" attributes="0"/>

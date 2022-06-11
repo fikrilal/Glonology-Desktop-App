@@ -25,7 +25,7 @@ public class formTransaksi extends javax.swing.JPanel {
         namaBarang.setHint("Nama barang");
         quantity.setHint("QTY");
         hargaBarang.setHint("Harga barang");
-        total.setHint("Total");
+//        total.setHint("Total");
         totalPembelian.setHint("Total pembelian");
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Kode Barang");
@@ -34,6 +34,7 @@ public class formTransaksi extends javax.swing.JPanel {
         model.addColumn("Harga Barang");
         model.addColumn("Total Harga");
         tabelBeli.setModel(model);
+        tabelBeli.setDefaultEditor(Object.class, null);
         jumlahbarang.setVisible(false);
         faktur.setVisible(false);
         tabelBeli.getColumnModel().getColumn(0).setMaxWidth(204);
@@ -56,7 +57,6 @@ public class formTransaksi extends javax.swing.JPanel {
         namaBarang = new com.kelompoka3.swing.MyTextField();
         quantity = new com.kelompoka3.swing.MyTextField();
         hargaBarang = new com.kelompoka3.swing.MyTextField();
-        total = new com.kelompoka3.swing.MyTextField();
         tambahBarang = new com.kelompoka3.swing.ButtonCustom();
         hapus = new com.kelompoka3.swing.ButtonCustom();
         cetak = new com.kelompoka3.swing.ButtonCustom();
@@ -97,6 +97,7 @@ public class formTransaksi extends javax.swing.JPanel {
             }
         });
 
+        namaBarang.setEnabled(false);
         namaBarang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 namaBarangKeyTyped(evt);
@@ -109,15 +110,10 @@ public class formTransaksi extends javax.swing.JPanel {
             }
         });
 
+        hargaBarang.setEnabled(false);
         hargaBarang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 hargaBarangKeyTyped(evt);
-            }
-        });
-
-        total.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                totalKeyTyped(evt);
             }
         });
 
@@ -146,6 +142,8 @@ public class formTransaksi extends javax.swing.JPanel {
             }
         });
 
+        totalPembelian.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,9 +157,7 @@ public class formTransaksi extends javax.swing.JPanel {
                 .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(hargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(116, 116, 116)
                 .addComponent(tambahBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(isiTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,7 +190,6 @@ public class formTransaksi extends javax.swing.JPanel {
                             .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(hargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tambahBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
@@ -321,10 +316,6 @@ public class formTransaksi extends javax.swing.JPanel {
         filterangka(evt);
     }//GEN-LAST:event_namaBarangKeyTyped
 
-    private void totalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_totalKeyTyped
-        filterhuruf(evt);
-    }//GEN-LAST:event_totalKeyTyped
-
     public void clear() {
         totalPembelian.setText("");
     }
@@ -334,7 +325,7 @@ public class formTransaksi extends javax.swing.JPanel {
         namaBarang.setText("");
         quantity.setText("");
         hargaBarang.setText("");
-        total.setText("");
+//      
     }
 
     public void tambahTranksaksi() {
@@ -343,7 +334,7 @@ public class formTransaksi extends javax.swing.JPanel {
         jumlah = Integer.valueOf(quantity.getText());
         harga = Integer.valueOf(hargaBarang.getText());
         totalharga = jumlah * harga;
-        total.setText(String.valueOf(totalharga));
+//        total.setText(String.valueOf(totalharga));
         LoadData();
         totalBiaya();
         totalBarang();
@@ -478,7 +469,6 @@ public class formTransaksi extends javax.swing.JPanel {
     private com.kelompoka3.swing.MyTextField quantity;
     private com.kelompoka3.swing.Table tabelBeli;
     private com.kelompoka3.swing.ButtonCustom tambahBarang;
-    private com.kelompoka3.swing.MyTextField total;
     private com.kelompoka3.swing.MyTextField totalPembelian;
     // End of variables declaration//GEN-END:variables
 

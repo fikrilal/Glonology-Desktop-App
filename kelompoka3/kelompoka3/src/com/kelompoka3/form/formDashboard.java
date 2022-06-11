@@ -21,7 +21,7 @@ public class formDashboard extends javax.swing.JPanel {
         dataChart();
         setOpaque(false);
         table1.addTableStyle(jScrollPane1);
-
+        table1.setDefaultEditor(Object.class, null);
         chartDashboard.addLabel("Tahun ini", new Color(113, 135, 116));
         chartDashboard.addLabel("Tahun lalu", new Color(79, 94, 83));
     }
@@ -58,7 +58,7 @@ public class formDashboard extends javax.swing.JPanel {
 
         }
     }
-    
+
     private void penjualanPerHari() {
         try {
             String sql = "SELECT SUM(hargaTotal) AS totalPenjualan FROM faktur "
