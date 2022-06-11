@@ -104,7 +104,7 @@ public class FormSuplier extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnTambah.setText("+ T A M B A H");
+        btnTambah.setText("Tambah");
         btnTambah.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,8 +112,7 @@ public class FormSuplier extends javax.swing.JPanel {
             }
         });
 
-        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Delete-1.png"))); // NOI18N
-        btnHapus.setText("H A P U S");
+        btnHapus.setText("Hapus");
         btnHapus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHapus.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -122,8 +121,7 @@ public class FormSuplier extends javax.swing.JPanel {
             }
         });
 
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kelompoka3/icons/Edit Square.png"))); // NOI18N
-        btnEdit.setText("E D I T");
+        btnEdit.setText("Edit");
         btnEdit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnEdit.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +172,7 @@ public class FormSuplier extends javax.swing.JPanel {
                         .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 148, Short.MAX_VALUE))))
+                        .addGap(0, 145, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
