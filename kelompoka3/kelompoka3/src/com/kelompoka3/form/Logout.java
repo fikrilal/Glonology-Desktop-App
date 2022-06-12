@@ -6,6 +6,7 @@
 
 package com.kelompoka3.form;
 
+import com.kelompoka3.main.MainLoginRegister;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.StyledDocument;
@@ -126,7 +127,9 @@ public class Logout extends javax.swing.JFrame {
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here
-        System.exit(0);
+       // System.exit(0);
+        new MainLoginRegister().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_logoutActionPerformed
 
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
