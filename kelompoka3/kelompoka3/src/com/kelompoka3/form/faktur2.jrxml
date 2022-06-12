@@ -59,8 +59,8 @@ where detailpenjualan.noFaktur = $P{noFaktur}]]>
 	<title>
 		<band height="60" splitType="Stretch">
 			<image>
-				<reportElement x="-9" y="0" width="51" height="39" uuid="6ef5083d-9818-41b3-9602-6b6cce630244"/>
-				<imageExpression><![CDATA["C:\\Users\\User\\Documents\\NetBeansProjects\\KelompokA3-main\\kelompoka3\\kelompoka3\\src\\com\\kelompoka3\\image\\logo toko komputer 3 3.png"]]></imageExpression>
+				<reportElement x="-12" y="0" width="51" height="39" uuid="6ef5083d-9818-41b3-9602-6b6cce630244"/>
+				<imageExpression><![CDATA["C:\\Users\\User\\Documents\\NetBeansProjects\\KelompokA3-main\\kelompoka3\\kelompoka3\\src\\com\\kelompoka3\\image\\logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="42" y="5" width="110" height="13" forecolor="#4F4F4F" uuid="95c47d5e-7a56-4820-b806-e85e73717a5d"/>

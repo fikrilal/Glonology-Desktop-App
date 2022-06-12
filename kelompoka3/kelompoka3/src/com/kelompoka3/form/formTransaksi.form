@@ -30,13 +30,11 @@
               <Component id="quantity" min="-2" pref="80" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="hargaBarang" min="-2" pref="180" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="total" min="-2" pref="80" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="tambahBarang" min="-2" pref="140" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="isiTanggal" min="-2" pref="44" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace pref="113" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -65,13 +63,12 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="kodeBarang" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="namaBarang" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="quantity" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="hargaBarang" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="total" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="tambahBarang" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -142,6 +139,9 @@
       </Events>
     </Component>
     <Component class="com.kelompoka3.swing.MyTextField" name="namaBarang">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="namaBarangKeyTyped"/>
       </Events>
@@ -152,13 +152,11 @@
       </Events>
     </Component>
     <Component class="com.kelompoka3.swing.MyTextField" name="hargaBarang">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="hargaBarangKeyTyped"/>
-      </Events>
-    </Component>
-    <Component class="com.kelompoka3.swing.MyTextField" name="total">
-      <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="totalKeyTyped"/>
       </Events>
     </Component>
     <Component class="com.kelompoka3.swing.ButtonCustom" name="tambahBarang">
@@ -198,6 +196,9 @@
       </Events>
     </Component>
     <Component class="com.kelompoka3.swing.MyTextField" name="totalPembelian">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

@@ -22,6 +22,7 @@ public class formHistory extends javax.swing.JPanel {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
         String tgl = simpleDateFormat.format(now), data;
         tbr.addTableStyle(jScrollPane1);
+        tbr.setDefaultEditor(Object.class, null);
         search.setHint("Cari riwayat pembelian..");
         search.setPrefixIcon(new ImageIcon(getClass().getResource("/com/kelompoka3/icons/Search.png")));
     }

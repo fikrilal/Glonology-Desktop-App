@@ -64,8 +64,8 @@
                               <Component id="nmBrg" alignment="0" max="32767" attributes="0"/>
                               <Component id="jnsBrg" alignment="0" max="32767" attributes="0"/>
                               <Component id="wrnBrg" alignment="0" max="32767" attributes="0"/>
-                              <Component id="hrgBrgBeli" alignment="0" max="32767" attributes="0"/>
                               <Component id="hrgJual" alignment="0" max="32767" attributes="0"/>
+                              <Component id="hrgBrgBeli" alignment="0" max="32767" attributes="0"/>
                               <Component id="stokBrg" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="btnBatal1" min="-2" pref="221" max="-2" attributes="0"/>
@@ -98,9 +98,9 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="wrnBrg" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="hrgBrgBeli" min="-2" pref="48" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="hrgJual" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="hrgBrgBeli" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="stokBrg" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -158,9 +158,9 @@
         </Component>
         <Component class="com.kelompoka3.swing.MyTextField" name="wrnBrg">
         </Component>
-        <Component class="com.kelompoka3.swing.MyTextField" name="hrgBrgBeli">
-        </Component>
         <Component class="com.kelompoka3.swing.MyTextField" name="hrgJual">
+        </Component>
+        <Component class="com.kelompoka3.swing.MyTextField" name="hrgBrgBeli">
         </Component>
         <Component class="com.kelompoka3.swing.MyTextField" name="stokBrg">
         </Component>
