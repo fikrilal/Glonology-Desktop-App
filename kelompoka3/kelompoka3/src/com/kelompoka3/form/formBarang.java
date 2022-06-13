@@ -135,6 +135,7 @@ public class formBarang extends javax.swing.JPanel {
         crBrg = new com.kelompoka3.swing.MyTextField();
         Id = new com.kelompoka3.swing.MyTextField();
         barcode = new javax.swing.JLabel();
+        buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -198,6 +199,14 @@ public class formBarang extends javax.swing.JPanel {
         Id.setForeground(new java.awt.Color(0, 0, 0));
         Id.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
+        buttonCustom1.setText("Refresh");
+        buttonCustom1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buttonCustom1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCustom1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -217,6 +226,8 @@ public class formBarang extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(barcode, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -230,7 +241,8 @@ public class formBarang extends javax.swing.JPanel {
                         .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonCustom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE))
         );
@@ -298,6 +310,11 @@ public class formBarang extends javax.swing.JPanel {
                 }
     }//GEN-LAST:event_table1MouseClicked
 
+    private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
+        // TODO add your handling code here:
+        TampilanData();
+    }//GEN-LAST:event_buttonCustom1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static com.kelompoka3.swing.MyTextField Id;
@@ -305,6 +322,7 @@ public class formBarang extends javax.swing.JPanel {
     private com.kelompoka3.swing.ButtonCustom btnEdit;
     private com.kelompoka3.swing.ButtonCustom btnHapus;
     private com.kelompoka3.swing.ButtonCustom btnTambah;
+    private com.kelompoka3.swing.ButtonCustom buttonCustom1;
     private com.kelompoka3.swing.MyTextField crBrg;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

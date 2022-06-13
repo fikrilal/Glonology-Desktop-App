@@ -104,6 +104,7 @@ public class formPegawai extends javax.swing.JPanel {
         jtable1 = new com.kelompoka3.swing.Table();
         crBrg = new com.kelompoka3.swing.MyTextField();
         Id = new javax.swing.JTextField();
+        buttonCustom1 = new com.kelompoka3.swing.ButtonCustom();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -157,6 +158,14 @@ public class formPegawai extends javax.swing.JPanel {
             }
         });
 
+        buttonCustom1.setText("Refresh");
+        buttonCustom1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buttonCustom1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCustom1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -175,7 +184,9 @@ public class formPegawai extends javax.swing.JPanel {
                         .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 145, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 58, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +197,8 @@ public class formPegawai extends javax.swing.JPanel {
                     .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
@@ -240,12 +252,18 @@ public class formPegawai extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jtable1MouseClicked
 
+    private void buttonCustom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom1ActionPerformed
+        // TODO add your handling code here:
+        TampilanData();
+    }//GEN-LAST:event_buttonCustom1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField Id;
     private com.kelompoka3.swing.ButtonCustom btnEdit;
     private com.kelompoka3.swing.ButtonCustom btnHapus;
     private com.kelompoka3.swing.ButtonCustom btnTambah;
+    private com.kelompoka3.swing.ButtonCustom buttonCustom1;
     private com.kelompoka3.swing.MyTextField crBrg;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
