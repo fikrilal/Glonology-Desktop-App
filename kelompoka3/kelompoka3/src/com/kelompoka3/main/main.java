@@ -158,7 +158,7 @@ public class main extends javax.swing.JFrame {
                 } catch (SQLException e) {
                     System.out.println(e);
                 }
-                new main().setVisible(true);
+                new MainLoginRegister().setVisible(true);
             }
         });
     }
