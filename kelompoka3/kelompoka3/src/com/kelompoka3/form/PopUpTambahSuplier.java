@@ -144,8 +144,8 @@ public class PopUpTambahSuplier extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBatalActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        // TODO add your handling code here:
         TambahkanData();
+        this.dispose();
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void alamat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamat1ActionPerformed

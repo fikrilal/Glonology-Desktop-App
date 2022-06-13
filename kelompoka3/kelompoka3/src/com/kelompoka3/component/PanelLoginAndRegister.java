@@ -18,9 +18,6 @@ import net.miginfocom.swing.MigLayout;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
-    /**
-     * @return the dataLogin
-     */
     public ModelLogin getDataLogin() {
         return dataLogin;
     }

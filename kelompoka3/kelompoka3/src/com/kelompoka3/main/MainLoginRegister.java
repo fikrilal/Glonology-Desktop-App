@@ -164,7 +164,6 @@ public class MainLoginRegister extends javax.swing.JFrame {
         ModelLogin data = loginAndRegister.getDataLogin();        
         try {
             ModelUser user = service.login(data);
-            service.checkNamaPengguna(user.getEmail());
             if (user != null) {
                 if (service.checkKedudukanAdmin(user.getEmail())) {
                     this.dispose();

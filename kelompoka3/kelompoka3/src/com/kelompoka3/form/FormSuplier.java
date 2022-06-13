@@ -46,7 +46,7 @@ public class FormSuplier extends javax.swing.JPanel {
         }
     }
 
-    private void TampilanData() {
+    public void TampilanData() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID Suplier");
         model.addColumn("Nama Suplier");
@@ -106,7 +106,7 @@ public class FormSuplier extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         btnTambah.setText("Tambah");
-        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTambahActionPerformed(evt);
@@ -114,7 +114,7 @@ public class FormSuplier extends javax.swing.JPanel {
         });
 
         btnHapus.setText("Hapus");
-        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnHapus.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.DESTRUCTIVE);
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +123,7 @@ public class FormSuplier extends javax.swing.JPanel {
         });
 
         btnEdit.setText("Edit");
-        btnEdit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEdit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEdit.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +156,8 @@ public class FormSuplier extends javax.swing.JPanel {
         });
 
         buttonCustom1.setText("Refresh");
-        buttonCustom1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buttonCustom1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonCustom1.setStyle(com.kelompoka3.swing.ButtonCustom.ButtonStyle.SECONDARY);
         buttonCustom1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCustom1ActionPerformed(evt);
@@ -181,23 +182,24 @@ public class FormSuplier extends javax.swing.JPanel {
                         .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 57, Short.MAX_VALUE))))
+                        .addGap(12, 12, 12)
+                        .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 33, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCustom1, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonCustom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(crBrg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -262,7 +264,7 @@ public class FormSuplier extends javax.swing.JPanel {
     private com.kelompoka3.swing.ButtonCustom btnEdit;
     private com.kelompoka3.swing.ButtonCustom btnHapus;
     private com.kelompoka3.swing.ButtonCustom btnTambah;
-    private com.kelompoka3.swing.ButtonCustom buttonCustom1;
+    public static com.kelompoka3.swing.ButtonCustom buttonCustom1;
     private com.kelompoka3.swing.MyTextField crBrg;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
