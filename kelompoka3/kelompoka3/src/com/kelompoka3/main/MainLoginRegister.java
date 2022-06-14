@@ -138,7 +138,7 @@ public class MainLoginRegister extends javax.swing.JFrame {
                     }
 
                 } catch (SQLException e) {
-                    showPesan(Pesan.PesanType.ERROR, "Error");
+                    showPesan(Pesan.PesanType.ERROR, "Error" + e.getMessage());
                 }
             }
         });
