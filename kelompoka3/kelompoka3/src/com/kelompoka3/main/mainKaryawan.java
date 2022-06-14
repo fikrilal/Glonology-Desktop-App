@@ -2,6 +2,7 @@ package com.kelompoka3.main;
 
 import com.kelompoka3.event.menuEvent;
 import com.kelompoka3.form.FormSuplier;
+import com.kelompoka3.form.Logout;
 import com.kelompoka3.form.form;
 import com.kelompoka3.form.formBarang;
 import com.kelompoka3.form.formHistory;
@@ -28,7 +29,8 @@ public class mainKaryawan extends javax.swing.JFrame {
 
                 } else if (index == 3) {
                     showForm(new FormSuplier());
-
+                } else if (index == 4) {
+                    new Logout().setVisible(true);
                 }  else {
                     showForm(new form(index + ""));
                 }
